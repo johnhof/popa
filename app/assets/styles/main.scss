@@ -1,0 +1,254 @@
+@import 'variables';
+
+
+//
+// Universal Styles
+//
+
+
+html, body {
+  padding: 0;
+  margin: 0;
+  background :none;
+  min-width: 320px;
+  width: 100%;
+  height: 100%;
+
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+}
+
+html {
+  background: rgb(240, 240, 240);
+  height: 100%;
+  background: url('../images/diamonds.png') left top;
+}
+
+body {
+  padding-top: 70px;
+}
+
+h1, h2, h3, h4 {
+  margin: 5px 0;
+}
+
+a {
+  cursor: pointer;
+
+  &:hover {
+    color: $blue;
+  }
+}
+
+#main-content {
+  // padding-top:70px;
+  height:100%
+}
+
+.navbar {
+  min-width: 320px;
+}
+
+#background-filter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(245, 246, 247, 0);
+  z-index: -1;
+}
+
+.diamond-container {
+    display: inline-block;
+    position: relative;
+
+  div.text {
+    position: relative;
+    height: 0;
+    color: white;
+    z-index: 10;
+    width: 100%;
+    text-align: center;
+  }
+
+  .diamond {
+    width: 0;
+    height: 0;
+    border: 130px solid transparent;
+    border-bottom-color: $blue;
+    position: relative;
+    top: -130px;
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: -130px;
+      top: 130px;
+      width: 0;
+      height: 0;
+      border: 130px solid transparent;
+      border-top-color: $blue;
+    }
+  }
+}
+
+//
+// General Utilities
+//
+
+.container {
+  width: 100%;
+}
+
+.card {
+  border: 1px solid $light-grey;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.10);
+  background-color: #FFFFFF;
+  margin: 10px 0;
+  padding: 5px;
+
+  .title {
+    font-size: 24px;
+    text-decoration: none;
+    border-bottom: 1px dotted rgb(163, 163, 163);
+    width: 100%;
+    display: block
+  }
+
+  .card-row {
+    display: flex;
+
+    .label {
+      flex: 1;
+      padding-right: 5px;
+
+      &:after {
+        content: ":";
+      }
+    }
+
+    .value {
+      flex: 1
+    }
+  }
+}
+
+//
+// bootstrap overrides
+//
+
+.container-fluid {
+  padding-right:0px;
+  padding-left:0px;
+}
+
+.row {
+  margin: 0;
+  padding: 0;
+
+  [class*='col-'] {
+    padding-right:0px;
+    padding-left:0px;
+  }
+}
+
+//
+// Forms
+//
+
+
+.button {
+  border: 1px solid #FFFFFF;
+  border-radius: 3px;
+  width: 100%;
+  min-height: 35px;
+  box-shadow: 0px 0px 3px #888888;
+  background: $dark-grey;
+  color: white;
+
+  &[type="submit"], &[active="true"] {
+    background: $blue;
+    color: white;
+  }
+}
+
+.button-wrap {
+  display: flex;
+  padding: 10px 0;
+
+  .button, [type="button"]{
+    flex:1;
+
+    &[type="submit"], &[active="true"] {
+      background: $blue;
+      color: white;
+    }
+
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+
+    &:first-of-type {
+      margin-right: 10px;
+    }
+  }
+}
+
+input {
+  &[type="email"], &[type="password"], &[type="text"] {
+    padding-left: 10px;
+  }
+}
+
+a.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error {
+  color: $red;
+  display: none;
+
+  &.main-error {
+    padding-top: 5px;
+  }
+}
+
+form.ng-submitted {
+  .invalid {
+    border: 1px solid $red;
+  }
+
+  .error {
+    font-weight: bold;
+    display: block;
+  }
+}
+
+.input-wrap {
+  display: block;
+  padding: 10px 0;
+
+
+  input {
+    width: 100%;
+    border-radius: 1px;
+    border: 1px solid $light-grey;
+    min-height: 35px;
+    box-shadow: 0px 0px 3px #888888;
+
+    &[type="email"], &[type="password"], &[type="text"] {
+      &:required {
+        &::-webkit-input-placeholder {
+          &:after {
+            content: "*";
+            padding-left: 5px;
+            color: $faded-red;
+          }
+        }
+      }
+    }
+  }
+}
