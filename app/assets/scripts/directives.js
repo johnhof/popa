@@ -11,25 +11,6 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
-//
-// Diamond
-//
-
-var diamond = '<div class="diamond-container">' +
-                 '<div class="diamond">' +
-                   '<ng-transclude></ng-transclude>'+
-                 '</div>'+
-               '</div>';
-
-popa.directive('diamond',function () {
-  return {
-    restrict   : 'E',
-    transclude : true,
-    template   : diamond,
-    replace    : true
-  };
-});
-
 
 ////////////////////////////////////////////////////////////////////////
 //
