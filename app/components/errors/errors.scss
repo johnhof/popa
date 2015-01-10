@@ -1,9 +1,9 @@
 @import 'variables';
 
 #error-container {
+  display: table;
   height: 100%;
   width: 100%;
-  display: table;
   text-align: center;
   color: $light-grey;
 
@@ -11,17 +11,18 @@
     display: table-cell;
     vertical-align: middle;
     font-size: 30px;
+    padding: 0 10px;
     margin: 0;
 
     .frown {
-      padding: 0 40%;
 
       div {
+        padding-bottom: 15px;
         min-width: 100px;
         width: 10%;
         margin: auto;
         font-size: 70px;
-        margin-top: 20px;
+        margin-top: 0;
         letter-spacing: 10px;
 
 
