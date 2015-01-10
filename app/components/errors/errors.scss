@@ -1,14 +1,16 @@
 @import 'variables';
 
 #error-container {
+  height: 100%;
   width: 100%;
+  display: table;
   text-align: center;
   color: $light-grey;
 
   h1 {
+    display: table-cell;
+    vertical-align: middle;
     font-size: 30px;
-    padding: 0 10%;
-    padding-top: 15%;
     margin: 0;
 
     .frown {
