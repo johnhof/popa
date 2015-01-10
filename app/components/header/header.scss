@@ -3,9 +3,10 @@
 $nav-height: 70px;
 .navbar {
   background: white;
-  font-size: 20px;
+  font-size: 16px;
   height: $nav-height;
   box-shadow: 0 2px 9px #515151;
+  text-transform: uppercase;
 
 
   &.navbar-default {
@@ -71,9 +72,7 @@ $nav-height: 70px;
 
           a {
             text-align: center;
-            width: 70px;
-            height: 700px;
-            margin: 0 10px;
+            width: 100px;
             padding: 25px 15px;
             height: $nav-height;
             display: inline-block;
