@@ -26,28 +26,6 @@
           color: white;
         }
       }
-
-    }
-
-    div.divider {
-      width: 30%;
-      max-width: 200px;
-      height: 1px;
-      margin: 10px auto;
-      text-align: center;
-      background: $light-grey;
-
-      span {
-        position: relative;
-        top: 0.5rem;
-
-        width: 0;
-        height: 0;
-        border-left: 0.5rem solid transparent;
-        border-right: 0.5rem solid transparent;
-
-        border-top: 0.5rem solid $blue;
-      }
     }
 
     section.content {

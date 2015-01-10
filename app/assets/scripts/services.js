@@ -44,7 +44,7 @@ popa.service('Cookie', [function () {
 ////////////////////////////////////////////////////////////////////////
 
 // A collection of general purpose utilities
-popa.service('Utils', ['Cookie', '$route', '$window', '$location', function (Cookie, $route, $window, $location) {
+popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScroll', function (Cookie, $route, $window, $location, $anchorScroll) {
   var $dom = angular.element('html');
   return {
 
@@ -52,6 +52,10 @@ popa.service('Utils', ['Cookie', '$route', '$window', '$location', function (Coo
     // Miscellaneous utilities
     //
 
+    scrollTo : function (id) {
+      $location.hash(id);
+      $anchorScroll();
+    },
     // prefix /# and redirect
 
     redirect : function (path) {

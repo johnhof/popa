@@ -1,0 +1,130 @@
+@import 'variables';
+
+$max-height: 500px;
+
+$background-mask: linear-gradient(
+  rgba(0, 0, 0, 0.7),
+  rgba(0, 0, 0, 0.7)
+);
+
+#about-container {
+  height:100%;
+  font-size: 1.2rem;
+
+  .hero {
+    background: $background-mask, url(https://placekitten.com/1600/1000) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    height: 100%;
+    max-height: $max-height;
+    color: white;
+    overflow: hidden;
+
+    .text-container {
+      display: table;
+      width: 40%;
+      min-width: 300px;
+      margin-left: 10%;
+      height: 100%;
+
+      // mobile
+      @media (max-width: 650px) {
+        width: 80%;
+        margin: auto;
+
+        .arrow {
+          display: inline-block;
+        }
+      }
+
+      .text-box {
+        display: table-cell;
+        vertical-align: middle;
+
+        p {
+          span {
+            color: $blue;
+            font-size: 2rem;
+            padding-right: 5px;
+          }
+        }
+      }
+    }
+
+    .arrow {
+      display: none;
+      top: 15px;
+      position: relative;
+    }
+  }
+
+  section {
+    color: $light-grey;
+    max-height: $max-height;
+
+
+    // desktop
+    @media (min-width: 650px) {
+      .header {
+        padding-top: 25px;
+      }
+    }
+
+    .header {
+      width: 100%;
+
+      h3 {
+        width:20%;
+        min-width: 250px;
+        margin: auto;
+        padding: 5px;
+        background: $blue;
+        color: $charcoal-grey;
+      }
+    }
+
+    .content {
+      width: 80%;
+      max-width: 1000px;
+      margin: 25px auto;
+
+      // mobile
+      @media (max-width: 650px) {
+        width: 95%;
+      }
+
+      .block {
+        text-align: left;
+        font-size: 1.5rem;
+        margin: 40px 0;
+
+        .lead {
+          font-size: 1.7rem;
+          margin-bottom: 10px;
+          font-weight: inherit;
+
+          span {
+            color: $blue;
+          }
+        }
+
+        ul {
+          margin-left: 5%;
+          margin-top: 20px;
+        }
+      }
+
+      h3 {
+        width: 200px;
+        margin: auto;
+        color: $blue;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid white
+      }
+    }
+  }
+}
