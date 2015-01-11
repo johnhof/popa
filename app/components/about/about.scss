@@ -12,11 +12,13 @@ $background-mask: linear-gradient(
   font-size: 1.2rem;
 
   .hero {
-    background: $background-mask, url(https://placekitten.com/1600/1000) no-repeat center center fixed;
+    background: $background-mask, url(/images/me1.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    background-position: 60% 0%;
+
 
     height: 100%;
     max-height: $max-height;

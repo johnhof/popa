@@ -46,15 +46,40 @@ popa.service('Cookie', [function () {
 // A collection of general purpose utilities
 popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScroll', function (Cookie, $route, $window, $location, $anchorScroll) {
   var $dom = angular.element('html');
-  return {
+  var durationMap = {
+    slow     : 2000,
+    standard : 1000,
+    fast     : 500
+  }
+  var utils = {
 
     //
     // Miscellaneous utilities
     //
 
-    scrollTo : function (id) {
-      $location.hash(id);
-      $anchorScroll();
+    setHash : function (id) {
+      location.hash(id);
+    },
+
+    scrollTo : function (id, duration) {
+      if (id === 'hash') {
+        id = $location.hash();
+      }
+
+      var headerOffset = 70;
+      if (!duration) {
+        $anchorScroll.yOffset = headerOffset;
+        $location.hash(id);
+        $anchorScroll();
+
+      //dadly, anchorScroll doesnt support duration, well have to use Jquery
+      } else {
+        duration = durationMap[duration] || duration;
+
+        $dom.find('html, body').animate({
+            scrollTop: $dom.find('#' + id).offset().top + headerOffset
+        }, duration);
+      }
     },
     // prefix /# and redirect
 
@@ -66,5 +91,7 @@ popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScrol
     reload : function () {
       $route.reload();
     }
-  }
+  };
+
+  return utils;
 }])
