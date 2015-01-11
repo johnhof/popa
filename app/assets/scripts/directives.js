@@ -12,6 +12,23 @@
 ////////////////////////////////////////////////////////////////////////
 
 
+popa.directive('sprite', [function (Patterns) {
+  return {
+    restrict : 'E',
+    replace  : true,
+    scope    : {
+      href : '@',
+      src  : '@'
+    },
+    template : '<a class="sprite" href="{{href}}"><img src="../images/{{src}}"></a>',
+    link     : function (scope, element, attrs) {
+      scope.href = attrs.href;
+      scope.src  = attrs.src;
+    }
+  };
+}]);
+
+
 ////////////////////////////////////////////////////////////////////////
 //
 //  Utility Directives

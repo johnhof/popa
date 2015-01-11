@@ -34,11 +34,15 @@ $background-mask: linear-gradient(
 
       // mobile
       @media (max-width: 650px) {
+        font-size: 1.1rem;
         width: 80%;
         margin: auto;
 
         .arrow {
           display: inline-block;
+        }
+
+        .text-box {
         }
       }
 
@@ -46,11 +50,17 @@ $background-mask: linear-gradient(
         display: table-cell;
         vertical-align: middle;
 
+        // mobile
+        @media (max-width: 650px) {
+          vertical-align: bottom;
+        }
+
         p {
           span {
             color: $blue;
             font-size: 2rem;
-            padding-right: 5px;
+            padding: 10px 0;
+            display: block;
           }
         }
       }
@@ -58,6 +68,7 @@ $background-mask: linear-gradient(
 
     .arrow {
       display: none;
+      height: 50px;
       top: 15px;
       position: relative;
     }
@@ -66,12 +77,11 @@ $background-mask: linear-gradient(
   section {
     color: $light-grey;
     max-height: $max-height;
+    display: inline;
 
-
-    // desktop
-    @media (min-width: 650px) {
-      .header {
-        padding-top: 25px;
+    &:last-of-type {
+      .content {
+        margin-bottom: 30px;
       }
     }
 
@@ -79,19 +89,23 @@ $background-mask: linear-gradient(
       width: 100%;
 
       h3 {
+        border-top : 1px solid $blue;
+
+        &:first-of-type {
+          border-top: none;
+        }
         width:20%;
         min-width: 250px;
         margin: auto;
         padding: 5px;
-        background: $blue;
-        color: $charcoal-grey;
+        color: white;
       }
     }
 
     .content {
       width: 80%;
       max-width: 1000px;
-      margin: 25px auto;
+      margin: 0 auto;
 
       // mobile
       @media (max-width: 650px) {
@@ -107,6 +121,8 @@ $background-mask: linear-gradient(
           font-size: 1.7rem;
           margin-bottom: 10px;
           font-weight: inherit;
+          text-align: center;
+          color: white;
 
           span {
             color: $blue;
@@ -114,8 +130,11 @@ $background-mask: linear-gradient(
         }
 
         ul {
-          margin-left: 5%;
-          margin-top: 20px;
+          padding-left: 5%;
+
+          li:before {
+            padding-right: 10px;
+          }
         }
       }
 

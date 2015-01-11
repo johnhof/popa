@@ -1,0 +1,36 @@
+@import 'variables';
+
+$footer-height: 100px;
+$line-height: 80px;
+$sprite-height: 40px;
+
+
+#footer-content {
+  padding: 20px 0;
+  padding-bottom: 0;
+  bottom: 0;
+  text-align: center;
+  position: relative;
+
+  .sprite-row {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    border-top: 1px solid $grey;
+    height: $line-height;
+    padding-top: 15px;
+
+    .sprite {
+      height: $sprite-height;
+      width: $sprite-height;
+      margin: 0 25px;
+
+      &:first-of-type {
+        margin-left: 0px;
+      }
+      &:last-of-type {
+        margin-right: 0px;
+      }
+    }
+  }
+}

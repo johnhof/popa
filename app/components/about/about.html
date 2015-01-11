@@ -17,37 +17,55 @@
   <!-- Fun Facts -->
 
   <section class="center" id="fun-facts">
-
+<!--
     <div class="header">
       <h3>Fun Facts</h3>
-    </div>
+    </div> -->
 
     <div class="content">
-      <div class="block">
-        <div class="lead">Things I <span>like</span></div>
-        <ul class="inline">
-          <li>Rock Climbing</li>
-          <li>Woodworking</li>
-          <li>Cycling</li>
-          <li>Hiking</li>
-          <li>Camping</li>
-          <li>Playing hockey and soccer</li>
-          <li>Watching the Pittsburgh Penguins win</li>
-          <li>Good Whiskey</li>
-          <li>Good Beer</li>
-        </ul>
-      </div>
-      <div class="block">
-        <div class="lead">Things I <span>Dont</span></div>
-        <ul class="inline">
-          <li>Cold weather</li>
-          <li>Watching the Penguins lose</li>
-          <li>Finding the office coffey pot empty</li>
-          <li>Distance Running</li>
-          <li>Swimming</li>
-        </ul>
+      <div class="row container-fluid">
+        <div class="col-sm-6 block">
+          <div class="lead">Things I <span>like</span></div>
+          <ul class="custom">
+            <li ng-repeat="like in likes">{{like}}</li>
+          </ul>
+        </div>
+        <div class="col-sm-6 block">
+          <div class="lead">Things I <span>Dont</span></div>
+          <ul class="custom">
+            <li ng-repeat="dislike in dislikes">{{dislike}}</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
+
+  <section class="center" id="skills">
+
+    <div class="header">
+      <h3>Skills</h3>
+    </div>
+
+    <div class="content">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+  </section>
+
+  <div ng-include src="'views/footer.html'"></div>
 </div>

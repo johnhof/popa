@@ -23,3 +23,13 @@ $orange: #FF9B00;
 //
 
 $nav-height: 70px;
+
+//
+// Mixins
+//
+
+
+@function img($file){
+  $url: "../images/#{$file}";
+  @return url($url)
+}
