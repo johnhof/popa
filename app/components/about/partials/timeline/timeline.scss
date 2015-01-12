@@ -6,39 +6,18 @@
   color: $grey;
   text-align: center;
 
-
-  // desktop
-  @media (min-width: 850px) {
-    display: inline-block;
-
-    .select {
-      max-width: 300px;
-    }
-
-    .active-content {
-      display: inline-block;
-    }
-  }
-
   .timeline {
     display: inline-block;
     width: 100%;
-    // background: $near-black;
 
 
     $key-height: 30px;
     .key  {
-      // mobile
-      @media (max-width: 850px) {
-        display: none;
-      }
-
       display: inline-block;
       width: 100%;
       text-align: center;
       padding: 0 10px;
       height: $key-height;
-      background: $charcoal-grey;
 
       div {
         height: $key-height;
@@ -74,32 +53,51 @@
       height: 50px;
 
       .timeframe {
-        position: relative;
         display: inline-block;
-        text-align: left;
-        padding: 20px 10px;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        overflow: hidden;
         text-align: center;
-        height: inherit;
-        border: 1px solid $grey;
-        background: $near-black;
+        cursor: pointer;
+        color: $light-grey;
+        border: 1px solid transparent;
+        text-align: center;
+
+        &[active="true"] {
+          color: $blue;
+          background: $charcoal-grey;
+
+          &.top:hover, &.bottom:hover {
+            color: $blue;
+          }
+        }
 
         &.top {
-          border-bottom: 1px solid $blue;
+          margin-bottom: 10px;
+          border-bottom: 1px solid $dark-grey;
+
+          &.active {
+            border-bottom: 1px solid $blue;
+          }
         }
 
         &.bottom {
-          border-top: 1px solid $blue;
+          margin-top: 10px;
+          border-top: 1px solid $dark-grey;
+
+          &.active {
+            border-top: 1px solid $blue;
+          }
+        }
+
+        &.top:hover, &.bottom:hover {
+          border: 1px solid $light-grey;
+          color: white;
         }
 
         h3 {
-          padding-bottom: 5px;
-          color: white;
+          font-weight: 500;
           font-size: 1.2rem;
+          width: 100%;
           margin: 0;
+          padding: 10px
         }
 
         ul  {
@@ -113,4 +111,89 @@
     }
   }
 
+
+  .active-content {
+    background: white;
+    border: 1px solid $grey;
+    text-align: left;
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
+    padding: 20px;
+    color: $grey;
+    font-weight: 400;
+
+    h2 {
+      margin-bottom: 10px;
+      color: $blue;
+    }
+
+    h4 {
+      display: inline;
+
+      &:after {
+        font-size: .8rem;
+        padding: 0 5px;
+        padding-bottom: 3px;
+        color: $light-grey;
+        content: "◆";
+      }
+
+      &:last-of-type:after {
+        content: '';
+        padding: none;
+      }
+    }
+
+    p {
+    }
+
+    .synopsis {
+      text-align: center;
+      margin-top: 25px;
+
+      span {
+        &:after {
+          font-size: .8rem;
+          padding: 0 5px;
+          padding-bottom: 3px;
+          color: $light-grey;
+          content: "◆";
+        }
+
+        &:last-of-type:after {
+          content: '';
+          padding: none;
+        }
+      }
+    }
+  }
+
+
+  // mobile
+  @media (max-width: 850px) {
+    display: inline-block;
+
+    .select {
+      max-width: 300px;
+    }
+
+    .active-content {
+      display: inline-block;
+    }
+
+    .timeline {
+      .key {
+        display: none;
+      }
+    }
+  }
+}
+
+#about-container {
+  .active-content div.divider {
+    border-top: 1px solid $light-grey;
+    text-align: left;
+    margin: 20px 0;
+  }
 }

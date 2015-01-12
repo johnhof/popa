@@ -41,9 +41,6 @@ $background-mask: linear-gradient(
         .arrow {
           display: inline-block;
         }
-
-        .text-box {
-        }
       }
 
       .text-box {
@@ -169,7 +166,6 @@ $background-mask: linear-gradient(
               font-size: 1rem;
               content: '◆';
             }
-
 
             &:first-of-type {
               &:before {

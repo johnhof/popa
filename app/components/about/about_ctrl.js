@@ -66,7 +66,7 @@ var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope',  'Util
     },
     timeframe : {
       start : 0,
-      end   : 16,
+      end   : 18,
       top   : true,
     }
   }, {
@@ -182,9 +182,7 @@ aboutCtrl.directive('timeline', [function () {
 
         target.duration = percentQts(timeframe.end - timeframe.start);
 
-        console.log(timeframe.end - timeframe.start)
         target.useAbbrev = ((timeframe.end - timeframe.start) < 2);
-        console.log(target.useAbbrev)
 
         if (timeframe.top) {
           var topLen = scope.targetSets.top.length;
@@ -202,6 +200,19 @@ aboutCtrl.directive('timeline', [function () {
         }
 
         scope.target[index] = target;
+
+        //
+        // select
+        //
+
+        scope.selectTraget = function (target) {
+          // set the other possible targes to be inactive
+          _.each(scope.target, function (_target) { _target.active = false; });
+
+          //activate the current target
+          target.active = true;
+          scope.active = target;
+        }
       });
     }
   };
