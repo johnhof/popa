@@ -1,0 +1,116 @@
+@import 'variables';
+
+.timeline-container {
+  margin: 20px 5%;
+  font-size: 1rem;
+  color: $grey;
+  text-align: center;
+
+
+  // desktop
+  @media (min-width: 850px) {
+    display: inline-block;
+
+    .select {
+      max-width: 300px;
+    }
+
+    .active-content {
+      display: inline-block;
+    }
+  }
+
+  .timeline {
+    display: inline-block;
+    width: 100%;
+    // background: $near-black;
+
+
+    $key-height: 30px;
+    .key  {
+      // mobile
+      @media (max-width: 850px) {
+        display: none;
+      }
+
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      padding: 0 10px;
+      height: $key-height;
+      background: $charcoal-grey;
+
+      div {
+        height: $key-height;
+        display: inline-block;
+        border-left: 1px solid $dark-grey;
+
+        &:first-of-type {
+          border-left: none;
+        }
+
+        h3 {
+          padding-top: 5px;
+          margin: 0;
+          font-size: 1rem;
+          color: white;
+
+          &:before {
+            content: "20";
+
+            @media (max-width: 900px) {
+              content: "'";
+            }
+          }
+        }
+      }
+    }
+
+    .line-wrap {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 0 10px;
+      height: 50px;
+
+      .timeframe {
+        position: relative;
+        display: inline-block;
+        text-align: left;
+        padding: 20px 10px;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        text-align: center;
+        height: inherit;
+        border: 1px solid $grey;
+        background: $near-black;
+
+        &.top {
+          border-bottom: 1px solid $blue;
+        }
+
+        &.bottom {
+          border-top: 1px solid $blue;
+        }
+
+        h3 {
+          padding-bottom: 5px;
+          color: white;
+          font-size: 1.2rem;
+          margin: 0;
+        }
+
+        ul  {
+          padding: 0;
+          margin: 0;
+          color: $grey;
+          list-style-type: none;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+}

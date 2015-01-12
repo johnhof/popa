@@ -28,6 +28,21 @@ popa.directive('sprite', [function (Patterns) {
   };
 }]);
 
+popa.directive('divider', [function (Patterns) {
+  return {
+    restrict : 'E',
+    replace  : true,
+    template : '<div class="divider"><span></span></div>',
+  };
+}]);
+
+popa.directive('diamond', [function (Patterns) {
+  return {
+    restrict : 'E',
+    replace  : true,
+    template : '<div class="diamond"><span>◆</span></div>',
+  };
+}]);
 
 ////////////////////////////////////////////////////////////////////////
 //
