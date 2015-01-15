@@ -177,6 +177,8 @@ aboutCtrl.directive('timeline', [function () {
         bottom : []
       }
 
+      scope.active = scope.target[0];
+
       _.each(scope.target, function (target, index) {
         var timeframe = target.timeframe;
 

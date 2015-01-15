@@ -37,6 +37,7 @@
     "grunt-ngmin": "^0.0.3",
     "grunt-shell-spawn": "~0.3.0",
     "grunt-simple-mocha": "^0.4.0",
+    "grunt-spritesmith": "^3.5.0",
     "grunt-svgmin": "^0.4.0",
     "grunt-usemin": "^2.1.1",
     "grunt-wiredep": "~1.8.0",

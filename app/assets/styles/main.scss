@@ -1,9 +1,9 @@
 @import 'variables';
 
 
-//
+///////////////////////////////////////////////////////////////////////////////
 // Universal Styles
-//
+///////////////////////////////////////////////////////////////////////////////
 
 
 html, body {
@@ -48,8 +48,8 @@ img {
 }
 
 #main-content {
-  height: 100%;
   width: 100%;
+  min-height:100%;
 }
 
 .navbar {
@@ -66,56 +66,13 @@ img {
   z-index: -1;
 }
 
-//
+///////////////////////////////////////////////////////////////////////////////
 // General Utilities
-//
+///////////////////////////////////////////////////////////////////////////////
 
 .container {
   width: 100%;
 }
-
-.card {
-  border: 1px solid $light-grey;
-  width: 60%;
-  min-width: 300px;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.10);
-  background-color: white;
-  margin: 5% auto;
-  padding: 5px;
-
-  .title {
-    text-align: center;
-    font-size: 24px;
-    display: block;
-    width: 10%;
-    min-width: 100px;
-    background: rgb(0, 153, 255);
-    color: white;
-    margin: auto;
-    top: -22px;
-    position: relative;
-    padding: 5px;
-    text-transform: capitalize;
-  }
-
-  .card-row {
-    display: flex;
-
-    .label {
-      flex: 1;
-      padding-right: 5px;
-
-      &:after {
-        content: ":";
-      }
-    }
-
-    .value {
-      flex: 1
-    }
-  }
-}
-
 
 
 div.divider {
@@ -135,7 +92,7 @@ div.divider {
     border-left: 0.5rem solid transparent;
     border-right: 0.5rem solid transparent;
 
-    border-top: 0.5rem solid $blue;
+    border-top: 0.5rem solid white;
   }
 }
 div.diamond {
@@ -157,17 +114,18 @@ div.diamond {
   }
 }
 
-.v-center {
-  display: table;
+.center {
+  text-align: center;
+}
 
-  .v-center-target {
+.vertical-center-outer {
+  display: table;
+  height: 100%;
+
+  .vertical-center-inner {
     display: table-cell;
     vertical-align: middle;
   }
-}
-
-.center {
-  text-align: center;
 }
 
 ul {
@@ -203,28 +161,22 @@ ul {
   }
 }
 
-//
-// bootstrap overrides
-//
+.sprite {
+  color: $grey;
+  font-size: 32;
+  transition: 0.25s ease-in-out all;
 
-.container-fluid {
-  padding-right:0px;
-  padding-left:0px;
+  &.size-16 { font-size: 16px; }
+  &.size-32 { font-size: 32px; }
+  &.size-48 { font-size: 48px; }
+  &.size-64 { font-size: 64px; }
+  &.size-96 { font-size: 96px; }
 }
 
-.row {
-  margin: 0;
-  padding: 0;
 
-  [class*='col-'] {
-    padding-right:0px;
-    padding-left:0px;
-  }
-}
-
-//
+///////////////////////////////////////////////////////////////////////////////
 // Forms
-//
+///////////////////////////////////////////////////////////////////////////////
 
 
 .button {

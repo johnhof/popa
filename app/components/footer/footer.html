@@ -1,5 +1,5 @@
-<div  id="footer-content" ng-controller="FooterCtrl">
+<div  id="footer-content" ng-controller="FooterCtrl" ng-hide="blacklisted">
   <div class="sprite-row">
-    <sprite href="{{sprite.href}}" src="{{sprite.src}}" ng-repeat="sprite in sprites"></sprite>
+    <sprite href="{{sprite.href}}" name="{{sprite.name}}" ng-repeat="sprite in sprites"></sprite>
   </div>
 </div>

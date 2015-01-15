@@ -1,10 +1,11 @@
 @import 'variables';
 
 .timeline-container {
-  margin: 20px 5%;
+  padding: 20px 5%;
   font-size: 1rem;
   color: $grey;
   text-align: center;
+  background: $gunmetal;
 
   .timeline {
     display: inline-block;
@@ -94,10 +95,11 @@
 
         h3 {
           font-weight: 500;
-          font-size: 1.2rem;
           width: 100%;
           margin: 0;
-          padding: 10px
+          padding: 10px;
+          text-transform: uppercase;
+          font-size: 1rem;
         }
 
         ul  {

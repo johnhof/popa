@@ -2,79 +2,36 @@
 
   <!-- Hero -->
 
-  <div class="hero">
-    <div class="text-container">
-      <div class="text-box">
+  <row id="about" class="hero" full-port-height>
+    <center class="col-sm-12 text-container">
         <p>
           <span>Hello!</span>
-          I am a full stack web developer hailing from the University of Pittsburgh. I started studying computer science because I had to study something. and I fell in love and never looked back. I've touched everything from Assembly to Sass and found that the web is the most exciting place to be. Programming has turned from a job, into my favorite hobby.
+          I am a full stack web developer hailing from the University of Pittsburgh. I started studying computer science because I had to study something. and I fell in love and never looked back. I've touched everything from Assembly to Stylus and found that the web is the most exciting place to be. Programming has turned from a job, into my favorite hobby.
         </p>
-        <div class="center" ng-click="scrollTo('fun-facts', 'standard');"><span class="arrow down"></span></div>
-      </div>
-    </div>
-  </div>
+    </center>
+  </row>
 
   <!-- Fun Facts -->
 
-  <section class="center" id="fun-facts">
-<!--
-    <div class="header">
-      <h3>Fun Facts</h3>
-    </div> -->
-
-    <div class="content">
-      <div class="row container-fluid">
-        <div class="col-sm-6 block">
-          <div class="lead">Things I <span>like</span></div>
-          <ul class="custom">
-            <li ng-repeat="like in likes">{{like}}</li>
-          </ul>
-        </div>
-        <div class="col-sm-6 block">
-          <div class="lead">Things I <span>Dont</span></div>
-          <ul class="custom">
-            <li ng-repeat="dislike in dislikes">{{dislike}}</li>
-          </ul>
-        </div>
-      </div>
+  <row id="fun-facts">
+    <div class="col-sm-6 block">
+      <div class="lead">Things I like</div>
+      <ul class="custom">
+        <li ng-repeat="like in likes">{{like}}</li>
+      </ul>
     </div>
-  </section>
+    <div class="col-sm-6 block">
+      <div class="lead">Things I Dont</div>
+      <ul class="custom">
+        <li ng-repeat="dislike in dislikes">{{dislike}}</li>
+      </ul>
+    </div>
+  </row>
 
-  <divider></divider>
+  <!-- Timeline -->
 
-  <section class="center" id="experience">
-
+ <!--  <row id="experience">
     <timeline target="experiences"></timeline>
-<!--
-  <section class="center" id="skills">
+  </row> -->
 
-    <div class="header">
-      <h3>skills</h3>
-    </div>
-
-    <div class="content">
-      <div class="content-card" ng-repeat="experience in experiences">
-        <div class="title"> <span ng-repeat="snippet in experience.title"> {{snippet}} </span> </div>
-        <div ng-show="experience.description" class="description"> {{experience.description}} </div>
-        <div class="synopsis"> <span ng-repeat="snippet in experience.synopsis">{{snippet}}</span> </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="center" id="projects">
-
-    <div class="header">
-      <h3>Projects</h3>
-    </div>
-
-    <div class="content">
-      <div class="content-card" ng-repeat="experience in experiences">
-        <div class="title"> <span ng-repeat="snippet in experience.title"> {{snippet}} </span> </div>
-        <div ng-show="experience.description" class="description"> {{experience.description}} </div>
-        <div class="synopsis"> <span ng-repeat="snippet in experience.synopsis">{{snippet}}</span> </div>
-      </div>
-    </div>
-  </section> -->
-
-  <div ng-include src="'views/footer.html'"></div>
 </div>

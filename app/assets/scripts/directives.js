@@ -11,23 +11,27 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
-
+//
+// add a sprite from the sprite sheet
 popa.directive('sprite', [function (Patterns) {
   return {
     restrict : 'E',
     replace  : true,
     scope    : {
       href : '@',
-      src  : '@'
+      name : '@'
     },
-    template : '<a class="sprite" href="{{href}}"><img src="../images/{{src}}"></a>',
+    template : '<a class="sprite {{name}} size-{{size}}" href="{{href}}"></a>',
     link     : function (scope, element, attrs) {
       scope.href = attrs.href;
-      scope.src  = attrs.src;
+      scope.name = attrs.name;
+      scope.size = attrs.size || '32';
     }
   };
 }]);
 
+//
+// partial width divider
 popa.directive('divider', [function (Patterns) {
   return {
     restrict : 'E',
@@ -36,6 +40,8 @@ popa.directive('divider', [function (Patterns) {
   };
 }]);
 
+//
+// small diamond div
 popa.directive('diamond', [function (Patterns) {
   return {
     restrict : 'E',
@@ -43,6 +49,52 @@ popa.directive('diamond', [function (Patterns) {
     template : '<div class="diamond"><span>◆</span></div>',
   };
 }]);
+
+//
+// transclude inside vertical centered table cell
+popa.directive('center', [function (Patterns) {
+  return {
+    restrict   : 'E',
+    replace    : true,
+    transclude : true,
+    template   : '<div class="vertical-center-outer"><div class="vertical-center-inner"><ng-transclude></ng-transclude></div></div>',
+  };
+}]);
+
+//
+// replace with a container/row combo for bootstrap
+popa.directive('row', [function (Patterns) {
+  return {
+    restrict   : 'E',
+    replace    : true,
+    transclude : true,
+    template   : '<div class="container-fluid"><div class="row"><ng-transclude></ng-transclude></div></div>',
+  };
+}]);
+
+//
+// set the height to match the port
+popa.directive('full-port-height', ['$window', function ($window) {
+console.log('test')
+  return function (scope, element, attr) {
+    //
+    // TODO: fix me
+    //
+
+console.log('test2')
+
+    scope.onResize = function() {
+      var headerHeight = (document.getElementById('nav-header')[0] || {}).height;
+      $(element).height($window.innerHeight - headerHeight);
+    }
+
+    scope.onResize();
+    angular.element($window).bind('resize', function() {
+      scope.onResize();
+    })
+  };
+}]);
+
 
 ////////////////////////////////////////////////////////////////////////
 //

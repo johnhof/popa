@@ -1,205 +1,118 @@
 @import 'variables';
 
-$max-height: 500px;
-
-$background-mask: linear-gradient(
-  rgba(0, 0, 0, 0.7),
-  rgba(0, 0, 0, 0.7)
-);
 
 #about-container {
-  height:100%;
   font-size: 1.2rem;
 
-  .hero {
-    background: $background-mask, img("hero-me.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: 60% 0%;
+  #about.container-fluid {
+    padding: 0;
+    min-height: 480px;
 
+    &.hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), img("hero-me.jpg") no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      background-position: 60% 0%;
+      max-height: 550px;
+      color: white;
+      overflow: hidden;
 
-    height: 100%;
-    max-height: $max-height;
-    color: white;
-    overflow: hidden;
+      .row {
+        height: 100%;
 
-    .text-container {
-      display: table;
-      width: 40%;
-      min-width: 300px;
-      margin-left: 10%;
-      height: 100%;
+        .text-container {
+          width: 45%;
+          min-width: 300px;
+          margin-left: 10%;
 
-      // mobile
-      @media (max-width: 650px) {
-        font-size: 1.1rem;
-        width: 80%;
-        margin: auto;
+          // mobile
+          @media (max-width: 650px) {
+            font-size: 1.1rem;
+            width: 80%;
+            margin: auto;
 
-        .arrow {
-          display: inline-block;
-        }
-      }
+            .vertical-center-inner {
+              vertical-align: bottom;
+            }
+          }
 
-      .text-box {
-        display: table-cell;
-        vertical-align: middle;
-
-        // mobile
-        @media (max-width: 650px) {
-          vertical-align: bottom;
-        }
-
-        p {
-          span {
-            color: $blue;
-            font-size: 2rem;
-            padding: 10px 0;
-            display: block;
+          p {
+            span {
+              color: $blue;
+              font-size: 2rem;
+              padding: 10px 0;
+              display: block;
+            }
           }
         }
       }
     }
-
-    .arrow {
-      display: none;
-      height: 50px;
-      top: 15px;
-      position: relative;
-    }
   }
 
-  .divider {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    border-top: 1px solid $grey;
-
-    span {
-      border-top: none;
-    }
-  }
-
-  section {
+  .row {
     color: $light-grey;
-    max-height: $max-height;
-    display: inline;
-
-    &:last-of-type {
-      .content {
-        margin-bottom: 30px;
-      }
-    }
+    padding: 60px 0;
 
     .header {
       width: 100%;
 
       h3 {
-        border-top : 1px solid $blue;
+        border-top: 1px solid $blue;
 
         &:first-of-type {
           border-top: none;
         }
-        width:20%;
-        min-width: 250px;
+        width: 100%;
         margin: auto;
         padding: 5px;
+        padding-bottom: 15px;
         color: white;
       }
     }
 
-    .content {
-      width: 80%;
-      max-width: 1000px;
-      margin: 0 auto;
+    .block {
+      text-align: left;
+      font-size: 1.5rem;
 
-      // mobile
-      @media (max-width: 650px) {
-        width: 95%;
-      }
 
-      .block {
-        text-align: left;
-        font-size: 1.5rem;
-        margin-top: 40px;
-
+      &:first-of-type {
         .lead {
-          font-size: 2rem;
-          margin-bottom: 25px;
-          font-weight: inherit;
-          text-align: center;
-          color: white;
-
-          span {
-            color: $blue;
-          }
-        }
-
-        ul {
-          padding-left: 5%;
-
-          li:before {
-            padding-right: 10px;
-          }
+          margin-top: 0;
         }
       }
 
-      h3 {
-        width: 200px;
-        margin: auto;
-        color: $blue;
-        padding-bottom: 10px;
-        margin-bottom: 10px;
-        border-bottom: 1px solid white
-      }
+      .lead {
+        font-size: 2rem;
+        margin-bottom: 40px;
+        font-weight: inherit;
+        text-align: center;
+        color: white;
 
-      .content-card {
-        margin: 30px 0;
-        text-align: left;
 
-        .title, .synopsis {
-          span {
-            &:before {
-              color: $dark-grey;
-              padding: 0 5px;
-              font-size: 1rem;
-              content: '◆';
-            }
+        @media (max-width: 650px) {
+          margin-top: 50px;
 
-            &:first-of-type {
-              &:before {
-                content: '';
-                padding: 0;
-              }
-            }
-          }
-        }
-
-        .title span:first-of-type {
-          color: $blue;
-          font-size: 1.4rem;
-        }
-
-        .title {
-          margin-bottom: 10px;
-          color: white;
-        }
-
-        .description {
-          padding-left: 10%;
-          margin-bottom: 10px;
-          font-size: 1rem;
-        }
-
-        .synopsis {
-          text-align: center;
-
-          span {
-            display: inline-block;
-          }
         }
       }
+
+      ul {
+        padding-left: 5%;
+
+        li:before {
+          padding-right: 10px;
+        }
+      }
+    }
+
+    h3 {
+      width: 200px;
+      margin: auto;
+      color: $blue;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid white
     }
   }
 }

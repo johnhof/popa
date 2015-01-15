@@ -1,13 +1,19 @@
 
-var headerCtrl = angular.module('popa').controller('FooterCtrl', ['$scope',  function ($scope) {
+var headerCtrl = angular.module('popa').controller('FooterCtrl', ['$scope', '$location', function ($scope, $location) {
   $scope.sprites = [{
     href : 'https://www.facebook.com/john.hofrichter',
-    src  : 'facebook.png'
+    name : 'ion-social-facebook'
   },{
     href : 'https://github.com/johnhof',
-    src  : 'github.png'
+    name : 'ion-social-github'
   },{
     href : 'https://www.linkedin.com/in/johnhofrichter',
-    src  : 'linkedin.png'
+    name : 'ion-social-linkedin'
   }];
+
+  checkBlacklist();
+  $scope.$on('$routeChangeSuccess', checkBlacklist);
+  function checkBlacklist () {
+    $scope.blacklisted = /^\/$/.test($location.path())
+  }
 }]);
