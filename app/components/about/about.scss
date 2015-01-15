@@ -4,115 +4,119 @@
 #about-container {
   font-size: 1.2rem;
 
-  #about.container-fluid {
-    padding: 0;
-    min-height: 480px;
+  .container-fluid {
+    overflow: hidden;
 
-    &.hero {
-      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), img("hero-me.jpg") no-repeat center center fixed;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-      background-position: 60% 0%;
-      max-height: 550px;
-      color: white;
-      overflow: hidden;
+    &#about {
+      padding: 0;
+      min-height: 480px;
 
-      .row {
-        height: 100%;
+      &.hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), img("hero-me.jpg") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-position: 60% 0%;
+        max-height: 550px;
+        color: white;
+        overflow: hidden;
 
-        .text-container {
-          width: 45%;
-          min-width: 300px;
-          margin-left: 10%;
+        .row {
+          height: 100%;
 
-          // mobile
-          @media (max-width: 650px) {
-            font-size: 1.1rem;
-            width: 80%;
-            margin: auto;
+          .text-container {
+            width: 45%;
+            min-width: 300px;
+            margin-left: 10%;
 
-            .vertical-center-inner {
-              vertical-align: bottom;
+            // mobile
+            @media (max-width: 650px) {
+              font-size: 1.1rem;
+              width: 80%;
+              margin: auto;
+
+              .vertical-center-inner {
+                vertical-align: bottom;
+              }
             }
-          }
 
-          p {
-            span {
-              color: $blue;
-              font-size: 2rem;
-              padding: 10px 0;
-              display: block;
+            p {
+              span {
+                color: $blue;
+                font-size: 2rem;
+                padding: 10px 0;
+                display: block;
+              }
             }
           }
         }
       }
     }
-  }
 
-  .row {
-    color: $light-grey;
-    padding: 60px 0;
+    .row {
+      color: $light-grey;
+      padding: 60px 0;
 
-    .header {
-      width: 100%;
+      .header {
+        width: 100%;
 
-      h3 {
-        border-top: 1px solid $blue;
+        h3 {
+          border-top: 1px solid $blue;
+
+          &:first-of-type {
+            border-top: none;
+          }
+          width: 100%;
+          margin: auto;
+          padding: 5px;
+          padding-bottom: 15px;
+          color: white;
+        }
+      }
+
+      .block {
+        text-align: left;
+        font-size: 1.5rem;
+
 
         &:first-of-type {
-          border-top: none;
+          .lead {
+            margin-top: 0;
+          }
         }
-        width: 100%;
-        margin: auto;
-        padding: 5px;
-        padding-bottom: 15px;
-        color: white;
-      }
-    }
 
-    .block {
-      text-align: left;
-      font-size: 1.5rem;
-
-
-      &:first-of-type {
         .lead {
-          margin-top: 0;
+          font-size: 2rem;
+          margin-bottom: 40px;
+          font-weight: inherit;
+          text-align: center;
+          color: white;
+
+
+          @media (max-width: 650px) {
+            margin-top: 50px;
+
+          }
+        }
+
+        ul {
+          padding-left: 5%;
+
+          li:before {
+            padding-right: 10px;
+          }
         }
       }
 
-      .lead {
-        font-size: 2rem;
-        margin-bottom: 40px;
-        font-weight: inherit;
-        text-align: center;
-        color: white;
-
-
-        @media (max-width: 650px) {
-          margin-top: 50px;
-
-        }
+      h3 {
+        width: 200px;
+        margin: auto;
+        color: $blue;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid white
       }
-
-      ul {
-        padding-left: 5%;
-
-        li:before {
-          padding-right: 10px;
-        }
-      }
-    }
-
-    h3 {
-      width: 200px;
-      margin: auto;
-      color: $blue;
-      padding-bottom: 10px;
-      margin-bottom: 10px;
-      border-bottom: 1px solid white
     }
   }
 }
