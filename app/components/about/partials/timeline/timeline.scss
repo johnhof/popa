@@ -2,38 +2,32 @@
 
 .timeline-container {
   padding: 20px 5%;
+  width: 100%;
   font-size: 1rem;
   color: $grey;
   text-align: center;
-  background: $gunmetal;
 
   .timeline {
     display: inline-block;
+    background: $dark-grey;
     width: 100%;
 
-
-    $key-height: 30px;
     .key  {
-      display: inline-block;
-      width: 100%;
-      text-align: center;
-      padding: 0 10px;
-      height: $key-height;
+      border-bottom: 1px solid black;
+      background: $near-black;
+      padding: 10px;
 
       div {
-        height: $key-height;
         display: inline-block;
-        border-left: 1px solid $dark-grey;
 
         &:first-of-type {
           border-left: none;
         }
 
         h3 {
-          padding-top: 5px;
           margin: 0;
-          font-size: 1rem;
           color: white;
+          font-size: 1.1rem;
 
           &:before {
             content: "20";
@@ -50,58 +44,43 @@
       display: block;
       width: 100%;
       text-align: left;
-      padding: 0 10px;
-      height: 50px;
-
-      h3 {
-        color: $grey;
-      }
+      border-top: 1px solid $near-black;
+      border-left: 1px solid $near-black;
+      border-right: 1px solid $near-black;
+      position: relative;
+      color: $dark-grey;
 
       .timeframe {
-        display: inline-block;
+        display: inline-flex;
         text-align: center;
         cursor: pointer;
-        color: $light-grey;
-        border: 1px solid transparent;
+        background: $light-grey;
         text-align: center;
 
+        &[offset="0"]:not(:first-of-type) {
+          border-left: 1px solid $grey;
+        }
+
         &[active="true"] {
-          color: $blue;
-          background: $charcoal-grey;
-
-          &.top:hover, &.bottom:hover {
-            color: $blue;
-          }
+          color: $near-black;
+          background: $blue;
         }
 
-        &.top {
-          margin-bottom: 10px;
-          border-bottom: 1px solid $dark-grey;
+        &:not([active="true"]) {
+          transition: $ease;
 
-          &.active {
-            border-bottom: 1px solid $blue;
+          &:hover {
+            background: white;
           }
-        }
-
-        &.bottom {
-          margin-top: 10px;
-          border-top: 1px solid $dark-grey;
-
-          &.active {
-            border-top: 1px solid $blue;
-          }
-        }
-
-        &.top:hover, &.bottom:hover {
-          border: 1px solid $light-grey;
-          color: white;
         }
 
         h3 {
-          font-weight: 500;
+          font-weight: 300;
           width: 100%;
           margin: 0;
-          padding: 10px;
+          padding: 17px 0;
+          height: 50px;
+
           text-transform: uppercase;
           font-size: 1rem;
         }
@@ -121,10 +100,8 @@
   .active-content {
     background: white;
     border: 1px solid $grey;
+    width: 100%;
     text-align: left;
-    width: 80%;
-    margin: auto;
-    margin-top: 30px;
     padding: 20px;
     color: $dark-grey;
     min-height: 350px;
@@ -151,12 +128,10 @@
       }
     }
 
-    p {
-    }
-
     .synopsis {
       text-align: center;
       margin-top: 25px;
+      font-size: 1.2rem;
 
       span {
         font-weight: 300;
@@ -179,8 +154,9 @@
 
 
   // mobile
-  @media (max-width: 850px) {
+  @media (max-width: 768px) {
     display: inline-block;
+    padding: 20px 2%;
 
     .select {
       max-width: 300px;
@@ -188,11 +164,39 @@
 
     .active-content {
       display: inline-block;
+      border-top: 0;
     }
-
     .timeline {
+      display: block;
+      border-bottom: 0;
+      border-top: 1px solid $near-black;
+      border-left: 1px solid $near-black;
+      border-right: 1px solid $near-black;
+
       .key {
         display: none;
+      }
+
+      .line-wrap {
+        border: 0;
+
+
+        .timeframe {
+          width: 100% !important;
+          margin: 0 !important;
+          display: block;
+          border-bottom: 1px solid $near-black;
+          color: $light-grey;
+          background: $charcoal-grey;
+
+          &[offset="0"]:not(:first-of-type) {
+            border-left: 0;
+          }
+
+          &:not([active="true"]):hover {
+            color: $charcoal-grey;
+          }
+        }
       }
     }
   }

@@ -9,7 +9,10 @@
 
     &#about {
       padding: 0;
-      min-height: 480px;
+      min-height: 450px;
+      max-height: 550px;
+      position: relative;
+      height: calc(100vh - 65px);
 
       &.hero {
         background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), img("hero-me.jpg") no-repeat center center fixed;
@@ -18,11 +21,11 @@
         -o-background-size: cover;
         background-size: cover;
         background-position: 60% 0%;
-        max-height: 550px;
         color: white;
         overflow: hidden;
 
         .row {
+          position: absolute;
           height: 100%;
 
           .text-container {
@@ -35,10 +38,6 @@
               font-size: 1.1rem;
               width: 80%;
               margin: auto;
-
-              .vertical-center-inner {
-                vertical-align: bottom;
-              }
             }
 
             p {
@@ -60,24 +59,22 @@
 
       .header {
         width: 100%;
+        text-align: center;
 
         h3 {
-          border-top: 1px solid $blue;
-
-          &:first-of-type {
-            border-top: none;
-          }
           width: 100%;
           margin: auto;
           padding: 5px;
           padding-bottom: 15px;
           color: white;
+          font-size: 2rem;
         }
       }
 
       .block {
         text-align: left;
         font-size: 1.5rem;
+        padding-bottom: 50px;
 
 
         &:first-of-type {
@@ -93,10 +90,8 @@
           text-align: center;
           color: white;
 
-
           @media (max-width: 650px) {
             margin-top: 50px;
-
           }
         }
 
@@ -108,15 +103,33 @@
           }
         }
       }
+    }
 
-      h3 {
-        width: 200px;
-        margin: auto;
-        color: $blue;
-        padding-bottom: 10px;
-        margin-bottom: 10px;
-        border-bottom: 1px solid white
+    &.carbon.light {
+      .row {
+        .divider {
+          background: $blue;
+          margin: 25px auto;
+
+          span {
+            border-top: 0;
+          }
+        }
+        .header {
+          h2 {
+            color: $charcoal-grey;
+            font-size: 2.5rem;
+          }
+        }
       }
+    }
+  }
+
+
+
+  #experience {
+    .header {
+      padding-bottom: 10px;
     }
   }
 }

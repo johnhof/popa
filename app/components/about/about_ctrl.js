@@ -115,6 +115,10 @@ var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope',  'Util
 }]);
 
 
+
+
+
+
 // Expect target:
 // [{
 //   heading: {
@@ -125,7 +129,7 @@ var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope',  'Util
 //     synopsis    : ['string array']
 //   }
 // }]
-aboutCtrl.directive('timeline', [function () {
+aboutCtrl.directive('timeline', ['$window', function ($window) {
   return {
     restrict    : 'E',
     scope       : true,
@@ -134,7 +138,9 @@ aboutCtrl.directive('timeline', [function () {
     link        : function (scope, element, attrs) {
       scope.target = scope[attrs.target];
 
+      //
       // generate an object of years active
+      //
       var years = {
         list     : [],
         totalQts : 0,
@@ -170,15 +176,22 @@ aboutCtrl.directive('timeline', [function () {
 
       scope.years = years.list;
 
-      // calculate the year duration and start offest for each experience
-
+      // separate targets so the dont overlap
       scope.targetSets = {
         top    : [],
         bottom : []
       }
 
-      scope.active = scope.target[0];
+      //
+      // set the last target to be active
+      //
+      var lastTarget = scope.target.length -1;
+      scope.active = scope.target[lastTarget];
+      scope.target[lastTarget].active = true;
 
+      //
+      // Calcuate year offsets and durations
+      //
       _.each(scope.target, function (target, index) {
         var timeframe = target.timeframe;
 

@@ -22,7 +22,6 @@ html, body {
 html {
   background: rgb(240, 240, 240);
   height: 100%;
-  background: img("micro_carbon.png") left top;
 }
 
 body {
@@ -74,6 +73,15 @@ img {
   width: 100%;
 }
 
+.carbon {
+  &.light {
+    background: img("light_carbon.png") left top;
+  }
+
+  &.dark {
+    background: img("dark_carbon.png") left top;
+  }
+}
 
 div.divider {
   width: 30%;
@@ -111,6 +119,18 @@ div.diamond {
     border-left: 1rem solid transparent;
     border-right: 1rem solid transparent;
     border-bottom: 1rem solid $blue;
+  }
+
+  &.right {
+    border-top: 1rem solid transparent;
+    border-left: 1rem solid $blue;
+    border-bottom: 1rem solid transparent;
+  }
+
+  &.left {
+    border-top: 1rem solid transparent;
+    border-right: 1rem solid $blue;
+    border-bottom: 1rem solid transparent;
   }
 }
 

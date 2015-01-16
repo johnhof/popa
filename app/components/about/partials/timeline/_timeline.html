@@ -1,24 +1,19 @@
 <div class="timeline-container">
-
-  <div class="header">
-    <h3>My Experience</h3>
-  </div>
-
   <div class="timeline">
-
-    <div class="line-wrap">
-      <div ng-repeat="select in targetSets.top" class="timeframe top" style="margin-left:{{select.offset}}%;width:{{select.duration}}%;" active="{{select.active}}" ng-click="selectTraget(select)">
-        <h3 ng-if="select.useAbbrev">{{select.heading.abbrev}}</h3>
-        <h3 ng-if="!select.useAbbrev">{{select.heading.title}}</h3>
-      </div>
-    </div>
 
     <div class="key">
       <div ng-repeat="year in years" style="width : {{year.percent}}%"> <h3>{{year.name}}</h3> </div>
     </div>
 
     <div class="line-wrap">
-      <div ng-repeat="select in targetSets.bottom" class="timeframe bottom" style="margin-left:{{select.offset}}%;width:{{select.duration}}%;" active="{{select.active}}"  ng-click="selectTraget(select)">
+      <div ng-repeat="select in targetSets.top" class="timeframe" offset="{{select.offset}}" style="margin-left:{{select.offset}}%;width:{{select.duration}}%;" active="{{select.active}}" ng-click="selectTraget(select)">
+        <h3 ng-if="select.useAbbrev">{{select.heading.abbrev}}</h3>
+        <h3 ng-if="!select.useAbbrev">{{select.heading.title}}</h3>
+      </div>
+    </div>
+
+    <div class="line-wrap">
+      <div ng-repeat="select in targetSets.bottom" class="timeframe" offset="{{select.offset}}"  style="margin-left:{{select.offset}}%;width:{{select.duration}}%;" active="{{select.active}}"  ng-click="selectTraget(select)">
         <h3 ng-if="select.useAbbrev">{{select.heading.abbrev}}</h3>
         <h3 ng-if="!select.useAbbrev">{{select.heading.title}}</h3>
       </div>
