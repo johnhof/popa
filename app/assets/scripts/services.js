@@ -44,7 +44,7 @@ popa.service('Cookie', [function () {
 ////////////////////////////////////////////////////////////////////////
 
 // A collection of general purpose utilities
-popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScroll', function (Cookie, $route, $window, $location, $anchorScroll) {
+popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScroll', 'Sizes', function (Cookie, $route, $window, $location, $anchorScroll, Sizes) {
   var $dom = angular.element('html');
   var durationMap = {
     slow     : 2000,
@@ -61,28 +61,67 @@ popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScrol
       location.hash(id);
     },
 
-    scrollTo : function (id, duration) {
-      if (id === 'hash') {
-        id = $location.hash();
+    scrollTo : function (selector, duration) {
+
+      // if the id is hash based, use the has from the url
+      if (selector === 'hash') {
+        selector = $location.hash();
       }
 
       var headerOffset = 70;
       if (!duration) {
         $anchorScroll.yOffset = headerOffset;
-        $location.hash(id);
+        $location.hash(selector);
         $anchorScroll();
 
-      //dadly, anchorScroll doesnt support duration, well have to use Jquery
+      // sadly, anchorScroll doesnt support duration, well have to use Jquery
       } else {
         duration = durationMap[duration] || duration;
 
         $dom.find('html, body').animate({
-            scrollTop: $dom.find('#' + id).offset().top + headerOffset
+            scrollTop: $dom.find(selector).offset().top - headerOffset
         }, duration);
       }
     },
-    // prefix /# and redirect
 
+    //
+    // State helpers
+    //
+
+    displayType : function (win) {
+      win = win || angular.element($window);
+      return win.width() < Sizes.mobileBreak ? 'mobile' : 'desktop'
+    },
+
+    //
+    // Listener helpers
+    //
+
+    onResize : function (scope, callback) {
+      var w = angular.element($window);
+
+      scope.getWindowDimensions = function () {
+        return {
+          height      : w.height(),
+          width       : w.width(),
+          displayType : utils.displayType(w) // mobile or desktop
+        };
+      };
+
+      scope.$watch(scope.getWindowDimensions, function (newSize, oldSize) {
+        return callback(newSize, oldSize, newSize.displayType !== oldSize.displayType);
+      }, true);
+
+      w.bind('resize', function () {
+        scope.$apply();
+      });
+    },
+
+    //
+    // Nav utilities
+    //
+
+    // prefix /# and redirect
     redirect : function (path) {
       path = /^\//.test(path) ? path : '/' + path
       $location.path(path);

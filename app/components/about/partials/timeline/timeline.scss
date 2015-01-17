@@ -1,7 +1,7 @@
 @import 'variables';
 
 .timeline-container {
-  padding: 20px 5%;
+  margin: 20px 5%;
   width: 100%;
   font-size: 1rem;
   color: $grey;
@@ -135,6 +135,7 @@
 
       span {
         font-weight: 300;
+        display: inline-block;
 
         &:after {
           font-size: .8rem;
@@ -156,7 +157,8 @@
   // mobile
   @media (max-width: 768px) {
     display: inline-block;
-    padding: 20px 2%;
+    margin: 20px 2%;
+    width: 96%;
 
     .select {
       max-width: 300px;
@@ -203,9 +205,12 @@
 }
 
 #about-container {
-  .active-content div.divider {
-    border-top: 1px solid $light-grey;
-    text-align: left;
-    margin: 20px 0;
+  .container-fluid.carbon.light {
+    .row .active-content div.divider {
+      border-top: 1px solid $light-grey;
+      text-align: left;
+      margin: 20px 0;
+      margin-right: 0;
+    }
   }
 }

@@ -13,7 +13,7 @@
 
 //
 // add a sprite from the sprite sheet
-popa.directive('sprite', [function (Patterns) {
+popa.directive('sprite', [function () {
   return {
     restrict : 'E',
     replace  : true,
@@ -32,7 +32,7 @@ popa.directive('sprite', [function (Patterns) {
 
 //
 // partial width divider
-popa.directive('divider', [function (Patterns) {
+popa.directive('divider', [function () {
   return {
     restrict : 'E',
     replace  : true,
@@ -42,7 +42,7 @@ popa.directive('divider', [function (Patterns) {
 
 //
 // small diamond div
-popa.directive('diamond', [function (Patterns) {
+popa.directive('diamond', [function () {
   return {
     restrict : 'E',
     replace  : true,
@@ -52,7 +52,7 @@ popa.directive('diamond', [function (Patterns) {
 
 //
 // transclude inside vertical centered table cell
-popa.directive('center', [function (Patterns) {
+popa.directive('center', [function () {
   return {
     restrict   : 'E',
     replace    : true,
@@ -63,7 +63,7 @@ popa.directive('center', [function (Patterns) {
 
 //
 // replace with a container/row combo for bootstrap
-popa.directive('row', [function (Patterns) {
+popa.directive('row', [function () {
   return {
     restrict   : 'E',
     replace    : true,
@@ -102,20 +102,6 @@ console.log('test2')
 //
 ////////////////////////////////////////////////////////////////////////
 
-
-//
-// Cards
-//
-
-popa.directive('card-row', [function (Patterns) {
-  return {
-    scope    : {
-      label : '=',
-      value : '='
-    },
-    template : '<span class="label">label</span>  <span class="value">value</span>'
-  };
-}]);
 
 ////////////////////////////////////////////////////////////////////////
 //

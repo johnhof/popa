@@ -7,15 +7,15 @@
 
     <div class="line-wrap">
       <div ng-repeat="select in targetSets.top" class="timeframe" offset="{{select.offset}}" style="margin-left:{{select.offset}}%;width:{{select.duration}}%;" active="{{select.active}}" ng-click="selectTraget(select)">
-        <h3 ng-if="select.useAbbrev">{{select.heading.abbrev}}</h3>
-        <h3 ng-if="!select.useAbbrev">{{select.heading.title}}</h3>
+        <h3 ng-show="select.useAbbrev" class="abbrev-text">{{select.heading.abbrev}}</h3>
+        <h3 ng-hide="select.useAbbrev" class="full-text">{{select.heading.title}}</h3>
       </div>
     </div>
 
     <div class="line-wrap">
       <div ng-repeat="select in targetSets.bottom" class="timeframe" offset="{{select.offset}}"  style="margin-left:{{select.offset}}%;width:{{select.duration}}%;" active="{{select.active}}"  ng-click="selectTraget(select)">
-        <h3 ng-if="select.useAbbrev">{{select.heading.abbrev}}</h3>
-        <h3 ng-if="!select.useAbbrev">{{select.heading.title}}</h3>
+        <h3 ng-show="select.useAbbrev" class="abbrev-text">{{select.heading.abbrev}}</h3>
+        <h3 ng-hide="select.useAbbrev" class="full-text">{{select.heading.title}}</h3>
       </div>
     </div>
 

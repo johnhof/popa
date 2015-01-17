@@ -72,7 +72,7 @@ var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope',  'Util
   }, {
     heading: {
       abbrev   : 'Ansys',
-      title   : 'Ansys Inc',
+      title   : 'Ansys Inc.',
       subtext : ['Spring 2011 - fall 2012', 'Co-Op, 3 semesters ~ 1 year']
     }, content : {
       description : 'Worked on the DesignModeler parametric geometry software as a part of the Ansys Workbench. The first semester was primarily spent bug fixing in high level code. The second semester was spend on several larger projects, the most signicant being a Shaft geometry generation tool.  The final semester had a few more small projects, but most time was spent analyzing load times and implementing multi threading of the file load process.',
@@ -88,7 +88,7 @@ var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope',  'Util
       title   : 'Department of Defense',
       subtext : ['Summer 2013', 'Intern']
     }, content : {
-      description : null,
+      description : 'Talk to me in person for more information',
       synopsis    : ['Javascript', 'Batch', ' Python']
     },
     timeframe : {
@@ -129,7 +129,7 @@ var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope',  'Util
 //     synopsis    : ['string array']
 //   }
 // }]
-aboutCtrl.directive('timeline', ['$window', function ($window) {
+aboutCtrl.directive('timeline', ['$window', 'Utils', 'Sizes', function ($window, Utils, Sizes) {
   return {
     restrict    : 'E',
     scope       : true,
@@ -197,7 +197,10 @@ aboutCtrl.directive('timeline', ['$window', function ($window) {
 
         target.duration = percentQts(timeframe.end - timeframe.start);
 
-        target.useAbbrev = ((timeframe.end - timeframe.start) < 2);
+        // abbreviate small timeframes on desktop
+        if (Utils.displayType() !== 'mobile') {
+          target.useAbbrev = (target.duration < 15);
+        }
 
         if (timeframe.top) {
           var topLen = scope.targetSets.top.length;
@@ -216,10 +219,14 @@ aboutCtrl.directive('timeline', ['$window', function ($window) {
 
         scope.target[index] = target;
 
+
         //
-        // select
+        // Lstieners
         //
 
+
+        // Select
+        //
         scope.selectTraget = function (target) {
           // set the other possible targes to be inactive
           _.each(scope.target, function (_target) { _target.active = false; });
@@ -227,7 +234,29 @@ aboutCtrl.directive('timeline', ['$window', function ($window) {
           //activate the current target
           target.active = true;
           scope.active = target;
+
+          Utils.scrollTo('.timeline-container', 1000);
         }
+
+        // Resize
+        //
+        Utils.onResize(scope, function (newSize, oldSize, transition) {
+          if (transition) {
+
+            // never use abbreviation text on mobile
+            if  (newSize.displayType === 'mobile') {
+              _.each(scope.target, function (target, index) {
+                target.useAbbrev = false;
+              });
+
+            // check for abbreviations on dektop
+            } else if (newSize.displayType === 'desktop') {
+              _.each(scope.target, function (target, index) {
+                target.useAbbrev = (target.duration < 15);
+              });
+            }
+          }
+        });
       });
     }
   };
