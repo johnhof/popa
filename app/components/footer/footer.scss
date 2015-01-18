@@ -14,12 +14,25 @@ $sprite-height: 40px;
   &.light {
     color: $dark-grey;
 
+    a {
+      color: $dark-grey;
+    }
+
     .sprite-row .sprite {
       color: $dark-grey;
 
       &:hover {
         color: $blue;
       }
+    }
+  }
+
+  a {
+    font-size: 1.7rem;
+    color: $grey;
+
+    &:hover {
+      color: $blue;
     }
   }
 
