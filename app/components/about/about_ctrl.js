@@ -1,6 +1,5 @@
 
 var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope',  'Utils', function ($scope, Utils) {
-  $scope.setHash  = Utils.setHash;
 
   //
   // Fun facts

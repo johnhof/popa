@@ -2,13 +2,55 @@
 
 .navbar {
   background: white;
-  font-size: 16px;
   height: $nav-height;
   text-transform: uppercase;
+  font-size: 1.1rem;
+  font-weight: 100;
+  color: $grey;
 
 
   &.navbar-default {
     border: none;
+
+    .dropdown-toggle {
+      transition: $ease;
+
+      .sprite {
+        margin-left: 5px;
+
+        &.closed {
+          display: none;
+        }
+      }
+
+      &:hover {
+        .sprite {
+          color: $blue;
+        }
+      }
+
+      &[aria-expanded="true"]{
+        .closed {
+          display: inline-block;
+        }
+
+        .open {
+          display: none;
+        }
+      }
+    }
+
+    .dropdown-menu {
+      li {
+        a {
+          padding: 10px;
+          font-size: 1.1rem;
+          font-weight: 100;
+          width: 100%;
+          color: $grey;
+        }
+      }
+    }
 
 
     // mobile
@@ -19,7 +61,6 @@
         position: relative;
       }
     }
-
 
     .container {
       height: $nav-height;
@@ -65,7 +106,6 @@
 
           a {
             text-align: center;
-            width: 100px;
             padding: 25px 15px;
             height: $nav-height;
             display: inline-block;
@@ -91,6 +131,10 @@
             height: $nav-height;
             float: right;
           }
+
+          .dropdown-menu {
+            width: 250px;
+          }
         }
       }
 
@@ -113,9 +157,51 @@
             }
           }
         }
+
+        .dropdown-menu {
+          margin-left: 30px;
+          li {
+            a {
+              transition: $ease;
+
+              .sprite {
+                margin-left: 5px;
+              }
+
+              &:hover {
+                color: $blue;
+
+                .sprite {
+                  color: $blue;
+                }
+              }
+            }
+          }
+        }
+
+        ul {
+          li {
+            a {
+              transition: $ease;
+
+              .sprite {
+                margin-left: 5px;
+              }
+
+              &:hover {
+                color: $blue;
+
+                .sprite {
+                  color: $blue;
+                }
+              }
+            }
+          }
+        }
       }
 
       .navbar-collapse {
+        max-height: none;
         &.collapsing, &.collapse.in {
 
           // mobile
