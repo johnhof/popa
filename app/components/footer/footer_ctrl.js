@@ -5,6 +5,8 @@ var headerCtrl = angular.module('popa').controller('FooterCtrl', ['$scope', '$lo
     text : 'View Source'
   };
 
+  $scope.newTab = Utils.newTab;
+
   $scope.sprites = Utils.spriteSet(['facebook','github', 'linkedin']);
 
   // make sure not to diplay on blacklisted pages
