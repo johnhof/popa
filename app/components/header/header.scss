@@ -7,10 +7,10 @@
   font-size: 1.1rem;
   font-weight: 100;
   color: $grey;
+  border-bottom: 1px solid $light-grey;
 
 
   &.navbar-default {
-    border: none;
 
     .dropdown-toggle {
       transition: $ease;

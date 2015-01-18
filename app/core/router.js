@@ -14,6 +14,18 @@ popa.config(['$routeProvider', function ($routeProvider) {
       controller  : 'AboutCtrl'
     }).
 
+    // About
+    when('/mongoman', {
+      templateUrl : 'views/mongoman.html',
+      controller  : 'MongomanCtrl'
+    }).
+
+    // About
+    when('/mongoman/documentation', {
+      templateUrl : 'views/mongo_documentation.html',
+      controller  : 'MongomanCtrl'
+    }).
+
     // 404
     otherwise({
       templateUrl : 'views/404.html'
