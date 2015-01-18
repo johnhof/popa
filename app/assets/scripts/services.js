@@ -57,7 +57,7 @@ popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScrol
     //
 
     setHash : function (id) {
-      location.hash(id);
+      $location.hash(id);
     },
 
     scrollTo : function (selector, duration) {
@@ -65,12 +65,13 @@ popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScrol
       // if the id is hash based, use the has from the url
       if (selector === 'hash') {
         selector = $location.hash();
+      } else if (selector === 'top') {
+        selector = '#main-content'
       }
 
       var headerOffset = 70;
       if (!duration) {
         $anchorScroll.yOffset = headerOffset;
-        $location.hash(selector);
         $anchorScroll();
 
       // sadly, anchorScroll doesnt support duration, well have to use Jquery
@@ -129,6 +130,8 @@ popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScrol
         scope.$apply();
       });
     },
+
+
 
     //
     // Nav utilities

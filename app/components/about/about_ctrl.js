@@ -1,6 +1,5 @@
 
 var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope',  'Utils', function ($scope, Utils) {
-  $scope.scrollTo = Utils.scrollTo;
   $scope.setHash  = Utils.setHash;
 
   //
@@ -125,9 +124,6 @@ var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope',  'Util
       sprite : Utils.sprite('github').name
     }
   }]
-
-
-  $scope.scrollTo = Utils.scrollTo('hash');
 }]);
 
 
