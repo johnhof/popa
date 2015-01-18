@@ -1,10 +1,10 @@
 @import 'variables';
 
-
 #about-container {
   font-size: 1.2rem;
 
-  .container-fluid {
+  > .container-fluid {
+    padding: 100px 0;
     overflow: hidden;
 
     &#about {
@@ -24,7 +24,7 @@
         color: white;
         overflow: hidden;
 
-        .row {
+        .row-fluid {
           position: absolute;
           height: 100%;
 
@@ -53,9 +53,8 @@
       }
     }
 
-    .row {
+    .row-fluid {
       color: $light-grey;
-      padding: 60px 0;
 
       .header {
         width: 100%;
@@ -70,51 +69,10 @@
           font-size: 2rem;
         }
       }
-
-      .block {
-        text-align: left;
-        font-size: 1.5rem;
-        padding-bottom: 50px;
-
-
-        &:first-of-type {
-          .lead {
-            margin-top: 0;
-          }
-        }
-
-        .lead {
-          font-size: 2rem;
-          margin-bottom: 40px;
-          font-weight: inherit;
-          text-align: center;
-          color: white;
-
-          @media (max-width: 650px) {
-            margin-top: 50px;
-          }
-        }
-
-        ul {
-          padding-left: 5%;
-
-          li:before {
-            padding-right: 10px;
-          }
-        }
-      }
     }
 
     &.carbon.light {
-      .row {
-        .divider {
-          background: $blue;
-          margin: 25px auto;
-
-          span {
-            border-top: 0;
-          }
-        }
+      .row-fluid {
         .header {
           h2 {
             color: $charcoal-grey;
@@ -130,6 +88,23 @@
   #experience {
     .header {
       padding-bottom: 10px;
+    }
+  }
+
+  #projects {
+    .row-fluid {
+      margin-left: 0;
+      margin-right: 0;
+
+      h2 {
+        font-size: 2.5rem;
+        margin-bottom: 25px;
+      }
+
+      .column {
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
     }
   }
 }

@@ -1,0 +1,39 @@
+@import 'variables';
+
+#about-container #fun-facts {
+  .block {
+    text-align: left;
+    font-size: 1.5rem;
+    padding-bottom: 20px;
+
+    @media (min-width: 768px) {
+      padding-left: 10%;
+    }
+
+    &:first-of-type {
+      .lead {
+        margin-top: 0;
+      }
+    }
+
+    .lead {
+      font-size: 2rem;
+      margin-bottom: 40px;
+      font-weight: inherit;
+      text-align: center;
+      color: white;
+
+      @media (max-width: 768px) {
+        margin-top: 50px;
+      }
+    }
+
+    ul {
+      padding-left: 5%;
+
+      li:before {
+        padding-right: 10px;
+      }
+    }
+  }
+}

@@ -36,7 +36,6 @@ popa.service('Cookie', [function () {
 
 
 
-
 ////////////////////////////////////////////////////////////////////////
 //
 //  Utilities service
@@ -44,7 +43,7 @@ popa.service('Cookie', [function () {
 ////////////////////////////////////////////////////////////////////////
 
 // A collection of general purpose utilities
-popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScroll', 'Sizes', function (Cookie, $route, $window, $location, $anchorScroll, Sizes) {
+popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScroll', 'Sizes', 'SpriteMap', function (Cookie, $route, $window, $location, $anchorScroll, Sizes, SpriteMap) {
   var $dom = angular.element('html');
   var durationMap = {
     slow     : 2000,
@@ -84,13 +83,27 @@ popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScrol
       }
     },
 
+    partial : function (name) {
+      return '../views/_' + name + '.html'
+    },
+
+    sprite : function (name) {
+      var sprite =  SpriteMap[name];
+      return sprite ? _.clone(sprite) : null;
+    },
+
+    spriteSet: function (set) {
+      return _.compact(_.map(set || [], function (name) {
+        return utils.sprite(name);
+      }));
+    },
+
     //
     // State helpers
     //
 
     displayType : function (win) {
-      win = win || angular.element($window);
-      return win.width() < Sizes.mobileBreak ? 'mobile' : 'desktop'
+      return $window.innerWidth <= Sizes.mobileBreak ? 'mobile' : 'desktop'
     },
 
     //
@@ -102,8 +115,8 @@ popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScrol
 
       scope.getWindowDimensions = function () {
         return {
-          height      : w.height(),
-          width       : w.width(),
+          height      : $window.innerHeight,
+          width       : $window.innerWidth,
           displayType : utils.displayType(w) // mobile or desktop
         };
       };
@@ -125,6 +138,11 @@ popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScrol
     redirect : function (path) {
       path = /^\//.test(path) ? path : '/' + path
       $location.path(path);
+    },
+
+    newTab : function (url) {
+      if (!url) { return; }
+      $window.open(url);
     },
 
     reload : function () {

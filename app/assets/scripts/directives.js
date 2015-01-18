@@ -13,7 +13,7 @@
 
 //
 // add a sprite from the sprite sheet
-popa.directive('sprite', [function () {
+popa.directive('sprite', ['Utils', function (Utils) {
   return {
     restrict : 'E',
     replace  : true,
@@ -21,11 +21,13 @@ popa.directive('sprite', [function () {
       href : '@',
       name : '@'
     },
-    template : '<a class="sprite {{name}} size-{{size}}" href="{{href}}"></a>',
+    template : '<span class="sprite {{name}} size-{{size}}" ng-click="spriteTab(href)"></span>',
     link     : function (scope, element, attrs) {
       scope.href = attrs.href;
       scope.name = attrs.name;
       scope.size = attrs.size || '32';
+
+      scope.spriteTab = Utils.newTab;
     }
   };
 }]);
@@ -54,21 +56,10 @@ popa.directive('diamond', [function () {
 // transclude inside vertical centered table cell
 popa.directive('center', [function () {
   return {
-    restrict   : 'E',
+    restrict   : 'EA',
     replace    : true,
     transclude : true,
     template   : '<div class="vertical-center-outer"><div class="vertical-center-inner"><ng-transclude></ng-transclude></div></div>',
-  };
-}]);
-
-//
-// replace with a container/row combo for bootstrap
-popa.directive('row', [function () {
-  return {
-    restrict   : 'E',
-    replace    : true,
-    transclude : true,
-    template   : '<div class="container-fluid"><div class="row"><ng-transclude></ng-transclude></div></div>',
   };
 }]);
 
@@ -92,6 +83,25 @@ console.log('test2')
     angular.element($window).bind('resize', function() {
       scope.onResize();
     })
+  };
+}]);
+
+
+////////////////////////////////////////////////////////////////////////
+//
+//  Boostrap Directives
+//
+////////////////////////////////////////////////////////////////////////
+
+
+//
+// replace with a container/row combo for bootstrap
+popa.directive('row', [function () {
+  return {
+    restrict   : 'E',
+    replace    : true,
+    transclude : true,
+    template   : '<div class="container-fluid"><div class="row-fluid"><ng-transclude></ng-transclude></div></div>',
   };
 }]);
 

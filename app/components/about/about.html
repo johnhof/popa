@@ -6,7 +6,7 @@
     <center class="col-sm-12 text-container">
         <p>
           <span>Hello!</span>
-          I am a full stack web developer hailing from the University of Pittsburgh. I started studying computer science because I had to study something. and I fell in love and never looked back. I've touched everything from Assembly to Stylus and found that the web is the most exciting place to be. Programming has turned from a job, into my favorite hobby.
+          I am a full stack web developer hailing from the University of Pittsburgh. I started studying computer science because I had to study something. I fell in love and never looked back. I've touched everything from Assembly to Stylus and found that the web is the most exciting place to be. Programming has turned from a job, into my favorite hobby.
         </p>
     </center>
   </row>
@@ -14,18 +14,7 @@
   <!-- Fun Facts -->
 
   <row id="fun-facts">
-    <div class="col-sm-6 block">
-      <div class="lead">Things I like</div>
-      <ul class="custom">
-        <li ng-repeat="like in likes">{{like}}</li>
-      </ul>
-    </div>
-    <div class="col-sm-6 block">
-      <div class="lead">Things I Dont</div>
-      <ul class="custom">
-        <li ng-repeat="dislike in dislikes">{{dislike}}</li>
-      </ul>
-    </div>
+    <div ng-include="'../views/_fun_facts.html'"></div>
   </row>
 
   <!-- Timeline -->
@@ -35,9 +24,20 @@
       <h2>Where I've Been</h2>
     </div>
 
-    <divider></divider>
-
     <timeline target="experiences"></timeline>
+  </row>
+
+  <!-- Timeline -->
+
+  <row id="projects">
+    <div class="header">
+      <h2>Things I've Done</h2>
+
+    <row>
+      <div class="col-sm-6 col-lg-3 column" ng-repeat="project in projects">
+        <project target="project"></project>
+      </div>
+    </row>
   </row>
 
 </div>

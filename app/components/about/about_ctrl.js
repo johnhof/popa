@@ -3,6 +3,10 @@ var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope',  'Util
   $scope.scrollTo = Utils.scrollTo;
   $scope.setHash  = Utils.setHash;
 
+  //
+  // Fun facts
+  //
+
   $scope.likes = [
     'Rock Climbing',
     'Woodworking',
@@ -23,37 +27,9 @@ var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope',  'Util
     'Swimming',
   ];
 
-
-  $scope.experiences = [
-    // Pitt
-    {
-      title       : ['University of Pittsburgh', 'fall 2009 - Winter 2013', 'BS Computer Science'],
-      description : 'The early years were primarily java for basic instruction and data structres/algorithms. My targeted classes were in Operating Systems (wrote a file system), Networks (implemented TCP), Algorithm design (primarily proofs and dynamic algorithms), Cryptography & Security (designed and developed a secure server), UI design (wrote several Android apps), Web programming (wrote a handful of web apps).',
-      synopsis    : ['Javascript', 'Java ', 'C', 'C++', 'PHP', 'Assembly']
-
-    // Ansys
-    }, {
-      title       : ['Ansys Inc.', 'spring 2011 - fall 2012','Co-Op, 3 semesters ~ 1 year'],
-      description : 'Worked on the DesignModeler parametric geometry software as a part of the Ansys Workbench. The first semester was primarily spent bug fixing in high level code. The second semester was spend on several larger projects, the most signicant being a Shaft geometry generation tool.  The final semester had a few more small projects, but most time was spent analyzing load times and implementing multi threading of the file load process.',
-      synopsis    : ['C++', 'Javascript', 'C#', 'Visual Studios']
-
-    // DoD
-    }, {
-      title       : ['Department of Defense', 'Summer 2013', 'Intern'],
-      description : null,
-      synopsis    : ['Javascript', 'Batch', ' Python']
-
-    // BB
-    }, {
-      title       : ['Branding Brand Inc.', 'fall 2013 - ?', 'Full Stack Developer'],
-      description : 'Started as an API developer scraping commerce sites for a generic BB API. After a few months, I moved to the post launch development team as a full stack develper. I\m currently splitting my time down the middle between API and Front End development',
-      synopsis    : ['Javascript', 'JQuery', 'PHP', 'HTML/CSS', 'Node/Express']
-    }
-  ];
-
-
-
-
+  //
+  // Experiences
+  //
 
   $scope.experiences = [{
     heading: {
@@ -62,7 +38,7 @@ var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope',  'Util
       subtext : ['Fall 2009 - Winter 2013', 'BS Computer Science']
     }, content : {
       description : 'The early years were primarily java for basic instruction and data structres/algorithms. My targeted classes were in Operating Systems (wrote a file system), Networks (implemented TCP), Algorithm design (primarily proofs and dynamic algorithms), Cryptography & Security (designed and developed a secure server), UI design (wrote several Android apps), Web programming (wrote a handful of web apps).',
-      synopsis    : ['Javascript', 'Java ', 'C', 'C++', 'PHP', 'Assembly']
+      synopsis    : ['Java ', 'C', 'C++', 'PHP', 'Javascript', 'Assembly']
     },
     timeframe : {
       start : 0,
@@ -75,7 +51,7 @@ var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope',  'Util
       title   : 'Ansys Inc.',
       subtext : ['Spring 2011 - fall 2012', 'Co-Op, 3 semesters ~ 1 year']
     }, content : {
-      description : 'Worked on the DesignModeler parametric geometry software as a part of the Ansys Workbench. The first semester was primarily spent bug fixing in high level code. The second semester was spend on several larger projects, the most signicant being a Shaft geometry generation tool.  The final semester had a few more small projects, but most time was spent analyzing load times and implementing multi threading of the file load process.',
+      description : 'Worked on the DesignModeler parametric geometry software as a part of the Ansys Workbench. The first semester was primarily spent bug fixing in high level code. The second semester was spent on several larger projects, the most signicant being a Shaft geometry generation tool.  The final semester had a few more small projects, but most time was spent analyzing load times and implementing multi threading of the file load process.',
       synopsis    : ['C++', 'Javascript', 'C#', 'Visual Studios']
     },
     timeframe : {
@@ -99,16 +75,56 @@ var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope',  'Util
     heading: {
       abbrev  : 'BB',
       title   : 'Branding Brand Inc.',
-      subtext : ['Fall 2013 - ?', 'Full Stack Developer']
+      subtext : ['Fall 2013 - Current', 'Full Stack Developer']
     }, content : {
       description : 'Started as an API developer scraping commerce sites for a generic BB API. After a few months, I moved to the post launch development team as a full stack develper. I\m currently splitting my time down the middle between API and Front End development.',
-      synopsis    : ['Javascript', 'JQuery', 'PHP', 'HTML/CSS', 'Node/Express']
+      synopsis    : ['Javascript', 'Node/Express', 'PHP', 'CSS3', 'SCSS', 'LESS']
     },
     timeframe : {
       start : 16.5,
       end   : 23
     }
   }];
+
+
+  //
+  // Projects
+  //
+
+
+  $scope.projects = [{
+    name        : 'IceBuddy',
+    utilities   : Utils.spriteSet(['javascript', 'node', 'angular', 'mongodb', 'express', 'grunt', 'css', 'html']),
+    description : 'A statistic tracking web application designed for casual hockey players. Modularized to be expanded to other sports',
+    link        : {
+      href   : 'https://github.com/johnhof/IceBuddy',
+      sprite : Utils.sprite('github').name
+    }
+  }, {
+    name        : 'Mongoman',
+    utilities   : Utils.spriteSet(['javascript', 'node', 'mongodb', 'npm']),
+    description : 'A Node module designed to simplify mongo schema/validation construction and provide a few utilities for use in handlers',
+    link        : {
+      href   : '/mongoman',
+      sprite : Utils.sprite('document').name
+    }
+  }, {
+    name        : 'ApiTester',
+    utilities   : Utils.spriteSet(['javascript', 'node']),
+    description : 'An API test framework designed to test against a commerce API, The focus here is to make it easily extensible for use in differing projects',
+    link        : {
+      href   : 'https://github.com/johnhof/ApiTester',
+      sprite : Utils.sprite('github').name
+    }
+  }, {
+    name        : 'JiraJockey',
+    utilities   : Utils.spriteSet(['javascript', 'chrome', 'css', 'html']),
+    description : 'A Chrome plugin to bridge the gap between the Jira ticketing system and GitHub, as well as fill in various gaps in the functionality of both',
+    link        : {
+      href   : 'https://github.com/johnhof/JiraJockey',
+      sprite : Utils.sprite('github').name
+    }
+  }]
 
 
   $scope.scrollTo = Utils.scrollTo('hash');
@@ -134,7 +150,7 @@ aboutCtrl.directive('timeline', ['$window', 'Utils', 'Sizes', function ($window,
     restrict    : 'E',
     scope       : true,
     replace     : true,
-    templateUrl : '../views/_timeline.html',
+    templateUrl : Utils.partial('timeline'),
     link        : function (scope, element, attrs) {
       scope.target = scope[attrs.target];
 
@@ -235,7 +251,9 @@ aboutCtrl.directive('timeline', ['$window', 'Utils', 'Sizes', function ($window,
           target.active = true;
           scope.active = target;
 
-          Utils.scrollTo('.timeline-container', 1000);
+          if (Utils.displayType() === 'mobile') {
+            Utils.scrollTo('.timeline-container', 1000);
+          }
         }
 
         // Resize
@@ -258,6 +276,34 @@ aboutCtrl.directive('timeline', ['$window', 'Utils', 'Sizes', function ($window,
           }
         });
       });
+    }
+  };
+}]);
+
+
+
+
+// Expect project:
+// [{
+//   name        : 'string',
+//   utilities   : ['string'],
+//   description : 'string',
+//   link        : 'string'
+// }]
+aboutCtrl.directive('project', ['$window', 'Utils', 'Sizes', function ($window, Utils, Sizes) {
+  return {
+    restrict    : 'E',
+    scope       : true,
+    replace     : true,
+    templateUrl : Utils.partial('project'),
+    link        : function (scope, element, attrs) {
+      scope.open = function (url) {
+        if (/^\//.test(url)) {
+          Utils.redirect(url);
+        } else {
+          Utils.newTab(url);
+        }
+      }
     }
   };
 }]);

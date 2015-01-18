@@ -1,4 +1,4 @@
-<div  id="footer-content" ng-controller="FooterCtrl" ng-hide="blacklisted">
+<div  id="footer-content" ng-controller="FooterCtrl" ng-hide="blacklisted" ng-class="{'carbon light': light}">
   <center class="sprite-row">
     <sprite href="{{sprite.href}}" name="{{sprite.name}}" ng-repeat="sprite in sprites"></sprite>
   </center>

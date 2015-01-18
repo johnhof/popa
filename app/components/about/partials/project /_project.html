@@ -1,0 +1,16 @@
+<div class="project-box">
+
+  <h3 ng-click="open(project.link.href)">
+    {{project.name}}
+    <sprite name="{{project.link.sprite}}"></sprite>
+  </h3>
+
+  <div class="content">
+    <div class="utlity-list">
+      <sprite href="{{util.href}}" name="{{util.name}}" ng-repeat="util in project.utilities"></sprite>
+    </div>
+    <p>
+      {{project.description}}
+    </p>
+  </div>
+</div>
