@@ -4,7 +4,6 @@ var headerCtrl = angular.module('popa').controller('HeaderCtrl', ['$scope', 'Uti
 
   // handle page load scrolling
   $scope.$on('$routeChangeSuccess', function () {
-    console.log('route change')
     // scroll to the has if its in the path
     if ($location.hash()) {
       Utils.scrollTo('hash');

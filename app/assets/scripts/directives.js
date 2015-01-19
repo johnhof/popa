@@ -64,15 +64,23 @@ popa.directive('center', [function () {
 }]);
 
 //
+// Mongoman logo
+popa.directive('mongoman', [function () {
+  return {
+    restrict : 'E',
+    replace  : true,
+    template : '<div class="mongoman-logo"><span class="triangle"></span><span class="leading">M</span><span class="trailing">M</span></div>',
+  };
+}]);
+
+
+//
 // set the height to match the port
 popa.directive('full-port-height', ['$window', function ($window) {
-console.log('test')
   return function (scope, element, attr) {
     //
     // TODO: fix me
     //
-
-console.log('test2')
 
     scope.onResize = function() {
       var headerHeight = (document.getElementById('nav-header')[0] || {}).height;
@@ -83,6 +91,23 @@ console.log('test2')
     angular.element($window).bind('resize', function() {
       scope.onResize();
     })
+  };
+}]);
+
+
+//
+// add a sprite from the sprite sheet
+popa.directive('back', ['$window', function ($window) {
+  return {
+    restrict   : 'A',
+    replace    : true,
+    transclude : true,
+    template   : '<span class="back-button" ng-click="back()"><ng-transclude></ng-transclude></span>',
+    link       : function(scope, element, attrs) {
+      scope.back = function () {
+        $window.history.back();
+      }
+     }
   };
 }]);
 

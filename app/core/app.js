@@ -7,19 +7,40 @@
 
 
 var popa = angular.module('popa', [
-
-  // utility modules
+  // module dependencies
   'ngRoute',
-  'ngResource'
+  'ngResource',
+  'ngDialog',
+  'ngMap'
 ]);
 
 
-popa.run(['$rootScope', '$http', function ($rootScope, $http) {
+popa.run(['$rootScope', '$http', 'ngDialog', function ($rootScope, $http, ngDialog) {
   // Preload large images on app load
   _.each([
       'hero-me.jpg'
     ], function (image) {
       $http.get('../images/' + image);
+    });
+
+
+    //
+    // middleware
+    //
+
+    // dialogs
+    var activeDialog = null;
+    $rootScope.$on( "$routeChangeStart", function (event, next, current) {
+      if (activeDialog) {
+        activeDialog.close();
+      }
+
+      // If this route is under construction
+      if (/^(\/mongoman.*)$/.test(next.originalPath)) {
+        activeDialog = ngDialog.open({
+          template :  '/views/under_construction.html',
+        });
+      }
     });
 }]);
 
@@ -32,6 +53,25 @@ popa.run(['$rootScope', '$http', function ($rootScope, $http) {
 popa.constant('Patterns', {
   email    : /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
   password : /^.*(?=.{4,10})(?=.*\d)(?=.*[a-zA-Z]).*$/
+});
+
+popa.constant('Links', {
+  email    : {
+    href : 'mailto:john.hofrichter@gmail.com',
+    path : 'john.hofrichter@gmail.com',
+  },
+  facebook : {
+    href : 'https://www.facebook.com/john.hofrichter',
+    path : 'john.hofrichter'
+  },
+  linkedin : {
+    href : 'https://www.linkedin.com/in/johnhofrichter',
+    path : 'johnhofrichter'
+  },
+  github : {
+    href : 'https://github.com/johnhof',
+    path : 'johnhof'
+  }
 });
 
 popa.constant('SpriteMap', {
@@ -64,7 +104,7 @@ popa.constant('SpriteMap', {
     name : 'ion-social-github'
   },
   html : {
-    href : 'http://www.html5rocks.com/en/',
+    href : 'https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5',
     name : 'ion-social-html5'
   },
   javascript : {

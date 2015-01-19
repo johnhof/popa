@@ -39,6 +39,10 @@ a, .sprite {
     color: $blue;
     text-decoration: none;
   }
+
+  &:focus {
+    text-decoration: none;
+  }
 }
 
 
@@ -131,6 +135,42 @@ div.diamond {
   }
 }
 
+.Mongoman-logo {
+  position: relative;
+  width: 8rem;
+  font-weight: 600;
+  height: 6rem;
+
+  .triangle {
+    position: absolute;
+    top: 0;
+    line-height: 4rem;
+
+    border-left: 4rem solid transparent;
+    border-right: 4rem solid transparent;
+    border-top: 5.5rem solid $orange;
+  }
+
+  .leading {
+    top: 0rem;
+    position: absolute;
+    line-height: 3rem;
+    font-size: 3.9rem;
+    left: 2.1rem;
+    font-weight: 800;
+  }
+
+  .trailing {
+    display: none;
+    top:0;
+    position: absolute;
+    font-size: 3rem;
+    color: $blue;
+    left: 2.5rem;
+    font-weight: 800;
+  }
+}
+
 .center {
   text-align: center;
 }
@@ -179,17 +219,48 @@ ul {
 }
 
 .sprite {
-  color: $grey;
   font-size: 32;
   transition: 0.25s ease-in-out all;
 
   &.size-16 { font-size: 16px; }
+  &.size-18 { font-size: 18px; }
+  &.size-21 { font-size: 21px; }
+  &.size-24 { font-size: 24px; }
   &.size-32 { font-size: 32px; }
   &.size-48 { font-size: 48px; }
   &.size-64 { font-size: 64px; }
   &.size-96 { font-size: 96px; }
 }
 
+.back-button {
+  font-size: 1.5rem;
+
+  .sprite {
+    transition: none;
+
+    &:hover {
+      color: inherit;
+    }
+  }
+
+  &:hover {
+    color: $blue;
+    transition: $ease;
+    cursor: pointer;
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Dialog
+///////////////////////////////////////////////////////////////////////////////
+
+.ngdialog {
+  &.ngdialog-theme-default {
+    .ngdialog-content {
+      border-radius: 0;
+    }
+  }
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // Forms

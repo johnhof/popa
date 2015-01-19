@@ -1,0 +1,29 @@
+<div id="contact-content">
+  <center>
+    <row>
+      <div class="text col-sm-6">
+        <h1>Contact Me</h1>
+
+        <p>
+          I currently reside in the shadyside neighborhood of Pittsburgh, PA. If you're from out of town, feel free to contact me through email, linkedin, or facebook. If you like my projects, follow me on github.
+        </p>
+
+        <p ng-repeat="link in links">
+          <label>{{link.label}}</label><a href="{{link.href}}" target="{{link.target}}">{{link.display}}</a>
+        </p>
+
+      </div>
+      <div class="map text col-sm-6">
+        <map zoom="12"
+          center="[{{lat}}, {{lon}}]"
+          disable-default-u-i="true"
+          draggable="false"
+          keyboard-shortcuts="false"
+          max-zoom="16"
+          min-zoom="6"
+          map-type-id="TERRAIN">
+        </map>
+      </div>
+    </row>
+  </center>
+</div>

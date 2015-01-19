@@ -14,6 +14,13 @@ popa.config(['$routeProvider', function ($routeProvider) {
       controller  : 'AboutCtrl'
     }).
 
+
+    // Contact
+    when('/contact', {
+      templateUrl : 'views/contact.html',
+      controller  : 'ContactCtrl'
+    }).
+
     // About
     when('/mongoman', {
       templateUrl : 'views/mongoman.html',

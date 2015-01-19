@@ -1,42 +1,69 @@
 <div id="mongoman-content">
-  <section class="banner">
-    <h1>Mongoman</h1>
-    <h2>A Node module designed to simplify mongoDB schema & validation construction as well as provide utilities to prevent bloat</h2>
+  <section id="banner">
+<!--     <div class="logo">
+      <Mongoman></Mongoman>
+    </div> -->
+    <div class="text">
+      <h1>Mongoman</h1>
+      <h2>A Node module designed to simplify mongoDB schema & validation construction as well as provide utilities to prevent bloat</h2>
+    </div>
   </section>
 
-  <section>
+  <section id="getting-started">
     <h3>Getting Started</h3>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      Mongoman requires <a href="http://nodejs.org/" target="_blank">Node and NPM</a>. once those are set up, the module can be installed like any node module.
+    </p>
+    <pre class="prettyprint  lang-bsh"><code class="language-bsh"><!--
+    -->$ npm install Mongoman<!--
+    --></code></pre>
+    <p>
+      Any time you want access to Monoman, just require it above your mongodb usage.
+    </p>
+    <pre class="prettyprint  lang-js"><code class="language-js"><!--
+    -->var Mongoman = require('Mongoman');<!--
+    --></code></pre>
+    <p>
+      Ready to go? <a href="#/Mongoman/documentation">Check out the documentation</a>
     </p>
   </section>
 
-  <section>
+  <section id="quick-look">
     <h3>A Quick Look</h3>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      The goal of Mongoman is to prevent bloat in schema & model creation and help make mongo related tasks painless. I recomment using Mongoman alongside <a href="http://mongoosejs.com/" target="_blank">mongoose</a>, an awesome node module that makes mondoDB use relatively simple.
+    </p>
+
+    <p>
+      Using Mongoman, you can turn this
+    </p>
+
+    <pre class="prettyprint  lang-js"><code class="language-js">
+    // some bloated code
+    </code></pre>
+
+    <p>
+      into this
+    </p>
+
+    <pre class="prettyprint  lang-js"><code class="language-js">
+    var mongoman = require('mongoman');
+    // some non bloated code
+    </code></pre>
+
+  </section>
+  <section id="more-info">
+    <h3>More information</h3>
+    <p>
+      Mongoman is currently being usedin developement with a hockey stat tracking application <a href="https://github.com/johnhof/IceBuddy" target="_blank">IceBuddy</a>. Since this is not live yet, Icebuddy has not been tested under production load. since models are created on server startup, it should function equally well in production as development
     </p>
   </section>
 
-  <section>
-    <h3>More information</h3>
+  <section id="fork">
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <a href="https://github.com/johnhof/mongoman" target="_blank">
+       <sprite name="ion-fork-repo"></sprite> Fork me on github!
+      </a>
     </p>
   </section>
 </div>

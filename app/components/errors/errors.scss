@@ -1,7 +1,7 @@
 @import 'variables';
 
 #error-container {
-  position: absolute;
+  padding-top: 100px;
   display: table;
   height: 100%;
   width: 100%;
@@ -32,6 +32,35 @@
         -ms-transform: rotate(90deg);
         -o-transform: rotate(90deg);
       }
+    }
+  }
+}
+
+.under-construction {
+  text-align: center;
+
+  h2 {
+    width: 100%;
+
+    .sprite:hover {
+      color: inherit;
+      cursor: inherit;
+    }
+  }
+
+  p {
+    margin: 20px 0;
+  }
+
+  .back-container {
+    width: 100%;
+  }
+
+
+  // micro-mobile
+  @media (max-width: 400px) {
+    h2 {
+      font-size: 1.5rem;
     }
   }
 }
