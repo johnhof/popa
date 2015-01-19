@@ -21,6 +21,7 @@ var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope',  'Util
     'Cold weather',
     'Watching the Penguins lose',
     'Finding the office coffee pot empty',
+    'Poor documentation',
     'Distance Running',
     'Swimming',
   ];

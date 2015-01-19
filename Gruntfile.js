@@ -1,8 +1,5 @@
 'use strict';
 
-
-var mongoose = require('mongoose');
-
 module.exports = function (grunt) {
 
   // Load grunt tasks automatically
@@ -14,8 +11,6 @@ module.exports = function (grunt) {
 
   // run shell commands asyncronously
   grunt.loadNpmTasks('grunt-shell-spawn');
-
-  var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
 
   // Configurable paths for the application
   var appConfig = {
@@ -92,7 +87,7 @@ module.exports = function (grunt) {
       },
       css: {
         files: ['<%= server.app %>/**/*.{scss,sass}'],
-        tasks: ['build-stylus']
+        tasks: ['build-scss']
       },
       views: {
         files: ['<%= server.app %>/**/*.html'],
@@ -147,8 +142,7 @@ module.exports = function (grunt) {
                 connect.static('./bower_components'),
                 appConfig.dist + '/'
               ),
-              connect.static(appConfig.dist),
-              proxySnippet
+              connect.static(appConfig.dist)
             ];
           }
         }
@@ -460,26 +454,6 @@ module.exports = function (grunt) {
           async: true
         }
       }
-    },
-
-
-    /***************************************************************************************************
-    *
-    *  Mocha testing tasks
-    *
-    ****************************************************************************************************/
-
-    simplemocha: {
-      options: {
-        globals     : ['expect'],
-        timeout     : 10000,
-        ignoreLeaks : false,
-        ui          : 'bdd',
-        reporter    : 'tap'
-      },
-      all: {
-        src: ['test/tests/**/*.js']
-      }
     }
   });
 
@@ -489,14 +463,12 @@ module.exports = function (grunt) {
   *
   ****************************************************************************************************/
 
-  grunt.loadNpmTasks('grunt-connect-proxy');
   grunt.loadNpmTasks('grunt-spritesmith');
 
   // run the app
   grunt.registerTask('app', 'Starting API server...', function () {
     grunt.task.run([
       'build',
-      'configureProxies',
       'connect:livereload',
       'watch'
     ]);
@@ -511,13 +483,6 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run(set);
-  });
-
-  // drop a database
-  grunt.registerTask('dropdb', 'dropping database...', function () {
-    grunt.task.run([
-      'shell:dropdb'
-    ]);
   });
 
 
@@ -551,7 +516,7 @@ module.exports = function (grunt) {
     'clean:tmp',
   ]);
 
-  grunt.registerTask('build-stylus', [
+  grunt.registerTask('build-scss', [
     'clean:css',
     'copy:css',
     'compass',
