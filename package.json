@@ -1,18 +1,19 @@
 {
   "name": "popa",
-  "version": "0.0.0-12",
+  "version": "0.0.0-21",
   "subdomain": "johnhof",
   "scripts": {
-    "predeploy": "bower install",
-    "start": "node node_modules/grunt-cli/bin/grunt app"
+    "start": "node server.js"
   },
   "dependencies": {
-    "grunt": "^0.4.5",
-    "grunt-cli": "~0.1.11",
     "angular-resource": "^1.3.6",
     "colors": "~1.0.3",
+    "config.json": "0.0.3",
     "connect": "~3.3.3",
+    "express": "^4.11.0",
+    "grunt": "^0.4.5",
     "grunt-autoprefixer": "^0.7.3",
+    "grunt-cli": "~0.1.11",
     "grunt-concat-in-order": "^0.1.6",
     "grunt-concurrent": "^0.5.0",
     "grunt-contrib-clean": "^0.5.0",
@@ -35,11 +36,9 @@
     "grunt-spritesmith": "^3.5.0",
     "grunt-svgmin": "^0.4.0",
     "grunt-usemin": "^2.1.1",
-    "grunt-wiredep": "~1.8.0",
-    "joi": "~4.9.0",
+    "grunt-wiredep": "1.8.x",
     "jshint-stylish": "^0.2.0",
     "load-grunt-tasks": "^0.4.0",
-    "lodash": "~2.4.1",
     "time-grunt": "^0.3.1"
   },
   "engines": {

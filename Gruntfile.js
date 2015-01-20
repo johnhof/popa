@@ -1,21 +1,18 @@
 'use strict';
 
 module.exports = function (grunt) {
-
-  // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
-
-
-  // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
-  // run shell commands asyncronously
   grunt.loadNpmTasks('grunt-shell-spawn');
+
+  var config  = require('config.json')('./config.json');
 
   // Configurable paths for the application
   var appConfig = {
-    app  : require('./bower.json').appPath || 'app',
-    dist : 'dist'
+    app  : config.path.app,
+    dist : config.path.dist,
+    port : config.path.port
   };
 
   // cache options for reuse
@@ -102,7 +99,7 @@ module.exports = function (grunt) {
       },
       gruntfile: {
         files: ['Gruntfile.js'],
-        tasks: ['build']
+        tasks: ['build-dev']
       },
       livereload: {
         options: {
@@ -127,7 +124,7 @@ module.exports = function (grunt) {
     // The actual grunt server settings
     connect: {
       options: {
-        port: 9000,
+        port: appConfig.port,
         hostname: '0.0.0.0',
         livereload: 35729,
       },
@@ -135,6 +132,7 @@ module.exports = function (grunt) {
         options: {
           open: true,
           middleware: function (connect) {
+            console.log(appConfig.dist);
             return [
               connect.static('.tmp'),
               connect().use(
@@ -221,9 +219,6 @@ module.exports = function (grunt) {
 
     // Automatically inject Bower components into the app
     wiredep: {
-      options: {
-        // cwd: '<%= server.app %>'
-      },
       app: {
         src: ['<%= server.app %>/core/index.html'],
         ignorePath:  /\.\.\//
@@ -430,10 +425,10 @@ module.exports = function (grunt) {
     // minify compiled CSS
     cssmin: {
       my_target: {
-        // files: [{
-        //   expand: true,
-        //   src: '<%= server.dist %>/styles/*.css',
-        // }]
+        files: [{
+          expand: true,
+          src: '<%= server.dist %>/styles/*.css',
+        }]
       }
     },
 
@@ -453,6 +448,18 @@ module.exports = function (grunt) {
         options: {
           async: true
         }
+      },
+      serve: {
+        command: 'nodemon server.js -q',
+        options: {
+          async: false
+        }
+      },
+      deploy: {
+        command: 'jitsu deploy',
+        options: {
+          async: false
+        }
       }
     }
   });
@@ -466,31 +473,33 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-spritesmith');
 
   // run the app
-  grunt.registerTask('app', 'Starting API server...', function () {
-    grunt.task.run([
-      'build',
+  grunt.registerTask('serve', 'Starting app server...', function () {
+    grunt.task.run(['shell:serve']);
+  });
+
+  // run the app
+  grunt.registerTask('app', 'Building and starting server...', function () {
+    var prod    = grunt.option('prod');
+    var taskSet = [
       'connect:livereload',
       'watch'
-    ]);
-  });
+    ];
 
-  // run tests
-  grunt.registerTask('test', 'running API tests...', function (target) {
-    var set = ['simplemocha'];
+    if (prod) {
+      taskSet.unshift('build-prod');
 
-    if (grunt.option('drop')) {
-      set.unshift('shell:dropdb')
+    } else {
+      taskSet.unshift('build-dev');
     }
 
-    grunt.task.run(set);
+    grunt.task.run(taskSet);
   });
-
 
   //
   // composite tasks used as utilities
   //
 
-  grunt.registerTask('build', [
+  grunt.registerTask('build-prod', [
     'clean:dist',
     'wiredep',
     'copy:dist',
@@ -502,12 +511,29 @@ module.exports = function (grunt) {
     'concat:css',
     'autoprefixer',
     'cssmin',
-    // 'uglify',
-    // 'filerev', --- this shit is mucking up css/js serving. fix it later
-    // 'usemin',
+    'uglify',
+    'usemin',
     'htmlmin',
     'clean:tmp',
   ]);
+
+
+  grunt.registerTask('build-dev', [
+    'clean:dist',
+    'wiredep',
+    'copy:dist',
+    'useminPrepare',
+    'concat:js', //remove?
+    'cdnify',
+    'compass',
+    'concat:css',
+    'autoprefixer',
+    'clean:tmp',
+  ]);
+
+  //
+  // Individual file types
+  //
 
   grunt.registerTask('build-js', [
     'clean:js',
