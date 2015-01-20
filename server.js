@@ -4,11 +4,13 @@
 //
 
 require('colors');
-console.log('\n++++  starting server  ++++'.yellow);
+console.log('\n\n++++  starting server  +++'.yellow + '\n');
 
 var express = require('express');
 var server  = express();
 var config  = require('config.json')('./config.json');
+
+console.log(require('fs').readdirSync('./'));
 
 // static delivery
 for (staticDir in config.static) {
@@ -17,7 +19,7 @@ for (staticDir in config.static) {
 
 //start server
 server.listen(config.port);
-console.log('\n  Listening on port '.green + (config.port + '').blue + '\n');
+console.log('\n\n  Listening on port '.green + (config.port + '').blue + '\n');
 
 // route
 server.get('*', function (req, res) {
