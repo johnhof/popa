@@ -6,5 +6,7 @@ Personal One Page Application
 TODO
 ====
 
-* set up grunt file for prod use
-* set up cintinuous integration
+* set johnhofrichter.com to point to johnhof.jit.su
+* set up continuous integration
+* clean up contact page
+* implement project pages via the Github API
