@@ -29,15 +29,18 @@ server.use(function init (req, res, next) {
 // register API routes
 routes.register(server);
 
-// add route erro rhandler
-server.use(errorHandler);
-
-
 // any route not used by the API should return the standart page
 server.get('*', function (req, res) {
-  console.log('    ' + req.method.blue + ' ' + req.url.gray);
   res.sendFile(__dirname + '/dist/index.html');
 });
+
+// add route error handler
+server.use(errorHandler);
+
+// mixims
+
+require(__dirname + '/api/lib/mixins');
+
 
 //
 //start server

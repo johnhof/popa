@@ -5,11 +5,11 @@ var helpers = require(process.cwd() + '/api/lib/helpers');
 //
 
 exports.register = function  (server) {
-  var components = helpers.initComponents(process.cwd() + '/api/components', server);
+  var api = helpers.initComponents(process.cwd() + '/api/components', server);
 
   // get generic repo information
-  server.get('/github/:repo', components.github.repo.read);
+  server.get('/api/github/:user/:repo', api.github.user.repo.read);
 
   // attempt to convert readme into a documentation chema
-  server.get('/github/:repo/documentation', components.github.repo.documentation.read);
+  server.get('/api/github/:user/:repo/documentation', api.github.user.repo.documentation.read);
 }
