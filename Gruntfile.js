@@ -12,46 +12,46 @@ module.exports = function (grunt) {
   var appConfig = {
     app  : config.path.app,
     dist : config.path.dist,
-    port : config.path.port
-  };
-
-  // cache options for reuse
-  var opts = {
+    port : config.port,
     copy : {
       images : {
-        expand: true,
-        dot: true,
-        flatten: true,
-        dest: '<%= server.dist %>/images',
-        src: '<%= server.app %>/assets/images/**/*'
+        expand  : true,
+        dot     : true,
+        flatten : true,
+        dest    : '<%= server.dist %>/images',
+        src     : '<%= server.app %>/assets/images/**/*'
+      },
+      favicon : {
+        dest : '<%= server.dist %>/favicon.ico',
+        src  : '<%= server.app %>/assets/images/favicon.ico'
       },
       sass : {
-        expand: true,
-        dot: true,
-        flatten: true,
-        src: '<%= server.app %>/**/*.{sass,scss}',
-        dest: '.tmp/styles'
+        expand  : true,
+        dot     : true,
+        flatten : true,
+        src     : '<%= server.app %>/**/*.{sass,scss}',
+        dest    : '.tmp/styles'
       },
       index : {
-        expand: true,
-        dot: true,
-        flatten: true,
-        src: '<%= server.app %>/core/index.html',
-        dest: '<%= server.dist %>'
+        expand  : true,
+        dot     : true,
+        flatten : true,
+        src     : '<%= server.app %>/core/index.html',
+        dest    : '<%= server.dist %>'
       },
       views : {
-        expand: true,
-        dot: true,
-        flatten: true,
-        src: '<%= server.app %>/components/**/*.html',
-        dest: '<%= server.dist %>/views'
+        expand  : true,
+        dot     : true,
+        flatten : true,
+        src     : '<%= server.app %>/components/**/*.html',
+        dest    : '<%= server.dist %>/views'
       },
       partials : {
-        expand: true,
-        dot: true,
-        flatten: true,
-        src:'<%= server.app %>/assets/partials/**/*.html',
-        dest: '<%= server.dist %>/partials'
+        expand  : true,
+        dot     : true,
+        flatten : true,
+        src     :'<%= server.app %>/assets/partials/**/*.html',
+        dest    : '<%= server.dist %>/partials'
       }
     }
   }
@@ -278,24 +278,28 @@ module.exports = function (grunt) {
     copy: {
       dist: {
         files: [
-         opts.copy.images,
-         opts.copy.sass,
-         opts.copy.index,
-         opts.copy.views,
-         opts.copy.partials
+         appConfig.copy.images,
+         appConfig.copy.sass,
+         appConfig.copy.index,
+         appConfig.copy.views,
+         appConfig.copy.partials,
+         appConfig.copy.favicon
         ]
       },
       images: {
-        files: [opts.copy.images]
+        files: [
+          appConfig.copy.images,
+          appConfig.copy.favicon
+        ]
       },
       css : {
-        files: [opts.copy.sass]
+        files: [appConfig.copy.sass]
       },
       html : {
         files: [
-         opts.copy.index,
-         opts.copy.views,
-         opts.copy.partials
+         appConfig.copy.index,
+         appConfig.copy.views,
+         appConfig.copy.partials
         ]
       },
     },
@@ -311,11 +315,13 @@ module.exports = function (grunt) {
     concat: {
       js: {
         files: {
-          '<%= server.dist %>/scripts/main.js': ['<%= server.app %>/core/app.js',
-                                                  '<%= server.app %>/core/api.js',
-                                                  '<%= server.app %>/scripts/services.js',
-                                                  '<%= server.app %>/scripts/helpers.js',
-                                                  '<%= server.app %>/**/*.js']
+          '<%= server.dist %>/scripts/main.js': [
+            '<%= server.app %>/core/app.js',
+            '<%= server.app %>/core/api.js',
+            '<%= server.app %>/scripts/services.js',
+            '<%= server.app %>/scripts/helpers.js',
+            '<%= server.app %>/**/*.js'
+          ]
         }
       },
       css: {
@@ -443,10 +449,10 @@ module.exports = function (grunt) {
     concurrent: {},
 
     shell: {
-      install: {
-        command: 'npm install && bower install',
+      install_bower: {
+        command: 'rm -rf ./bower_components && bower install',
         options: {
-          async: true
+          async: false
         }
       },
       serve: {

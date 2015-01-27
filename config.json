@@ -5,11 +5,12 @@
     "bower" : "bower_components",
     "dist"  : "dist"
   },
-  "static" : {
+  "staticMap" : {
     "/images"  : "/dist/images",
     "/scripts" : "/dist/scripts",
     "/styles"  : "/dist/styles",
     "/views"   : "/dist/views",
+    "/favicon"  : "/favicon",
     "/bower_components" : "/bower_components"
   }
 }
