@@ -488,8 +488,8 @@ module.exports = function (grunt) {
     var prod    = grunt.option('prod');
     var taskSet = [
       // 'connect:livereload',
-      'watch'
-      'shell:serve',
+      'watch',
+      'shell:serve'
     ];
 
     if (prod) {
