@@ -22,7 +22,7 @@ var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope',  'Util
     'Watching the Penguins lose',
     'Finding the office coffee pot empty',
     'Poor documentation',
-    'Distance Running',
+    'Distance running',
     'Swimming',
   ];
 
@@ -36,7 +36,7 @@ var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope',  'Util
       title   : 'University of Pittsburgh',
       subtext : ['Fall 2009 - Winter 2013', 'BS Computer Science']
     }, content : {
-      description : 'The early years were primarily java for basic instruction and data structres/algorithms. My targeted classes were in Operating Systems (wrote a file system), Networks (implemented TCP), Algorithm design (primarily proofs and dynamic algorithms), Cryptography & Security (designed and developed a secure server), UI design (wrote several Android apps), Web programming (wrote a handful of web apps).',
+      description : 'The early years were primarily java for basic instruction and data structres/algorithms. My focused classes were in Operating Systems (wrote a file system), Networks (implemented TCP), Algorithm design (primarily proofs and dynamic algorithms), Cryptography & Security (designed and developed a secure server), UI design (wrote several Android apps), and Web programming (wrote a handful of web apps).',
       synopsis    : ['Java ', 'C', 'C++', 'PHP', 'Javascript', 'Assembly']
     },
     timeframe : {
@@ -50,7 +50,7 @@ var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope',  'Util
       title   : 'Ansys Inc.',
       subtext : ['Spring 2011 - fall 2012', 'Co-Op, 3 semesters ~ 1 year']
     }, content : {
-      description : 'Worked on the DesignModeler parametric geometry software as a part of the Ansys Workbench. The first semester was primarily spent bug fixing in high level code. The second semester was spent on several larger projects, the most signicant being a Shaft geometry generation tool.  The final semester had a few more small projects, but most time was spent analyzing load times and implementing multi threading of the file load process.',
+      description : 'Worked on the DesignModeler parametric geometry software as a part of the Ansys Workbench. The first semester was primarily spent bug fixing in high level code. The second semester was spent on several larger projects, the most signicant being a Shaft geometry generation tool.  The final semester had a few more small projects, but most of my time was spent analyzing load times and implementing multi threading of the file load process.',
       synopsis    : ['C++', 'Javascript', 'C#', 'Visual Studios']
     },
     timeframe : {
@@ -76,7 +76,7 @@ var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope',  'Util
       title   : 'Branding Brand Inc.',
       subtext : ['Fall 2013 - Current', 'Full Stack Developer']
     }, content : {
-      description : 'Started as an API developer scraping commerce sites for a generic BB API. After a few months, I moved to the post launch development team as a full stack develper. I\m currently splitting my time down the middle between API and Front End development.',
+      description : 'Started as an API developer scraping commerce sites for a generic BB API. After a few months, I moved to the post launch development team as a full stack develper. I\'m currently splitting my time down the middle between API and Front End development.',
       synopsis    : ['Javascript', 'Node/Express', 'PHP', 'CSS3', 'SCSS', 'LESS']
     },
     timeframe : {
