@@ -46,7 +46,6 @@ mon.register('Repo', {
   statics : {
     isExpired : function () {
       var dayInMs = 86400000;
-      console.log(new Date() - this.updated);
       return (new Date() - this.updated) > dayInMs;
     }
   }

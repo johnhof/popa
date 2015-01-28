@@ -25,7 +25,6 @@ exports.initComponents = function (path, server) {
           currentLeaf[content.name] = _.clone(fileContent(server), true);
 
         } else if (Object.keys(fileContent).length) {
-          console.log('adding2')
           currentLeaf[content.name] = _.clone(fileContent, true);
         }
 
