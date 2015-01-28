@@ -456,7 +456,7 @@ module.exports = function (grunt) {
         }
       },
       serve: {
-        command: 'nodemon server.js -q',
+        command: 'nodemon server.js -q --ignore "test/" --ignore "app/" --ignore "dist/"',
         options: {
           async: false
         }
@@ -487,8 +487,9 @@ module.exports = function (grunt) {
   grunt.registerTask('app', 'Building and starting server...', function () {
     var prod    = grunt.option('prod');
     var taskSet = [
-      'connect:livereload',
-      'watch'
+      // 'connect:livereload',
+      'watch',
+      'shell:serve'
     ];
 
     if (prod) {

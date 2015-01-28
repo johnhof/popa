@@ -10,7 +10,7 @@
     "/scripts" : "/dist/scripts",
     "/styles"  : "/dist/styles",
     "/views"   : "/dist/views",
-    "/favicon"  : "/favicon",
+    "/favicon.ico"  : "/dist/favicon.ico",
     "/bower_components" : "/bower_components"
   }
 }

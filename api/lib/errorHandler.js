@@ -6,6 +6,13 @@ module.exports = function (error, req, res, next) {
     error = { error : error }
   }
 
+  if (error.name === 'ValidationError') {
+    error = {
+      error   : 'Could not save content to database, validation failed',
+      details : error.errors
+    };
+  }
+
   // allow javascript errors to pass through to the console
   if (error instanceof Error) {
     res.status(500).send({

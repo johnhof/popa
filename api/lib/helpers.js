@@ -19,7 +19,14 @@ exports.initComponents = function (path, server) {
 
       // if this is is a file, require it as a property of this leaf
       if (content.isJs) {
-        currentLeaf[content.name] = require(content.path + '/' + content.name + content.extension)(server);
+        var fileContent = require(content.path + '/' + content.name + content.extension);
+
+        if (typeof fileContent === 'function') {
+          currentLeaf[content.name] = _.clone(fileContent(server), true);
+
+        } else if (Object.keys(fileContent).length) {
+          currentLeaf[content.name] = _.clone(fileContent, true);
+        }
 
       // if it's a directory, recurse
       } else if (!content.isFile) {
@@ -55,3 +62,4 @@ exports.getDirContents = function (path) {
 
   return results;
 }
+
