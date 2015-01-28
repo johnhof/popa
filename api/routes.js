@@ -8,8 +8,8 @@ exports.register = function  (server) {
   var api = helpers.initComponents(process.cwd() + '/api/components', server);
 
   // get generic repo information
-  server.get('/api/github/:user/:repo', api.github.user.repo.read);
+  server.get('/api/github/:user/:repo', api.github.user.repo.controller.read);
 
-  // attempt to convert readme into a documentation chema
-  server.get('/api/github/:user/:repo/documentation', api.github.user.repo.documentation.read);
+  // update repo store
+  server.put('/api/github/:user/:repo', api.github.user.repo.controller.update);
 }
