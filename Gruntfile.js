@@ -458,7 +458,7 @@ module.exports = function (grunt) {
       serve: {
         command: 'nodemon server.js -q --ignore "test/" --ignore "app/" --ignore "dist/"',
         options: {
-          async: true
+          async: false
         }
       },
       deploy: {
@@ -488,8 +488,8 @@ module.exports = function (grunt) {
     var prod    = grunt.option('prod');
     var taskSet = [
       // 'connect:livereload',
-      'shell:serve',
       'watch'
+      'shell:serve',
     ];
 
     if (prod) {
