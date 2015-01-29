@@ -34,6 +34,13 @@ popa.service('Api', ['$http',  '$resource', function ($http, $resource) {
       update  : { method : 'PUT' },
       read    : { method : 'GET' }
     }),
+
+    documentation : $resource('/api/github/:user/:repo/documentation', {
+      user : '@user' ,
+      repo : '@repo'
+    },  {
+      read    : { method : 'GET' }
+    })
   }
 
   return api;

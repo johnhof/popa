@@ -19,7 +19,7 @@ mon.register('Repo', {
   open_pulls    : [{
     title    : mon().string().required().fin(),
     href     : mon().string().required().fin(),
-    labels   : mon().array().required().fin(),
+    labels   : mon().array().fin(),
     submitter : {
       name   : mon().string().required().fin(),
       avatar : mon().string().required().fin()
@@ -28,7 +28,7 @@ mon.register('Repo', {
   open_issues   : [{
     title    : mon().string().required().fin(),
     href     : mon().string().required().fin(),
-    labels   : mon().array().required().fin(),
+    labels   : mon().array().fin(),
     assignee : {
       name   : mon().string().fin(),
       avatar : mon().string().fin()

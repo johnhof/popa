@@ -112,6 +112,75 @@ popa.directive('back', ['$window', function ($window) {
 }]);
 
 
+//
+// add a sprite from the sprite sheet
+popa.directive('markdown', ['$window', 'Utils', '$sce', '$compile', function ($window, Utils, $sce, $compile) {
+  return {
+    restrict   : 'E',
+    replace    : false,
+    scope      : {
+      content : '='
+    },
+    link       : function(scope, element, attrs) {
+      scope.$watch('content', function () {
+        if (scope.content) {
+          var mdContent = '<div class="markdown-content">' + marked(scope.content) + '</div>';
+
+          element.html(mdContent);
+
+          // if there is a key, separate it
+          //
+          var $keyHeader = element.find('#key');
+          if ($keyHeader.length) {
+            var $keyList  = $keyHeader.next('ul').remove();
+
+            $keyList.find('a code').each(function () {
+              var $self = $(this);
+              var text  = $self.text();
+
+              text = text.replace(/(.+\.)(.+)\(.*\)/, '$1<span>$2</span>');
+
+              $self.html(text);
+              $self.closest('a').addClass('function');
+            });
+
+            var keyList   = $keyList.html() || '';
+
+            var keyHeader = $keyHeader.remove().html() || '';
+
+            var key       = '<div class="markdown-key"><ul>' + keyList + '</ul></div>';
+
+            element.prepend(key);
+          }
+
+          // add classes to doc cards
+          if (attrs.documentation) {
+            element.find('h3 code').closest('h3').each(function () {
+              var $self = $(this);
+              $self.addClass('doc-title');
+              $self.next('p').addClass('doc-description');
+              $self.next('p').next('pre').addClass('doc-code');
+            });
+          }
+
+
+          element.find('a[href*="#"]').each(function () {
+            console.log('test')
+            var $self = $(this);
+            var href = $self.attr('href');
+            $self.attr('href', '');
+            $self.attr('ng-click', 'scrollTo(\'' + href + '\')')
+          });
+
+          scope.scrollTo = Utils.scrollTo;
+          $compile(element.contents())(scope);
+        }
+      });
+    }
+  };
+}]);
+
+
 ////////////////////////////////////////////////////////////////////////
 //
 //  Boostrap Directives

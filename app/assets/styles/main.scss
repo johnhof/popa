@@ -250,6 +250,60 @@ ul {
   }
 }
 
+
+.documentation {
+  h1 {
+    margin: 40px 0 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $light-grey;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  code {
+    border-radius: 0;
+  }
+
+  p > code {
+    background-color: whitesmoke;
+    color: $charcoal-grey;
+  }
+
+  pre {
+    border-radius: 0;
+    code {
+    }
+  }
+
+  .doc-title {
+    margin: 0;
+    margin-top: 20px;
+    padding: 10px 5px;
+    color: white;
+    background-color: $blue;
+    border-top: 1px solid $light-grey;
+    border-left: 1px solid $light-grey;
+    border-right: 1px solid $light-grey;
+
+    code {
+      background-color: inherit;
+      color: inherit;
+      padding: 10px 0;
+      display: block;
+    }
+  }
+  .doc-description {
+    margin: 0;
+    padding: 15px 5px;
+    border-left: 1px solid $light-grey;
+    border-right: 1px solid $light-grey;
+  }
+  .doc-code {
+  }
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // Dialog
 ///////////////////////////////////////////////////////////////////////////////
