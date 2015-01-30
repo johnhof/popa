@@ -66,7 +66,7 @@ popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScrol
       if (selector === 'hash') {
         selector = $location.hash();
       } else if (selector === 'top') {
-        selector = '#main-content'
+        selector = null
       }
 
       var headerOffset = 70;
@@ -78,8 +78,8 @@ popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScrol
       } else {
         duration = durationMap[duration] || duration;
 
-        $dom.find('html, body').animate({
-            scrollTop: $dom.find(selector).offset().top - headerOffset
+        $dom.find('html, body, #main-content').animate({
+            scrollTop: selector ? $dom.find(selector).offset().top - headerOffset : 0
         }, duration);
       }
     },

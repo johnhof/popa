@@ -2,10 +2,6 @@
 // App setup
 //
 
-
-'use strict';
-
-
 var popa = angular.module('popa', [
   // module dependencies
   'ngRoute',
@@ -15,7 +11,10 @@ var popa = angular.module('popa', [
 ]);
 
 
-popa.run(['$rootScope', '$http', 'ngDialog', function ($rootScope, $http, ngDialog) {
+//
+// on startup
+//
+popa.run(['$rootScope', '$http', 'ngDialog', function ($rootScope, $http, ngDialo) {
   // Preload large images on app load
   _.each([
       'hero-me.jpg'
@@ -42,6 +41,15 @@ popa.run(['$rootScope', '$http', 'ngDialog', function ($rootScope, $http, ngDial
         });
       }
     });
+}]);
+
+
+//
+// Master controller
+//
+popa.controller('MasterCtrl', ['$scope', 'Utils', 'Api', function ($scope, Utils, Api) {
+  //if there is a fullpage param set. Sadly, no access to routeParams outside ng-view
+  $scope.fullpage = /\?.*fullpage/.test(window.location.hash);
 }]);
 
 

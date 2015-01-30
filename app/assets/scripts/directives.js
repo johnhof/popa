@@ -113,8 +113,8 @@ popa.directive('back', ['$window', function ($window) {
 
 
 //
-// add a sprite from the sprite sheet
-popa.directive('markdown', ['$window', 'Utils', '$sce', '$compile', function ($window, Utils, $sce, $compile) {
+// Style markdown. handle linking. its ugly, but it works
+popa.directive('markdown', ['$window', 'Utils', '$sce', '$compile', '$location', function ($window, Utils, $sce, $compile, $location) {
   return {
     restrict   : 'E',
     replace    : false,
@@ -149,7 +149,7 @@ popa.directive('markdown', ['$window', 'Utils', '$sce', '$compile', function ($w
 
             var keyList   = $keyList.html() || '';
             var keyHeader = $keyHeader.remove().html() || '';
-            var key       = '<div class="markdown-key"><ul>' + keyList + '</ul></div>';
+            var key       = '<div class="markdown-key" ng-show="expanded"><ul>' + keyList + '</ul></div>';
 
             element.prepend(key);
           }
@@ -173,19 +173,61 @@ popa.directive('markdown', ['$window', 'Utils', '$sce', '$compile', function ($w
             });
           }
 
+          // sanitize a href's
+          element.find('a[href*="#"]').each (function () {
+            var $this = $(this);
+            var id    = ($this.attr('href') || '').replace(/-/g, '');
 
-          element.find('a[href*="#"]').each(function () {
-            console.log('test')
-            var $self = $(this);
-            var href = $self.attr('href');
-            $self.attr('href', '');
-            $self.attr('ng-click', 'scrollTo(\'' + href + '\')')
+            $this.attr('id', id);
+
+            $this.on('click', function (e) {
+              e.preventDefault();
+              contentScroll(id);
+            });
           });
+
+          // sanitize ids for linking
+          element.find('h1[id*="-"], h2[id*="-"], h3[id*="-"], h4[id*="-"]').each(function () {
+            var $this = $(this);
+            var id = ($this.attr('id') || '').replace(/-/g, '');
+            $this.attr('id', id);
+          });
+
+          element.prepend('<div class="expand-key" ng-click="expandHanlder()"><sprite name="ion-navicon" size="16"></sprite></div>');
+
+
+          function contentScroll (id) {
+            if (!id) { return; }
+
+            id = /^\#/.test(id) ? id : '#' + id
+
+            var $content = element.find('.markdown-content');
+            var $target  = $content.find(id);
+
+            if (!($target.length && $content.length)) { return; }
+
+            $location.search('target', id.replace('#', ''));  /// TODO : make this work
+
+            $content.animate({
+              scrollTop: $target.offset().top - ($content.offset().top - $content.scrollTop()) - 20
+            }, 0);
+          }
 
           scope.scrollTo = Utils.scrollTo;
           $compile(element.contents())(scope);
 
           prettyPrint();
+          if ($location.search().target) {
+            contentScroll($location.search().target)
+          }
+
+          // key expansion on mobile
+          scope.expanded = false;
+          scope.expandHanlder = function (){
+            if (window.innerWidth < 768) {
+              scope.expanded = !scope.expanded;
+            }
+          }
         }
       });
     }

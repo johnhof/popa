@@ -54,6 +54,11 @@ img {
   width: 100%;
   min-height:100%;
   position: relative;
+
+  &.fullpage {
+    position: absolute;
+    top: 0;
+  }
 }
 
 #background-filter {
@@ -252,6 +257,17 @@ ul {
 
 
 .documentation {
+  height: 100%;
+  display: block;
+  color: $charcoal-grey;
+
+  > * {
+    position: absolute;
+    height: 100%;
+    overflow-x: hidden;
+    background-color: white;
+  }
+
   h1 {
     margin: 40px 0 30px;
     padding-bottom: 10px;
@@ -331,45 +347,111 @@ ul {
         list-style-type: none;
       }
     }
+
+    @media (min-width: 768px) {
+      display: block !important;
+    }
   }
 
-  .doc-function {
-    border: 1px solid $light-grey;
-    margin-top: 20px;
+  .markdown-content {
+    padding: 10px;
+    margin-left: 280px;
 
-    h3 {
-      width: 100%;
-      color: white;
-      background-color: $blue;
-      padding: 10px;
-      font-size: 1rem;
-      margin: 0;
+    .doc-function {
+      border: 1px solid $light-grey;
+      margin-top: 40px;
+      margin-bottom: 20px;
 
-      code {
-        background-color: inherit;
-        color: inherit;
-        padding: 0;
-        display: block;
-        font-size: 1.2rem;
+      h3 {
+        width: 100%;
+        color: white;
+        background-color: $blue;
+        padding: 10px;
+        font-size: 1rem;
+        margin: 0;
+
+        code {
+          background-color: inherit;
+          color: inherit;
+          padding: 0;
+          display: block;
+          font-size: 1.2rem;
+        }
+      }
+
+      p {
+        margin: 0;
+        padding: 10px;
+        font-size: 1rem;
+
+        &:first-of-type {
+          padding-top: 20px;
+        }
+        &:last-of-type {
+          padding-bottom: 20px;
+        }
+      }
+
+      pre {
+        margin: 0;
+        border: none;
       }
     }
 
-    p {
-      margin: 0;
-      padding: 10px;
-      font-size: 1rem;
 
-      &:first-of-type {
-        padding-top: 20px;
-      }
-      &:last-of-type {
-        padding-bottom: 20px;
+    @media (max-width: 768px) {
+      position: fixed;
+      margin-left: 0;
+    }
+  }
+
+
+  .expand-key {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    top: 70;
+    height: 25px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background-color:white;
+    border: 1px solid white;
+    border-bottom: 1px solid $light-grey;
+    background-color: white;
+    cursor: pointer;
+    transition: $ease;
+
+    &:hover {
+      border: 1px solid $blue;
+
+      .sprite {
+        transition: none;
+        color: $blue;
       }
     }
+  }
 
-    pre {
-      margin: 0;
-      border: none;
+  @media (max-width: 768px) {
+    .expand-key {
+      display: block;
+      overflow-y: hidden;
+    }
+
+    .markdown-content {
+      position: relative;
+      top: 25px;
+    }
+
+    .markdown-key {
+      top: 95px;
+      position: fixed;
+      width: 250px;
+      z-index: 10;
+
+      ul {
+        padding-left: 10px;
+      }
     }
   }
 }

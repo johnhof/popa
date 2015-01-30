@@ -3,37 +3,7 @@
 #mongoman-documentation-content {
   height: 100%;
 
-  a {
-    color: $blue;
-    font-weight: 400;
-    transition: $ease;
-  }
-
-
-
   .documentation {
-    height: 100%;
-    display: block;
-    color: $charcoal-grey;
 
-    > * {
-      position: absolute;
-      height: 100%;
-      overflow-y: scroll;
-      overflow-x: hidden;
-      background-color: white;
-    }
-
-    .markdown-content {
-      padding: 10px;
-      margin-left: 280px;
-    }
-
-
-    // mobile
-    @media (max-width: 768px) {
-      width: auto;
-      height: 100%;
-    }
   }
 }

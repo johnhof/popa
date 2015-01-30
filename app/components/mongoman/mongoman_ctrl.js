@@ -1,4 +1,4 @@
-popa.controller('MongomanCtrl', ['$scope', 'Utils', 'Api', '$sce', function ($scope, Utils, Api, $sce) {
+popa.controller('MongomanCtrl', ['$scope', 'Utils', 'Api', function ($scope, Utils, Api) {
   prettyPrint();
 
   $scope.scrollTo = Utils.scrollTo;
