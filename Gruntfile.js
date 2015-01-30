@@ -425,6 +425,12 @@ module.exports = function (grunt) {
           async: false
         }
       },
+      dropdb: {
+        command: 'mongo --eval "db.getMongo().getDBNames().forEach(function(i){ db.getSiblingDB(i).dropDatabase()})"',
+        options: {
+          async: false
+        }
+      },
       serve: {
         command: 'nodemon server.js -q --ignore "test/" --ignore "app/" --ignore "dist/"',
         options: {
