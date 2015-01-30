@@ -36,7 +36,7 @@ popa.run(['$rootScope', '$http', 'ngDialog', function ($rootScope, $http, ngDial
       }
 
       // If this route is under construction
-      if (/^()$/.test(next.originalPath)) {
+      if (next.originalPath && /^()$/.test(next.originalPath)) {
         activeDialog = ngDialog.open({
           template :  '/views/under_construction.html',
         });

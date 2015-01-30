@@ -10,6 +10,7 @@
   }
 
 
+
   .documentation {
     height: 100%;
     display: block;
@@ -23,72 +24,9 @@
       background-color: white;
     }
 
-
-    .markdown-key {
-      padding: 10px;
-      width: 280px;
-
-      a {
-        color: $charcoal-grey;
-        display: block;
-        font-size: 1.2rem;
-        font-weight: 400;
-        margin-top: 10px;
-        margin-bottom: 5px;
-
-        &:hover {
-          color: $blue;
-        }
-
-        &.function {
-          font-size: 1rem;
-          margin: 0;
-
-          code {
-            font-size: inherit;
-            background: none;
-            border-radius: 0;
-            padding: 0;
-            color: $grey;
-            font-weight: 100;
-            border-bottom: 1px solid $light-grey;
-            line-height: 1.8rem;
-            transition: $ease;
-
-            &:hover {
-              color: $blue;
-              border-bottom: 1px solid $blue;
-            }
-
-            span {
-              color: $blue;
-            }
-          }
-        }
-      }
-
-      ul {
-        padding-left: 15px;
-
-        li {
-          list-style-type: none;
-
-          ul {
-            border-left: 1px solid whitesmoke;
-          }
-        }
-      }
-    }
-
     .markdown-content {
       padding: 10px;
       margin-left: 280px;
-
-      h3 {
-        width: 100%;
-        margin: 20px 0 0;
-
-      }
     }
 
 

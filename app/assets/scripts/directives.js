@@ -128,6 +128,9 @@ popa.directive('markdown', ['$window', 'Utils', '$sce', '$compile', function ($w
 
           element.html(mdContent);
 
+          //add prettyprint
+          element.find('pre').addClass('prettyprint');
+
           // if there is a key, separate it
           //
           var $keyHeader = element.find('#key');
@@ -145,9 +148,7 @@ popa.directive('markdown', ['$window', 'Utils', '$sce', '$compile', function ($w
             });
 
             var keyList   = $keyList.html() || '';
-
             var keyHeader = $keyHeader.remove().html() || '';
-
             var key       = '<div class="markdown-key"><ul>' + keyList + '</ul></div>';
 
             element.prepend(key);
@@ -157,9 +158,18 @@ popa.directive('markdown', ['$window', 'Utils', '$sce', '$compile', function ($w
           if (attrs.documentation) {
             element.find('h3 code').closest('h3').each(function () {
               var $self = $(this);
-              $self.addClass('doc-title');
-              $self.next('p').addClass('doc-description');
-              $self.next('p').next('pre').addClass('doc-code');
+              var $content = $self.nextUntil('h1, h2, h3');
+
+              var content = '';
+              $content.each(function () {
+                var $this = $(this);
+                content += $this.outerHtml();
+              });
+
+              $self.before('<div class="doc-function">' + $self.outerHtml() + content + '</div>');
+
+              $self.remove();
+              $content.remove();
             });
           }
 
@@ -174,6 +184,8 @@ popa.directive('markdown', ['$window', 'Utils', '$sce', '$compile', function ($w
 
           scope.scrollTo = Utils.scrollTo;
           $compile(element.contents())(scope);
+
+          prettyPrint();
         }
       });
     }
