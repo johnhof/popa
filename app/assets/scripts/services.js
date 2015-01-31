@@ -57,7 +57,14 @@ popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScrol
     //
 
     setHash : function (id) {
-      $location.hash(id);
+      if (!id) { return; }
+
+      id = id.replace(/^#/, '')
+      var hashRegex = /^(#.+?)#.*$/;
+      if (hashRegex.test(location.hash)) {
+        var hash = location.hash.replace(hashRegex, '$1#' + id)
+        history.pushState(null, null, hash);
+      }
     },
 
     scrollTo : function (selector, duration) {
@@ -66,7 +73,7 @@ popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScrol
       if (selector === 'hash') {
         selector = $location.hash();
       } else if (selector === 'top') {
-        selector = null
+        selector = null;
       }
 
       var headerOffset = 70;

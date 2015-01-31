@@ -96,7 +96,7 @@ var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope',  'Util
     utilities   : Utils.spriteSet(['javascript', 'node', 'angular', 'mongodb', 'express', 'grunt', 'css', 'html']),
     description : 'A statistic tracking web application designed for casual hockey players. Modularized to be expanded to other sports',
     link        : {
-      href   : 'https://github.com/johnhof/IceBuddy',
+      href   : '/IceBuddy',
       sprite : Utils.sprite('github').name
     }
   }, {
@@ -112,7 +112,7 @@ var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope',  'Util
     utilities   : Utils.spriteSet(['javascript', 'node']),
     description : 'An API test framework designed to test against a commerce API, The focus here is to make it easily extensible for use in differing projects',
     link        : {
-      href   : 'https://github.com/johnhof/ApiTester',
+      href   : '/ApiTester',
       sprite : Utils.sprite('github').name
     }
   }, {
@@ -120,7 +120,7 @@ var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope',  'Util
     utilities   : Utils.spriteSet(['javascript', 'chrome', 'css', 'html']),
     description : 'A Chrome plugin to bridge the gap between the Jira ticketing system and GitHub, as well as fill in various gaps in the functionality of both',
     link        : {
-      href   : 'https://github.com/johnhof/JiraJockey',
+      href   : '/JiraJockey',
       sprite : Utils.sprite('github').name
     }
   }]

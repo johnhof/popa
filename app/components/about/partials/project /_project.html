@@ -2,7 +2,6 @@
 
   <h3 ng-click="open(project.link.href)">
     {{project.name}}
-    <sprite name="{{project.link.sprite}}"></sprite>
   </h3>
 
   <div class="content">
@@ -12,5 +11,8 @@
     <p>
       {{project.description}}
     </p>
+  </div>
+  <div class="button-wrap">
+    <a ng-href="#{{project.link.href}}" class="button">Details</a>
   </div>
 </div>

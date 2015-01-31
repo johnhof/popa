@@ -256,6 +256,11 @@ ul {
 }
 
 
+///////////////////////////////////////////////////////////////////////////////
+// MARKDOWN DOCS
+///////////////////////////////////////////////////////////////////////////////
+
+
 .documentation {
   height: 100%;
   display: block;
@@ -269,17 +274,18 @@ ul {
   }
 
   h1 {
-    margin: 40px 0 30px;
+    margin: 60px 0 40px;
     padding-bottom: 10px;
     border-bottom: 1px solid $light-grey;
 
     &:first-of-type {
-      margin-top: 0;
+      margin: 20px 0 10px;
+      font-size: 3.5rem;
     }
   }
 
   h2 {
-    margin: 20px 0 10px;
+    margin: 40px 0 20px;
   }
 
   code {
@@ -346,10 +352,6 @@ ul {
       li {
         list-style-type: none;
       }
-    }
-
-    @media (min-width: 768px) {
-      display: block !important;
     }
   }
 
@@ -455,6 +457,15 @@ ul {
     }
   }
 }
+
+@media (max-width: 768px) {
+  .fullpage {
+    .markdown-key {
+      top: 25px;
+    }
+  }
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // Dialog

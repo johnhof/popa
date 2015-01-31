@@ -195,7 +195,6 @@ popa.directive('markdown', ['$window', 'Utils', '$sce', '$compile', '$location',
 
           element.prepend('<div class="expand-key" ng-click="expandHanlder()"><sprite name="ion-navicon" size="16"></sprite></div>');
 
-
           function contentScroll (id) {
             if (!id) { return; }
 
@@ -206,27 +205,44 @@ popa.directive('markdown', ['$window', 'Utils', '$sce', '$compile', '$location',
 
             if (!($target.length && $content.length)) { return; }
 
-            $location.search('target', id.replace('#', ''));  /// TODO : make this work
+            Utils.setHash(id);
 
-            $content.animate({
-              scrollTop: $target.offset().top - ($content.offset().top - $content.scrollTop()) - 20
-            }, 0);
+            if (window.innerWidth < 768) {
+              $('body').animate({
+                scrollTop: $target.offset().top - ($content.offset().top - $content.scrollTop()) - 20
+              }, 0);
+            } else {
+              $content.animate({
+                scrollTop: $target.offset().top - ($content.offset().top - $content.scrollTop()) - 20
+              }, 0);
+            }
           }
 
+          // key expansion on mobile
+          //
+          scope.expanded = window.innerWidth > 768;
+          scope.expandHanlder = function () {
+            if (window.innerWidth < 768) {
+              scope.expanded = !scope.expanded;
+            }
+          }
+
+          Utils.onResize(scope, function (newSize, oldSize, change) {
+            if (newSize.displayType === 'desktop') {
+              scope.expanded = true;
+            } else if (change) {
+              scope.expanded = false;
+            }
+          })
+
+          // compile result
+          //
           scope.scrollTo = Utils.scrollTo;
           $compile(element.contents())(scope);
 
           prettyPrint();
-          if ($location.search().target) {
-            contentScroll($location.search().target)
-          }
-
-          // key expansion on mobile
-          scope.expanded = false;
-          scope.expandHanlder = function (){
-            if (window.innerWidth < 768) {
-              scope.expanded = !scope.expanded;
-            }
+          if ($location.hash()) {
+            contentScroll($location.hash())
           }
         }
       });
