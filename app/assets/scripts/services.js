@@ -61,10 +61,16 @@ popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScrol
 
       id = id.replace(/^#/, '')
       var hashRegex = /^(#.+?)#.*$/;
+      var hash = _.clone(location.hash);
+
       if (hashRegex.test(location.hash)) {
-        var hash = location.hash.replace(hashRegex, '$1#' + id)
-        history.pushState(null, null, hash);
+        hash = hash.replace(hashRegex, '$1#' + id);
+
+      } else {
+        hash += '#' + id;
       }
+
+      history.pushState(null, null, hash);
     },
 
     scrollTo : function (selector, duration) {
