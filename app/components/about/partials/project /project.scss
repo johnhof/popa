@@ -5,7 +5,7 @@
   .project-box {
     width: 100%;
     height: 100%;
-    margin: 25px 0;
+    margin: 40px 0;
     transition: $ease;
     position: relative;
 
@@ -24,6 +24,7 @@
     .content {
       color: $light-grey;
       position: relative;
+      height: 215px;
 
       .utlity-list {
         padding: 5px 0;
@@ -40,16 +41,12 @@
 
     }
 
-    h3:hover {
-      background: $blue;
-      color: $charcoal-grey;
-      cursor: pointer;
+    .button-wrap {
+      display: block;
 
-      .sprite {
-        color: $charcoal-grey;
-        position: absolute;
-        right: 5px;
-        display: inline-block;
+      .button {
+        text-align: center;
+        margin: auto;
       }
     }
   }

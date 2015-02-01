@@ -6,7 +6,7 @@
     <center class="col-sm-12 text-container">
         <p>
           <span>Hello!</span>
-          I am a full stack web developer hailing from the University of Pittsburgh. I started studying computer science because I had to study something. I fell in love and never looked back. I've touched everything from Assembly to Stylus and found that the web is the most exciting place to be. Programming has turned from a job, into my favorite hobby.
+          I am a full stack web developer hailing from the University of Pittsburgh. I started studying computer science because I had to study something. I fell in love and never looked back. I've touched everything from Assembly to Stylus. Programming has turned from a job, into my favorite hobby.
         </p>
     </center>
   </row>
@@ -24,7 +24,7 @@
       <h2>Where I've Been</h2>
     </div>
 
-    <timeline target="experiences"></timeline>
+    <timeline target="model.experiences"></timeline>
   </row>
 
   <!-- Timeline -->
@@ -34,8 +34,8 @@
       <h2>Things I've Done</h2>
 
     <row>
-      <div class="col-sm-6 col-lg-3 column" ng-repeat="project in projects">
-        <project target="project"></project>
+      <div class="col-sm-6 col-lg-3 column" ng-repeat="project in model.projects">
+        <div ng-include="'views/_project.html'"></div>
       </div>
     </row>
   </row>

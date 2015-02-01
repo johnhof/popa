@@ -1,3 +1,7 @@
-<div id="mongoman-content">
-  <div class="markdown documentation" ng-bind-html="documentation"></div>
+<div id="mongoman-documentation-content">
+  <markdown class="markdown documentation" documentation="true" content="documentation"></markdown>
+
+  <!-- No repo in scope -->
+
+  <div ng-show="repoError" ng-include="'views/404.html'"></div>
 </div>

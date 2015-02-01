@@ -57,7 +57,20 @@ popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScrol
     //
 
     setHash : function (id) {
-      $location.hash(id);
+      if (!id) { return; }
+
+      id = id.replace(/^#/, '')
+      var hashRegex = /^(#.+?)#.*$/;
+      var hash = _.clone(location.hash);
+
+      if (hashRegex.test(location.hash)) {
+        hash = hash.replace(hashRegex, '$1#' + id);
+
+      } else {
+        hash += '#' + id;
+      }
+
+      history.pushState(null, null, hash);
     },
 
     scrollTo : function (selector, duration) {
@@ -66,7 +79,7 @@ popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScrol
       if (selector === 'hash') {
         selector = $location.hash();
       } else if (selector === 'top') {
-        selector = '#main-content'
+        selector = null;
       }
 
       var headerOffset = 70;
@@ -78,8 +91,8 @@ popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScrol
       } else {
         duration = durationMap[duration] || duration;
 
-        $dom.find('html, body').animate({
-            scrollTop: $dom.find(selector).offset().top - headerOffset
+        $dom.find('html, body, #main-content').animate({
+            scrollTop: selector ? $dom.find(selector).offset().top - headerOffset : 0
         }, duration);
       }
     },

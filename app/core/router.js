@@ -14,7 +14,6 @@ popa.config(['$routeProvider', function ($routeProvider) {
       controller  : 'AboutCtrl'
     }).
 
-
     // Contact
     when('/contact', {
       templateUrl : 'views/contact.html',
@@ -31,6 +30,12 @@ popa.config(['$routeProvider', function ($routeProvider) {
     when('/mongoman/documentation', {
       templateUrl : 'views/mongo_documentation.html',
       controller  : 'MongomanCtrl'
+    }).
+
+    // Repo
+    when('/repo/:repo', {
+      templateUrl : 'views/repo.html',
+      controller  : 'RepoCtrl'
     }).
 
     // 404

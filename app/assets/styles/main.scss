@@ -54,6 +54,11 @@ img {
   width: 100%;
   min-height:100%;
   position: relative;
+
+  &.fullpage {
+    position: absolute;
+    top: 0;
+  }
 }
 
 #background-filter {
@@ -249,6 +254,7 @@ ul {
     cursor: pointer;
   }
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // Dialog

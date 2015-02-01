@@ -78,9 +78,7 @@ module.exports = function (grunt) {
       js: {
         files: ['<%= server.app %>/**/*.js'],
         tasks: ['build-js'],
-        options: {
-          livereload: '<%= connect.options.livereload %>'
-        }
+        options: {}
       },
       css: {
         files: ['<%= server.app %>/**/*.{scss,sass}'],
@@ -89,9 +87,7 @@ module.exports = function (grunt) {
       views: {
         files: ['<%= server.app %>/**/*.html'],
         tasks: ['build-html'],
-        options: {
-          livereload: '<%= connect.options.livereload %>'
-        }
+        options: {}
       },
       images : {
         files: ['<%= server.app %>/assets/images/**/*'],
@@ -102,9 +98,7 @@ module.exports = function (grunt) {
         tasks: ['build-dev']
       },
       livereload: {
-        options: {
-          livereload: '<%= connect.options.livereload %>'
-        },
+        options: {},
         files: [
           '<%= server.app %>/**/*.html',
           'dist/styles/*.css',
@@ -119,39 +113,6 @@ module.exports = function (grunt) {
     *  Server cleaning, compiling, and initialization tasks
     *
     ****************************************************************************************************/
-
-
-    // The actual grunt server settings
-    connect: {
-      options: {
-        port: appConfig.port,
-        hostname: '0.0.0.0',
-        livereload: 35729,
-      },
-      livereload: {
-        options: {
-          open: true,
-          middleware: function (connect) {
-            console.log(appConfig.dist);
-            return [
-              connect.static('.tmp'),
-              connect().use(
-                '/bower_components',
-                connect.static('./bower_components'),
-                appConfig.dist + '/'
-              ),
-              connect.static(appConfig.dist)
-            ];
-          }
-        }
-      },
-      dist: {
-        options: {
-          open: true,
-          base: '<%= server.dist %>'
-        }
-      }
-    },
 
     // Empties folders to start fresh
     clean: {
@@ -445,12 +406,27 @@ module.exports = function (grunt) {
     *
     ****************************************************************************************************/
 
-    // Run some tasks in parallel to speed up the build process
-    concurrent: {},
+    concurrent: {
+      server : {
+        tasks : [
+          'watch',
+          'shell:serve'
+        ],
+        options: {
+          logConcurrentOutput: true
+        }
+      }
+    },
 
     shell: {
       install_bower: {
         command: 'rm -rf ./bower_components && bower install',
+        options: {
+          async: false
+        }
+      },
+      dropdb: {
+        command: 'mongo --eval "db.getMongo().getDBNames().forEach(function(i){ db.getSiblingDB(i).dropDatabase()})"',
         options: {
           async: false
         }
@@ -487,9 +463,7 @@ module.exports = function (grunt) {
   grunt.registerTask('app', 'Building and starting server...', function () {
     var prod    = grunt.option('prod');
     var taskSet = [
-      // 'connect:livereload',
-      'watch',
-      'shell:serve'
+      'concurrent:server'
     ];
 
     if (prod) {
@@ -531,7 +505,6 @@ module.exports = function (grunt) {
     'copy:dist',
     'useminPrepare',
     'concat:js', //remove?
-    'cdnify',
     'compass',
     'concat:css',
     'autoprefixer',

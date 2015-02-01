@@ -1,0 +1,87 @@
+<div id="repo-content">
+  <div ng-show="repo.name">
+    <header>
+      <h1>{{repo.name}}</h1>
+      <div>{{repo.description}}</div>
+      <a ng-href="repo.href" target="__blank">View on Github</a>
+    </header>
+
+    <row>
+      <div class="col-sm-3">
+
+        <section>
+          <h2>Network</h2>
+          <div class="content">
+            <div class="line-wrap">
+              <span>Watchers</span><span class="value">{{repo.watchers}}</span>
+            </div>
+            <div class="line-wrap">
+              <span>Stargazers</span><span class="value">{{repo.stargazers}}</span>
+            </div>
+            <div class="line-wrap">
+              <span>Forks</span><span class="value">{{repo.forks}}</span>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Files</h2>
+          <div class="content">
+            <a ng-repeat="item in repo.contents" class="line-wrap" href="{{item.href}}" target="__blank">
+              <sprite ng-if="item.type == 'dir'" size="16" name="ion-ios-folder"></sprite>
+              <sprite ng-if="item.type == 'file'" size="16" name="ion-document"></sprite>
+              <span>{{item.name}}</span>
+            </a>
+          </div>
+        </section>
+
+      </div>
+
+      <div class="col-sm-6">
+        <section>
+          <h2>README.md</h2>
+          <div class="content">
+  <markdown class="markdown documentation" documentation="true" content="repo.readme"></markdown>
+          </div>
+        </section>
+
+      </div>
+
+      <div class="col-sm-3">
+
+        <section>
+          <h2>Open Issues</h2>
+          <div class="content">
+            <a ng-repeat="issue in repo.open_issues" href="{{issue.href}}" target="_blank" class="line-wrap">
+             <span class="num">{{issue.number}}</span>
+             <span class="title">{{issue.title}}</span>
+            </a>
+
+            <div ng-hide="repo.open_issues.length">
+              None
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Open Pull Requests</h2>
+          <div class="content">
+            <a ng-repeat="pr in repo.open_pulls" href="{{pr.href}}" target="_blank" class="line-wrap">
+             <span class="num">{{issue.number}}</span>
+             <span class="title">{{issue.title}}</span>
+            </a>
+
+            <div ng-hide="repo.open_pulls.length">
+              None
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </row>
+  </div>
+
+  <!-- No repo in scope -->
+
+  <div ng-show="repoError" ng-include="'views/404.html'"></div>
+</div>

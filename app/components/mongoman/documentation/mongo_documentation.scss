@@ -1,48 +1,5 @@
+@import 'variables';
+
 #mongoman-documentation-content {
-  position: absolute;
-  width: 100%;
   height: 100%;
-
-
-  #key {
-    height:100%;
-    overflow-y: scroll;
-    background: white;
-  }
-
-  #documentation {
-    height:100%;
-    background: white;
-
-    // mobile
-    @media (max-width: 768px) {
-      position: absolute;
-    }
-  }
-
-  ul {
-    li {
-      list-style-type: none;
-    }
-  }
-
-  // desktop
-  @media (min-width: 768px) {
-    padding: 10px 1%;
-
-    #key {
-      float: left;
-      width: 30%;
-    }
-
-    #documentation {
-      float: right;
-      width: 70%;
-    }
-  }
-
-  // desktop
-  @media (min-width: 1000px) {
-    padding: 10px 5%;
-  }
 }
