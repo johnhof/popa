@@ -7,18 +7,21 @@ mon.register('Repo', {
     encoding : mon().mixed().fin(),
     content  : mon().string().fin()
   },
-  languages     : mon().mixed().fin(),
-  name          : mon().string().required().fin(),
-  href          : mon().string().required().fin(),
-  description   : mon().string().fin(),
-  network_count : mon().number().fin(),
-  owner         : {
+  languages   : mon().mixed().fin(),
+  name        : mon().string().required().fin(),
+  href        : mon().string().required().fin(),
+  description : mon().string().fin(),
+  forks       : mon().number().default(0).fin(),
+  watchers    : mon().number().default(0).fin(),
+  stargazers  : mon().number().default(0).fin(),
+  owner       : {
     name : mon().string().required().fin(),
     href : mon().string().required().fin()
   },
   open_pulls    : [{
     title    : mon().string().required().fin(),
     href     : mon().string().required().fin(),
+    number   : mon().number().required().fin(),
     labels   : mon().array().fin(),
     submitter : {
       name   : mon().string().required().fin(),
@@ -28,11 +31,17 @@ mon.register('Repo', {
   open_issues   : [{
     title    : mon().string().required().fin(),
     href     : mon().string().required().fin(),
+    number   : mon().number().required().fin(),
     labels   : mon().array().fin(),
     assignee : {
       name   : mon().string().fin(),
       avatar : mon().string().fin()
     }
+  }],
+  contents : [{
+    name : mon().string().required().fin(),
+    type : mon().string().required().fin(),
+    href  : mon().string().required().fin()
   }]
 }, {
   middleware : {

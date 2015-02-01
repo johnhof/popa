@@ -6,8 +6,10 @@ popa.controller('MongomanCtrl', ['$scope', 'Utils', 'Api', function ($scope, Uti
   Api.github.repo.get({
     user : 'johnhof',
     repo : 'mongoman'
-  }, function (repo) {
+  }, function success (repo) {
     var encodedReadme = _.findValue(repo, 'readme.content', '');
     $scope.documentation = window.atob(encodedReadme);
+  }, function error () {
+      $scope.repoError = true;
   });
 }]);

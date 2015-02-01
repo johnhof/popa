@@ -8,14 +8,14 @@
           I currently reside in the shadyside neighborhood of Pittsburgh, PA. If you're from out of town, feel free to contact me through email, linkedin, or facebook. If you like my projects, follow me on github.
         </p>
 
-        <p ng-repeat="link in links">
+        <p ng-repeat="link in model.links">
           <label>{{link.label}}</label><a href="{{link.href}}" target="{{link.target}}">{{link.display}}</a>
         </p>
 
       </div>
       <div class="map text col-sm-6">
         <map zoom="12"
-          center="[{{lat}}, {{lon}}]"
+          center="[{{model.lat}}, {{model.lon}}]"
           disable-default-u-i="true"
           draggable="false"
           keyboard-shortcuts="false"

@@ -82,6 +82,14 @@ module.exports = function (server, errorHandler) {
       return getGit('repos/' + settings.user + '/' + settings.repo + '/languages', settings.params, callback);
     },
 
+    contents : function (settings, callback) {
+      if (!(settings.repo && settings.user)) {
+        throw new Error('invalid arguments supplied to GitGrabber');
+      }
+
+      return getGit('repos/' + settings.user + '/' + settings.repo + '/contents', settings.params, callback);
+    },
+
 
 
     //
@@ -106,10 +114,12 @@ module.exports = function (server, errorHandler) {
               href : owner.html_url
             };
 
-            repoModel.full_name     = repo.full_name;
-            repoModel.href          = repo.html_url;
-            repoModel.description   = repo.description;
-            repoModel.network_count = repo.network_count;
+            repoModel.full_name   = repo.full_name;
+            repoModel.href        = repo.html_url;
+            repoModel.description = repo.description;
+            repoModel.forks       = repo.forks_count;
+            repoModel.watchers    = repo.watchers_count;
+            repoModel.stargazers  = repo.stargazers_count;
 
             return callback();
           });
@@ -132,6 +142,7 @@ module.exports = function (server, errorHandler) {
               var assignee = issue.assignee || {};
               return {
                 title    : issue.title,
+                number   : issue.number,
                 href     : issue.html_url,
                 labels   : issue.labels,
                 assignee : {
@@ -167,6 +178,20 @@ module.exports = function (server, errorHandler) {
         function languagestats (callback) {
           grabber.languages(req.params, function (languages) {
             repoModel.languages = languages
+            return callback();
+          });
+        },
+        // Pull request content
+        function contents (callback) {
+          grabber.contents(req.params, function (contents) {
+            repoModel.contents = _.map(contents || [], function (content) {
+              return {
+                name : content.name,
+                type : content.type,
+                href : content.html_url
+              }
+            });
+
             return callback();
           });
         }

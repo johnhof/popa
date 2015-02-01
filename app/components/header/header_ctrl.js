@@ -4,6 +4,10 @@ var headerCtrl = angular.module('popa').controller('HeaderCtrl', ['$scope', 'Uti
 
   // handle page load scrolling
   $scope.$on('$routeChangeSuccess', function () {
+
+    // close the open nav bar on route change
+    angular.element('.navbar-toggle:not(.collapsed)').trigger('click');
+
     // scroll to the has if its in the path
     if ($location.hash()) {
       Utils.scrollTo('hash');

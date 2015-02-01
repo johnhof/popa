@@ -505,7 +505,6 @@ module.exports = function (grunt) {
     'copy:dist',
     'useminPrepare',
     'concat:js', //remove?
-    'cdnify',
     'compass',
     'concat:css',
     'autoprefixer',

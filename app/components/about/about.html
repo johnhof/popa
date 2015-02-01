@@ -24,7 +24,7 @@
       <h2>Where I've Been</h2>
     </div>
 
-    <timeline target="experiences"></timeline>
+    <timeline target="model.experiences"></timeline>
   </row>
 
   <!-- Timeline -->
@@ -34,8 +34,8 @@
       <h2>Things I've Done</h2>
 
     <row>
-      <div class="col-sm-6 col-lg-3 column" ng-repeat="project in projects">
-        <project target="project"></project>
+      <div class="col-sm-6 col-lg-3 column" ng-repeat="project in model.projects">
+        <div ng-include="'views/_project.html'"></div>
       </div>
     </row>
   </row>

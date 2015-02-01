@@ -15,6 +15,6 @@ var headerCtrl = angular.module('popa').controller('FooterCtrl', ['$scope', '$lo
     $scope.blacklisted = /^(\/mongoman|\/contact)/.test($location.path());
 
     // light footer paths
-    $scope.light = /^(\/about)$/.test($location.path())
+    $scope.light = /^(\/about|\/repo)/.test($location.path())
   }
 }]);
