@@ -1,4 +1,10 @@
 angular.module('popa').service('ContactModel', ['Links', function (Links) {
+  // var lat = 40.45916;
+  // var lon = -79.916868;
+
+  var lat = 40.444353;
+  var lon = -79.960835;
+
   return {
     links : [
       {
@@ -24,7 +30,13 @@ angular.module('popa').service('ContactModel', ['Links', function (Links) {
       }
     ],
 
-    lat : '40.45916',
-    lon : '-79.916868'
+    lat    : lat,
+    lon    : lon,
+    coords : [lat, lon],
+
+    leaflet : {
+      mapboxToken : 'pk.eyJ1Ijoiam9obmhvZiIsImEiOiJGR0l3RTZBIn0.csQdPBJWs31ShLfSxe_nMQ',
+    }
+
   }
 }]);

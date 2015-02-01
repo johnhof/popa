@@ -1,11 +1,28 @@
 @import 'variables';
 
 #contact-content {
-  position: absolute;
-  width: 80%;
-  margin: 0 10%;
   color: $light-grey;
-  height: 100%;
+
+  $head-height: 200px;
+  header {
+    margin-top: -20px;
+    height: $head-height;
+    background-color: $dark-grey;
+    width: 100%;
+
+    #map {
+      height: 100%;
+
+      .leaflet-popup-tip-container {
+        margin: -12px auto 0;
+        width: 30px;
+      }
+    }
+  }
+
+  .content {
+
+  }
 
   .text {
     padding: 30px 10px;
@@ -35,26 +52,14 @@
     }
   }
 
-  .map {
-    padding: 30px 10px;
-    height: 100%;
-    min-height: 10px;
-  }
-
   // mobile
   @media (max-width: 1000px) {
-    width: 90%;
-    margin: 0 5%;
   }
 
   // mobile
   @media (max-width: 800px) {
-    width: 100%;
-    margin: 0;
-    padding: 0;
 
     .container-fluid {
-      padding: 0;
     }
   }
 
@@ -62,7 +67,6 @@
   // mobile
   @media (max-width: 768px) {
     .vertical-center-inner {
-      vertical-align: top;
     }
   }
 

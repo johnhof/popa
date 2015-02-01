@@ -6,8 +6,7 @@ var popa = angular.module('popa', [
   // module dependencies
   'ngRoute',
   'ngResource',
-  'ngDialog',
-  'ngMap'
+  'ngDialog'
 ]);
 
 

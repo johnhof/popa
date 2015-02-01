@@ -91,17 +91,24 @@ popa.directive('markdown', ['$window', 'Utils', '$sce', '$compile', '$location',
             id = /^\#/.test(id) ? id : '#' + id
 
             var $content = element.find('.markdown-content');
+console.log()
+console.log(id)
             var $target  = $content.find(id);
-
-            if (!($target.length && $content.length)) { return; }
+console.log($target.length);
+console.log($content.length)
+console.log($keyHeader.length)
+            if (!($target.length && ($content.length || !$keyHeader.length))) { return; }
 
             Utils.setHash(id);
 
-            if (window.innerWidth < 768) {
+            if (!$keyHeader.length || window.innerWidth < 768) {
+
+console.log('wooo')
               $('body').animate({
                 scrollTop: $target.offset().top - ($content.offset().top - $content.scrollTop()) - 20
               }, 0);
             } else {
+console.log('nooo')
               $content.animate({
                 scrollTop: $target.offset().top - ($content.offset().top - $content.scrollTop()) - 20
               }, 0);

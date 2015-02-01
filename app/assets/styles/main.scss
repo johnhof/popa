@@ -54,6 +54,7 @@ img {
   width: 100%;
   min-height:100%;
   position: relative;
+  margin-top: -21px;
 
   &.fullpage {
     position: absolute;
@@ -284,6 +285,11 @@ ul {
   font-weight:200;
   font-size: 1rem;
   text-transform: uppercase;
+
+  &:focus {
+    color: $light-grey;
+    border: 1px solid $light-grey;
+  }
 
   &:hover {
     cursor: pointer;

@@ -12,9 +12,9 @@ var headerCtrl = angular.module('popa').controller('FooterCtrl', ['$scope', '$lo
   $scope.$on('$routeChangeSuccess', checkCustonList);
   function checkCustonList () {
     // blacklisted paths
-    $scope.blacklisted = /^(\/mongoman|\/contact)/.test($location.path());
+    $scope.blacklisted = /^(\/mongoman|\/$)/.test($location.path());
 
     // light footer paths
-    $scope.light = /^(\/about|\/repo)/.test($location.path())
+    $scope.light = /^(\/about|\/repo|\/contact)/.test($location.path())
   }
 }]);

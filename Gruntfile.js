@@ -537,7 +537,6 @@ module.exports = function (grunt) {
     'clean:html',
     'copy:html',
     'useminPrepare',
-    'cdnify',
     'htmlmin',
     'clean:tmp',
   ]);
