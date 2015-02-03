@@ -63,6 +63,9 @@ input, textarea {
   outline: 0;
   min-height: 35px;
 
+  background-color: rgba(0, 0, 0, 0.17);
+  border: 0;
+
   &[type="email"], &[type="password"], &[type="text"], &textarea {
     padding-left: 10px;
 
@@ -80,7 +83,7 @@ input, textarea {
 }
 
 textarea {
-  border: 1px solid $light-grey;
+  // border: 1px solid $light-grey;
   padding: 10px;
 }
 

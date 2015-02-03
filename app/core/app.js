@@ -102,6 +102,10 @@ popa.constant('SpriteMap', {
     href : null,
     name : 'ion-android-document'
   },
+  email : {
+    href : 'mailto:john.hofrichter@gmail.com',
+    name : 'ion-android-mail'
+  },
   facebook : {
     href : 'https://www.facebook.com/john.hofrichter',
     name : 'ion-social-facebook'

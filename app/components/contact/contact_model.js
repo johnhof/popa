@@ -1,29 +1,26 @@
-angular.module('popa').service('ContactModel', ['Links', function (Links) {
-  // var lat = 40.45916;
-  // var lon = -79.916868;
-
+angular.module('popa').service('ContactModel', ['Links', 'SpriteMap', function (Links, SpriteMap) {
   var lat = 40.444353;
   var lon = -79.960835;
 
   return {
     links : [
       {
-        label   : 'Email',
+        sprite  : SpriteMap.email.name,
         href    : Links.email.href,
         display : Links.email.path,
         target  : ''
       }, {
-        label   : 'Linkedin',
+        sprite  : SpriteMap.linkedin.name,
         href    : Links.linkedin.href,
         display : Links.linkedin.path,
         target  : '_blank'
       }, {
-        label   : 'Facebook',
+        sprite  : SpriteMap.facebook.name,
         href    : Links.facebook.href,
         display : Links.facebook.path,
         target  : '_blank'
       }, {
-        label   : 'Github',
+        sprite  : SpriteMap.github.name,
         href    : Links.github.href,
         display : Links.github.path,
         target  : '_blank'

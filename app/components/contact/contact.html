@@ -3,29 +3,28 @@
      <div id="map" map></div>
   </header>
   <row class="content">
-    <div class="text col-sm-6">
 
-      <form id="contact-form" name="form" ng-class="{ 'ng-submitted' : form.submitted }" novalidate>
-        <div class="error main-error" ng-show="form.globalError">{{ form.globalError }}</div>
-        <input validate required type="text" ng-model="inputs.name" name="name" placeholder="Name">
-        <input validate required email type="email" ng-model="inputs.email" name="email" placeholder="Email">
-        <input validate type="text" ng-model="inputs.phone" name="subject" placeholder="Phone">
-        <input validate required type="text" ng-model="inputs.subject" name="subject" placeholder="Subject">
-        <textarea validate required type="text" ng-model="inputs.message" name="message" placeholder="Message"></textarea>
-        <input class="button" type="button" ng-click="submit($event)" value="Submit">
-      </form>
-
-    </div>
-    <div class="text col-sm-6">
-      <h1>Contact Me</h1>
-
+    <div class="col-sm-6">
       <p>
         I currently reside in the shadyside neighborhood of Pittsburgh, PA. If you're from out of town, feel free to contact me through email, linkedin, or facebook. If you like my projects, follow me on github.
       </p>
 
-      <p ng-repeat="link in model.links">
-        <label>{{link.label}}</label><a href="{{link.href}}" target="{{link.target}}">{{link.display}}</a>
-      </p>
+      <div class="social">
+        <div ng-repeat="link in model.links">
+          <a href="{{link.href}}" target="{{link.target}}"><sprite name="{{link.sprite}}" size="24"></sprite><span class="text">{{link.display}}</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <form id="contact-form" name="form" ng-class="{ 'ng-submitted' : form.submitted }" novalidate>
+        <div class="error main-error" ng-show="form.globalError">{{ form.globalError }}</div>
+        <input validate required type="text" ng-model="inputs.name" name="name" placeholder="Name">
+        <input validate required email type="email" ng-model="inputs.email" name="email" placeholder="Email">
+        <input validate required type="text" ng-model="inputs.subject" name="subject" placeholder="Subject">
+        <textarea validate required type="text" ng-model="inputs.message" name="message" placeholder="Message"></textarea>
+        <input class="button" type="button" ng-click="submit($event)" value="Submit">
+      </form>
 
     </div>
   </row>

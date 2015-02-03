@@ -3,15 +3,19 @@
 #contact-content {
   color: $light-grey;
 
-  $head-height: 200px;
   header {
+    position: relative;
     margin-top: -20px;
-    height: $head-height;
+    height: 250px;
     background-color: $dark-grey;
     width: 100%;
 
     #map {
       height: 100%;
+
+      .mapbox-logo {
+        display: none;
+      }
 
       .leaflet-popup-tip-container {
         margin: -12px auto 0;
@@ -21,57 +25,78 @@
   }
 
   .content {
+    text-align: center;
+
+    div[class*="col-"] {
+      padding: 0 5%;
+      padding-top: 50px ;
+      text-align: center;
+
+      a {
+        color: $light-grey;
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin: 5px 0;
+      }
+
+      .social {
+        margin-top: 40px;
+        display: inline-block;
+
+        a {
+          font-size: 1.2rem;
+          padding: 5px 0;
+          text-align: left;
+          display: flex;
+          transition: $ease;
+
+          &:hover {
+            color: $blue;
+
+            .sprite {
+              color: $blue;
+            }
+          }
+
+          .sprite {
+            flex: 1;
+          }
+
+          .text {
+            flex: 5;
+          }
+        }
+      }
+    }
+
     #contact-form {
       > * {
         margin: 10px 0;
       }
-    }
-  }
 
-  .text {
-    padding: 30px 10px;
-
-    p {
-      font-size: 1.2rem;
-      margin: 5px 0;
-
-      &:first-of-type {
-        margin: 20px 0 25px;
+      .button {
+        width: 50%;
       }
 
-      label {
-        &:after {
-          content: ":";
-          margin-right: 10px;
+      input:required, textarea:required {
+        &::-webkit-input-placeholder:after  {
+          content: "";
         }
       }
 
-      a {
-        color: $blue;
+      textarea {
+        height: 125px;
       }
-
-      label, a {
-        font-weight: 400;
-      }
-    }
-  }
-
-  // mobile
-  @media (max-width: 1000px) {
-  }
-
-  // mobile
-  @media (max-width: 800px) {
-
-    .container-fluid {
     }
   }
 
 
   // mobile
   @media (max-width: 768px) {
-    .vertical-center-inner {
+    .container-fluid {
+      padding: 0 0 30px;
     }
   }
-
 }

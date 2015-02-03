@@ -6,11 +6,18 @@ var contactCtrl = popa.controller('ContactCtrl', ['$scope', 'ContactModel', func
 
   // map setup
   L.mapbox.accessToken = ContactModel.leaflet.mapboxToken;
-    var map = L.mapbox.map('map', 'johnhof.l3mdca18', {
-    center  : ContactModel.coords,
-    zoom    : 12,
-    maxZoom : 15,
-    minZoom : 6,
-    maxBounds : L.latLngBounds(southWest, northEast)
+  var map = L.mapbox.map('map', 'johnhof.l3mdca18', {
+    center             : ContactModel.coords,
+    zoom               : 12,
+    maxZoom            : 15,
+    minZoom            : 6,
+    maxBounds          : L.latLngBounds(southWest, northEast),
+    attribution        : '',
+    infoControl        : false,
+    attributionControl : false,
+    zoomControl        :false
   });
+
+//   L.control.attribution().addTo(map);
+// credits.addAttribution('Credits: Penny Dog Mapping Co.');
 }]);
