@@ -12,5 +12,15 @@
     "/views"   : "/dist/views",
     "/favicon.ico"  : "/dist/favicon.ico",
     "/bower_components" : "/bower_components"
+  },
+  "email" : {
+    "target" : "john.hofrichter@gmail.com",
+    "transporter" : {
+      "service" : "gmail",
+      "auth" : {
+        "user" : "gmail.user@gmail.com",
+        "pass" : "userpass"
+      }
+    }
   }
 }

@@ -12,4 +12,7 @@ exports.register = function  (server) {
 
   // update repo store
   server.put('/api/github/:user/:repo', api.github.user.repo.controller.update);
+
+  // sent email
+  server.put('/api/email', api.email.controller.create);
 }

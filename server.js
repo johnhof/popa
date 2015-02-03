@@ -8,6 +8,8 @@ var colors       = require('colors');
 var mon          = require('mongoman');
 var server       = express();
 
+server.config = config;
+
 console.log('\n\n++++  starting server  +++'.yellow + '\n');
 
 // connect to mongo
@@ -34,7 +36,19 @@ function setupServer () {
   // prime routes to set headers and log out route details
   server.use(function init (req, res, next) {
     console.log('  ' + (req.method).cyan.dim + ' ' + (req.url).grey.dim)
+
     res.set({ 'Content-Type': 'application/json' });
+
+    res.success = function () {
+      res.status(200).json({
+        success : true;
+      })
+    }
+
+    res.sendJson = function (json) {
+      res.status(200).json(json || {})
+    }
+
     return next();
   });
 

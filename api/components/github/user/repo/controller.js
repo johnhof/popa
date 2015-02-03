@@ -29,7 +29,7 @@ module.exports = function (server) {
             if (error) {
               return next(error);
             } else {
-              res.status(200).json(result);
+              res.sendJson(result);
             }
           });
         }
@@ -45,7 +45,7 @@ module.exports = function (server) {
         if (error) {
           return next(error);
         } else {
-          res.status(200).json(result);
+          res.sendJson(result);
         }
       });
     }
