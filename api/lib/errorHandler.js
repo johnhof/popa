@@ -2,14 +2,16 @@
 // middleware error handler
 //
 module.exports = function (error, req, res, next) {
+  console.log('gah')
   if (typeof error === 'string') {
     error = { error : error }
   }
 
   if (error.name === 'ValidationError') {
+    console.log(error)
     error = {
-      error   : 'Could not save content to database, validation failed',
-      details : error.errors
+      error   : 'validation Failed',
+      details : error.details || error.errors
     };
   }
 

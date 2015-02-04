@@ -8,7 +8,13 @@ var colors       = require('colors');
 var mon          = require('mongoman');
 var server       = express();
 
+
+// initial server setup
 server.config = config;
+server.use(json());
+server.use(bodyParser.urlencoded({ extended: true }));
+server.use(bodyParser.json());
+
 
 console.log('\n\n++++  starting server  +++'.yellow + '\n');
 
@@ -41,7 +47,7 @@ function setupServer () {
 
     res.success = function () {
       res.status(200).json({
-        success : true;
+        success : true
       })
     }
 

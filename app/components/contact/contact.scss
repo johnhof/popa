@@ -30,7 +30,7 @@
     div[class*="col-"] {
       padding: 0 5%;
       padding-top: 50px ;
-      text-align: center;
+      text-align: left;
 
       a {
         color: $light-grey;
@@ -42,6 +42,7 @@
       }
 
       .social {
+        margin-left: 40px;
         margin-top: 40px;
         display: inline-block;
 
@@ -97,6 +98,14 @@
   @media (max-width: 768px) {
     .container-fluid {
       padding: 0 0 30px;
+    }
+  }
+
+  // mobile
+  @media (max-width: 500px) {
+    .content div[class*="col-"] .social {
+      margin-left: 10px;
+      text-align: center;
     }
   }
 }

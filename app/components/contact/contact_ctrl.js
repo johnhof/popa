@@ -1,4 +1,4 @@
-var contactCtrl = popa.controller('ContactCtrl', ['$scope', 'ContactModel', function ($scope, ContactModel) {
+var contactCtrl = popa.controller('ContactCtrl', ['$scope', 'ContactModel', 'FormHelper', function ($scope, ContactModel, FormHelper) {
   $scope.model = ContactModel;
 
   var southWest = L.latLng(38.68427,-80.69252);
@@ -18,6 +18,22 @@ var contactCtrl = popa.controller('ContactCtrl', ['$scope', 'ContactModel', func
     zoomControl        :false
   });
 
-//   L.control.attribution().addTo(map);
-// credits.addAttribution('Credits: Penny Dog Mapping Co.');
+  //
+  // contact submit handling
+  //
+
+  $scope.inputs = {
+    name    : null,
+    email   : null,
+    subject : null,
+    message : null
+  };
+
+
+  $scope.submit = function () {
+    var form = FormHelper($scope.form,  $scope.inputs);
+
+    form.validate();
+  }
+
 }]);

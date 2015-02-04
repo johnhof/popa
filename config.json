@@ -6,21 +6,14 @@
     "dist"  : "dist"
   },
   "staticMap" : {
-    "/images"  : "/dist/images",
-    "/scripts" : "/dist/scripts",
-    "/styles"  : "/dist/styles",
-    "/views"   : "/dist/views",
-    "/favicon.ico"  : "/dist/favicon.ico",
+    "/images"           : "/dist/images",
+    "/scripts"          : "/dist/scripts",
+    "/styles"           : "/dist/styles",
+    "/views"            : "/dist/views",
+    "/favicon.ico"      : "/dist/favicon.ico",
     "/bower_components" : "/bower_components"
   },
   "email" : {
-    "target" : "john.hofrichter@gmail.com",
-    "transporter" : {
-      "service" : "gmail",
-      "auth" : {
-        "user" : "gmail.user@gmail.com",
-        "pass" : "userpass"
-      }
-    }
+    "target" : "john.hofrichter@gmail.com"
   }
 }
