@@ -15,5 +15,9 @@
   },
   "email" : {
     "target" : "john.hofrichter@gmail.com"
+  },
+  "db" : {
+    "dev"  : "mongodb://localhost/database",
+    "prod" : "mongodb://nodejitsu:1c82e53bbbbeb810cc3bc1ffdb24f183@troup.mongohq.com:10046/nodejitsudb9598349293"
   }
 }

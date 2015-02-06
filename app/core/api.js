@@ -16,32 +16,40 @@ popa.service('Api', ['$http',  '$resource', function ($http, $resource) {
   //
 
   //
-  // Session
+  // Github
   //
   api.github = {
 
     user : $resource('/api/github/:user', {
       user : '@user'
     }, {
-      update  : { method : 'PUT' },
-      read    : { method : 'GET' }
+      update : { method : 'PUT' },
+      read   : { method : 'GET' }
     }),
 
     repo : $resource('/api/github/:user/:repo', {
       user : '@user' ,
       repo : '@repo'
     },  {
-      update  : { method : 'PUT' },
-      read    : { method : 'GET' }
+      update : { method : 'PUT' },
+      read   : { method : 'GET' }
     }),
 
     documentation : $resource('/api/github/:user/:repo/documentation', {
       user : '@user' ,
       repo : '@repo'
     },  {
-      read    : { method : 'GET' }
+      read : { method : 'GET' }
     })
-  }
+  };
+
+  //
+  // contact
+  //
+
+  api.contact = $resource('/api/email', null, {
+    submit : { method : 'POST' }
+  });
 
   return api;
 }])

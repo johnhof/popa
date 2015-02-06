@@ -72,14 +72,38 @@
       }
     }
 
-    #contact-form {
+    form {
       > * {
         margin: 10px 0;
       }
 
-      .button {
-        width: 50%;
+      input, textarea {
+        border-left: 1px solid transparent;
       }
+
+      .button {
+        margin: 10px 0;
+        width: 50%;
+        border-left: 1px solid white;
+      }
+
+      &.ng-submitted {
+        .invalid {
+          border: 0;
+          border-left: 1px solid $red;
+        }
+
+        .error {
+          position: relative;
+          font-size: 0.8rem;
+          top: -11px;
+          padding-left: 10px;
+          font-weight: 100;
+          height: 0;
+          margin: 0;
+        }
+      }
+
 
       input:required, textarea:required {
         &::-webkit-input-placeholder:after  {
@@ -90,22 +114,38 @@
       textarea {
         height: 125px;
       }
+
+      .success-message {
+        text-align: center;
+        padding: 10px;
+        color: $blue;
+        font-weight: 400;
+      }
     }
   }
 
-
   // mobile
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     .container-fluid {
       padding: 0 0 30px;
+    }
+
+    .content {
+      form {
+        .button, .success-message  {
+          width: 100%;
+        }
+      }
     }
   }
 
   // mobile
   @media (max-width: 500px) {
-    .content div[class*="col-"] .social {
-      margin-left: 10px;
-      text-align: center;
+    .content {
+      div[class*="col-"] .social {
+        margin-left: 10px;
+        text-align: center;
+      }
     }
   }
 }

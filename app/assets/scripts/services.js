@@ -171,16 +171,20 @@ popa.service('Utils', ['Cookie', '$route', '$window', '$location', '$anchorScrol
 
 
 // A collection of general purpose utilities
-popa.service('FormHelper', [function () {
-  return function (formObj, dataModel) {
-    var $form = angular.element('form[name=' + formObj.$name + ']');
+popa.service('FormHelper', ['Spinner', function (Spinner) {
+  return function (formObj) {
+    var $form = angular.element('form[name="' + formObj.$name + '"]');
     var form  = {
       // validate and perform passed in action
-      apiAction : function (inputs, resourceReq, onSuccess) {
+      apiAction : function (inputs, resourceReq, onSuccess, onError) {
         formObj.submitted = true;
 
         if (form.validate()) {
-          resourceReq(inputs, onSuccess, form.resErrHandler);
+          Spinner.open();
+          resourceReq(inputs, function () {
+            Spinner.close();
+            onSuccess(arguments)
+          }, onError || form.resErrHandler);
         }
       },
 
@@ -215,6 +219,8 @@ popa.service('FormHelper', [function () {
           details : []
         });
 
+        Spinner.close();
+
         // if its a validation error, set the error text for each problem input
         if (errorObj.error === 'ValidationError') {
           _.each(errorObj.details, function (valError) {
@@ -231,5 +237,29 @@ popa.service('FormHelper', [function () {
     }
 
     return form;
+  }
+}]);
+
+
+popa.service('Spinner', ['ngDialog', function (ngDialog) {
+  var instance    = null;
+  var defaultSpin = {
+    template        : '<div class="spinner"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>',
+    plain           : true,
+    showClose       : false,
+    closeByEscape   : false,
+    closeByDocument : false,
+    className       : 'ngdialog-theme-default spinner-container'
+  };
+
+  return {
+    open : function () {
+      instance = ngDialog.open(defaultSpin);
+    },
+    close : function () {
+      if (instance) {
+        instance.close();
+      }
+    }
   }
 }]);

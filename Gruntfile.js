@@ -407,7 +407,7 @@ module.exports = function (grunt) {
     ****************************************************************************************************/
 
     concurrent: {
-      server : {
+      serverDev : {
         tasks : [
           'watch',
           'shell:serve'
@@ -415,8 +415,23 @@ module.exports = function (grunt) {
         options: {
           logConcurrentOutput: true
         }
+      },
+      serverProd : {
+        tasks : [
+          'watch',
+          'shell:serveProd'
+        ],
+        options: {
+          logConcurrentOutput: true
+        }
       }
     },
+
+    /***************************************************************************************************
+    *
+    *  shell tasks
+    *
+    ****************************************************************************************************/
 
     shell: {
       install_bower: {
@@ -437,6 +452,12 @@ module.exports = function (grunt) {
           async: false
         }
       },
+      serveProd: {
+        command: 'NODE_ENV=production nodemon server.js -q --ignore "test/" --ignore "app/" --ignore "dist/"',
+        options: {
+          async: false
+        }
+      },
       deploy: {
         command: 'jitsu deploy',
         options: {
@@ -448,11 +469,15 @@ module.exports = function (grunt) {
 
   /***************************************************************************************************
   *
-  *  Task registration
+  *  Primary Tasks
   *
   ****************************************************************************************************/
 
-  grunt.loadNpmTasks('grunt-spritesmith');
+  // run the app
+  grunt.registerTask('serve', 'Starting app server...', function () {
+    grunt.task.run(['shell:serve']);
+  });
+
 
   // run the app
   grunt.registerTask('serve', 'Starting app server...', function () {
@@ -461,24 +486,37 @@ module.exports = function (grunt) {
 
   // run the app
   grunt.registerTask('app', 'Building and starting server...', function () {
-    var prod    = grunt.option('prod');
-    var taskSet = [
-      'concurrent:server'
-    ];
-
+    var prod = grunt.option('prod');
     if (prod) {
-      taskSet.unshift('build-prod');
+      grunt.task.run([
+        'build-prod',
+        'concurrent:serverProd'
+      ]);
 
     } else {
-      taskSet.unshift('build-dev');
+      grunt.task.run([
+        'build-dev',
+        'concurrent:serverDev'
+      ]);
     }
-
-    grunt.task.run(taskSet);
   });
 
-  //
-  // composite tasks used as utilities
-  //
+  // deploy on nodejitsu
+  grunt.registerTask('deploy', 'Starting app server...', function () {
+    grunt.task.run([
+      'build-prod',
+      'shell:deploy'
+    ]);
+  });
+
+
+
+  /***************************************************************************************************
+  *
+  *  Secondary tasks Tasks
+  *
+  ****************************************************************************************************/
+
 
   grunt.registerTask('build-prod', [
     'clean:dist',
@@ -517,8 +555,8 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build-js', [
     'clean:js',
-    'concat:js',
     'ngmin',
+    'concat:js',
     'clean:tmp',
   ]);
 

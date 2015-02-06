@@ -60,6 +60,7 @@
   .markdown-key {
     padding: 10px;
     width: 280px;
+    border-right: 1px solid $light-grey;
 
     a {
       color: $charcoal-grey;
@@ -220,8 +221,11 @@
 
 @media (max-width: 768px) {
   .fullpage {
+    .expand-key {
+      top: 0px;
+    }
     .markdown-key {
-      top: 25px;
+      top: 10px;
     }
   }
 }

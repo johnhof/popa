@@ -32,8 +32,6 @@
 
   section {
     margin: 30px 0;
-    max-height: 1000px;
-    overflow-y: hidden;
 
 
     h2 {
@@ -52,6 +50,7 @@
       color: $dark-grey;
       background-color: white;
       padding: 15px;
+      overflow-y: hidden;
 
       .line-wrap {
         position: relative;
@@ -107,6 +106,28 @@
           margin: 20px 0 10px
         }
       }
+    }
+  }
+
+  .cutoff-message {
+    background-color: white;
+    border: 1px solid $light-grey;
+    text-align: center;
+    width: 100%;
+    height: initial;
+    display: block;
+    font-size: 1.2rem;
+    color: $dark-grey;
+    padding: 10px;
+    transition: $ease;
+
+    .sprite {
+      margin-right: 10px;
+      transition: none;
+    }
+
+    &:hover {
+      color: $blue;
     }
   }
 

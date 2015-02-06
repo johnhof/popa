@@ -1,4 +1,4 @@
-var config       = require('config.json')('./config.json');
+var config       = require('config.json')();
 var express      = require('express');
 var routes       = require(process.cwd() + '/api/routes');
 var errorHandler = require(process.cwd() + '/api/lib/errorHandler');
@@ -9,16 +9,26 @@ var mon          = require('mongoman');
 var server       = express();
 
 
-// initial server setup
+//////////////////////////////////////////////////////////////////////////////////
+//
+// Initial setup
+//
+//////////////////////////////////////////////////////////////////////////////////
+
 server.config = config;
 server.use(json());
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 
+console.log('\n\n++++  starting server  ++++'.yellow + '\n');
 
-console.log('\n\n++++  starting server  +++'.yellow + '\n');
-
+//////////////////////////////////////////////////////////////////////////////////
+//
 // connect to mongo
+//
+//////////////////////////////////////////////////////////////////////////////////
+
+
 mon.goose.connection.on("open", function (ref) {
   console.log("\n  Connected to mongo server!\n".blue);
   setupServer();
@@ -29,9 +39,16 @@ mon.goose.connection.on("error", function (err) {
   process.kill();
 });
 
-mon.connect();
+var dbInstance = process.env.NODE_ENV === 'production' ? config.db.prod : config.db.dev;
+mon.connect(dbInstance);
 
+
+//////////////////////////////////////////////////////////////////////////////////
+//
 // Set up express server
+//
+//////////////////////////////////////////////////////////////////////////////////
+
 
 function setupServer () {
   // static deliverly
