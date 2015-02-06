@@ -76,7 +76,7 @@ popa.directive("validate", [function () {
       },
       {
         error   : 'email',
-        message : 'must be a valid'
+        message : 'must be valid'
       },
       {
         error   : 'password',
