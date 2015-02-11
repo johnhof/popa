@@ -35,7 +35,7 @@ angular.module('popa').service('AboutModel', ['Utils', function (Utils) {
         title   : 'University of Pittsburgh',
         subtext : ['Fall 2009 - Winter 2013', 'BS Computer Science']
       }, content : {
-        description : 'The early years were primarily java for basic instruction and data structres/algorithms. My focused classes were in Operating Systems (wrote a file system), Networks (implemented TCP), Algorithm design (primarily proofs and dynamic algorithms), Cryptography & Security (designed and developed a secure server), UI design (wrote several Android apps), and Web programming (wrote a handful of web apps).',
+        description : 'The early years were primarily Java for basic instruction and data structres/algorithms. My focused classes were in Operating Systems (wrote a file system), Networks (implemented TCP), Algorithm design (primarily proofs and dynamic algorithms), Cryptography & Security (designed and developed a secure server), UI design (wrote several Android apps), and Web programming (wrote a handful of web apps).',
         synopsis    : ['Java ', 'C', 'C++', 'PHP', 'Javascript', 'Assembly']
       },
       timeframe : {
@@ -62,7 +62,7 @@ angular.module('popa').service('AboutModel', ['Utils', function (Utils) {
         title   : 'Department of Defense',
         subtext : ['Summer 2013', 'Intern']
       }, content : {
-        description : 'Talk to me in person for more information',
+        description : 'Talk to me in person for more information.',
         synopsis    : ['Javascript', 'Batch', ' Python']
       },
       timeframe : {
