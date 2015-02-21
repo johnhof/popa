@@ -54,7 +54,7 @@ angular.module('popa').service('AboutModel', ['Utils', function (Utils) {
       },
       timeframe : {
         start : 8,
-        end   : 14
+        end   : 12
       }
     }, {
       heading: {
