@@ -1,6 +1,7 @@
 
-var headerCtrl = angular.module('popa').controller('HeaderCtrl', ['$scope', 'Utils', '$location', '$routeParams', function ($scope, Utils, $location, $routeParams) {
+var headerCtrl = angular.module('popa').controller('HeaderCtrl', ['$scope', 'Utils', '$location', '$routeParams', 'Links', function ($scope, Utils, $location, $routeParams, Links) {
   $scope.newTab = Utils.newTab;
+  $scope.links  = Links;
 
   // handle page load scrolling
   $scope.$on('$routeChangeSuccess', function () {

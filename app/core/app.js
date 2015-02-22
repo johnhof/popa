@@ -78,6 +78,10 @@ popa.constant('Links', {
   github : {
     href : 'https://github.com/johnhof',
     path : 'johnhof'
+  },
+  resume : {
+    href : '/documents/Resume.pdf',
+    path : 'Resume'
   }
 });
 
@@ -137,6 +141,10 @@ popa.constant('SpriteMap', {
   node : {
     href : 'http://nodejs.org/',
     name : 'ion-social-nodejs'
+  },
+  resume : {
+    href : '/documents/Resume.pdf',
+    name : 'ion-android-document'
   },
   sass : {
     href : 'http://sass-lang.com/',

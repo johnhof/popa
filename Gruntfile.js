@@ -46,12 +46,12 @@ module.exports = function (grunt) {
         src     : '<%= server.app %>/components/**/*.html',
         dest    : '<%= server.dist %>/views'
       },
-      partials : {
+      documents : {
         expand  : true,
         dot     : true,
         flatten : true,
-        src     :'<%= server.app %>/assets/partials/**/*.html',
-        dest    : '<%= server.dist %>/partials'
+        src     :'<%= server.app %>/assets/documents/**/*',
+        dest    : '<%= server.dist %>/documents'
       }
     }
   }
@@ -243,8 +243,8 @@ module.exports = function (grunt) {
          appConfig.copy.sass,
          appConfig.copy.index,
          appConfig.copy.views,
-         appConfig.copy.partials,
-         appConfig.copy.favicon
+         appConfig.copy.favicon,
+         appConfig.copy.documents,
         ]
       },
       images: {
@@ -260,7 +260,6 @@ module.exports = function (grunt) {
         files: [
          appConfig.copy.index,
          appConfig.copy.views,
-         appConfig.copy.partials
         ]
       },
     },

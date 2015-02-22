@@ -18,7 +18,7 @@ var aboutCtrl = angular.module('popa').controller('AboutCtrl', ['$scope', 'About
 //     synopsis    : ['string array']
 //   }
 // }]
-aboutCtrl.directive('timeline', ['$window', 'Utils', 'Sizes', function ($window, Utils, Sizes) {
+aboutCtrl.directive('timeline', ['$window', 'Utils', 'Sizes', 'Links', function ($window, Utils, Sizes, Links) {
   return {
     restrict    : 'E',
     scope       : {
