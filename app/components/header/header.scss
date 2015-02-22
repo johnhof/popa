@@ -9,8 +9,11 @@
   color: $grey;
   border-bottom: 1px solid $light-grey;
 
-
   &.navbar-default {
+
+    .navbar-nav > li > a:focus {
+      color: $grey;
+    }
 
     .dropdown-toggle {
       transition: $ease;
