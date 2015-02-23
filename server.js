@@ -5,6 +5,7 @@ var errorHandler = require(process.cwd() + '/api/lib/errorHandler');
 var json         = require('express-json');
 var bodyParser   = require('body-parser');
 var colors       = require('colors');
+var fs           = require('fs');
 var mon          = require('mongoman');
 var server       = express();
 
@@ -20,7 +21,7 @@ server.use(json());
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 
-console.log('\n\n++++  starting server  ++++'.yellow + '\n');
+console.log('\n' + fs.readFileSync('./popa.txt').toString().blue + '\n');
 
 //////////////////////////////////////////////////////////////////////////////////
 //
