@@ -15,7 +15,7 @@
       height: calc(100vh - 65px);
 
       &.hero {
-        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), img("hero-me.jpg") no-repeat center center fixed;
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), img("hero-me.jpg") no-repeat center center;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
