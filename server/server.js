@@ -19,4 +19,4 @@ server.use(function *() {
   }
 });
 
-server.listen(9000);
+server.listen(process.env.PORT || 9000);
