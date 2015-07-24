@@ -1,14 +1,15 @@
 'use strict';
 
-var babel      = require('node-babel')(); // does this even work?
-// var harmonize  = require("harmonize")();
+var babel      = require('node-babel')();
 var gulp       = require('gulp');
 var sass       = require('gulp-sass');
 var bower      = require('gulp-bower');
 var minifyHTML = require('gulp-minify-html');
 var nodemon    = require('gulp-nodemon');
 var copy       = require('gulp-copy');
+var del        = require('del')
 var config     = require('./config');
+var wiredep    = require('wiredep').stream;
 
 
 //
@@ -32,19 +33,34 @@ gulp.task('nodemon', function () {
 
 
 //
+// Clean
+//
+
+
+gulp.task('clean', function () { del('./public'); });
+
+
+//
 // Copy
 //
 
 
-gulp.task('copy:images', function() {
-  gulp.src(['app/assets/images/**/*']).pipe(gulp.dest('./build'));
-});
+gulp.task('copy', ['copy:images', 'copy:fonts']);
 
+gulp.task('copy:images', function() {
+  del('./public/images/**/*');
+  gulp.src(['app/assets/images/**/*']).pipe(gulp.dest('./public/images'));
+});
 
 gulp.task('copy:fonts', function() {
-  gulp.src(['app/assets/images/**/*']).pipe(gulp.dest('./build'));
+  del('./public/fonts/**/*');
+  gulp.src(['app/assets/fonts/**/*']).pipe(gulp.dest('./public/fonts'));
 });
 
+gulp.task('copy:favicons', function() {
+  del('./public/*.ico');
+  gulp.src(['app/assets/images/favicons/*']).pipe(gulp.dest('./public/'));
+});
 
 
 //
@@ -55,9 +71,10 @@ gulp.task('copy:fonts', function() {
 gulp.task('minify-html', function() {
   gulp.src('./app/**/*.html')
     .pipe(minifyHTML())
+    .pipe(wiredep({
+    })
     .pipe(gulp.dest('./public/'));
 });
-
 
 //
 // SASS
@@ -72,7 +89,7 @@ gulp.task('sass', function () {
 
 
 //
-// SASS
+// Watch
 //
 
 
@@ -88,7 +105,9 @@ gulp.task('watch', function () {
 //
 
 
-gulp.task('default', ['sass', 'minify-html', 'watch', 'nodemon']);
+gulp.task('default', ['sass', 'minify-html', 'copy', 'watch', 'nodemon']);
+
+gulp.task('build', ['sass', 'minify-html', 'copy']);
 
 gulp.task('serve', function () {
   exec('node --harmony server', function (err, stdout, stderr) {
