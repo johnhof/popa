@@ -13,6 +13,7 @@
     "colors": "^1.1.2",
     "gulp": "^3.9.0",
     "gulp-bower": "0.0.10",
+    "gulp-copy": "0.0.2",
     "gulp-minify-html": "^1.0.4",
     "gulp-sass": "^2.0.4",
     "harmonize": "^1.4.4",
