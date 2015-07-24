@@ -76,7 +76,7 @@ gulp.task('copy:favicons', function() {
 
 
 gulp.task('bower', function() {
-  bower().pipe(gulp.dest('public/components'))
+  bower('public/scripts').pipe(gulp.dest('public/scripts'))
 });
 
 
@@ -126,7 +126,7 @@ gulp.task('default', ['sass', 'bower', 'minify-html', 'copy', 'watch', 'nodemon'
 gulp.task('build', ['sass', 'bower', 'minify-html', 'copy']);
 
 gulp.task('serve', function () {
-  exec('node --harmony server', function (err, stdout, stderr) {
+  exec('babel-node --harmony --use-strict server', function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
     cb(err);
