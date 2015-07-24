@@ -18,5 +18,5 @@ server.use(serve(config.cwd + '/public'));
 
 server.listen(config.port);
 
-console.log('\n' + fs.readFileSync('./popa.txt', 'utf8').blue);
+console.log('\n' + fs.readFileSync(__dirname + '/popa.txt', 'utf8').blue);
 console.log('\n  Listening on port '.green + config.port + '\n');

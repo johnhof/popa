@@ -7,9 +7,16 @@ var bower      = require('gulp-bower');
 var minifyHTML = require('gulp-minify-html');
 var nodemon    = require('gulp-nodemon');
 var copy       = require('gulp-copy');
-var del        = require('del')
+var _del       = require('del')
 var config     = require('./config');
+var bower      = require('gulp-bower');
 var wiredep    = require('wiredep').stream;
+
+var del = function () {
+  try {
+    return del(arguments);
+  } catch (e) {}
+}
 
 
 //
@@ -45,15 +52,15 @@ gulp.task('clean', function () { del('./public'); });
 //
 
 
-gulp.task('copy', ['copy:images', 'copy:fonts']);
+gulp.task('copy', ['copy:images', 'copy:fonts', 'copy:favicons']);
 
 gulp.task('copy:images', function() {
-  del('./public/images/**/*');
+  del('./public/images');
   gulp.src(['app/assets/images/**/*']).pipe(gulp.dest('./public/images'));
 });
 
 gulp.task('copy:fonts', function() {
-  del('./public/fonts/**/*');
+  del('./public/fonts');
   gulp.src(['app/assets/fonts/**/*']).pipe(gulp.dest('./public/fonts'));
 });
 
@@ -64,15 +71,24 @@ gulp.task('copy:favicons', function() {
 
 
 //
+// Bower
+//
+
+
+gulp.task('bower', function() {
+  bower().pipe(gulp.dest('public/components'))
+});
+
+
+//
 // HTML
 //
 
 
 gulp.task('minify-html', function() {
   gulp.src('./app/**/*.html')
+    .pipe(wiredep())
     .pipe(minifyHTML())
-    .pipe(wiredep({
-    })
     .pipe(gulp.dest('./public/'));
 });
 
@@ -105,9 +121,9 @@ gulp.task('watch', function () {
 //
 
 
-gulp.task('default', ['sass', 'minify-html', 'copy', 'watch', 'nodemon']);
+gulp.task('default', ['sass', 'bower', 'minify-html', 'copy', 'watch', 'nodemon']);
 
-gulp.task('build', ['sass', 'minify-html', 'copy']);
+gulp.task('build', ['sass', 'bower', 'minify-html', 'copy']);
 
 gulp.task('serve', function () {
   exec('node --harmony server', function (err, stdout, stderr) {
