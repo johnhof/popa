@@ -76,7 +76,7 @@ gulp.task('copy:favicons', function() {
 
 
 gulp.task('bower', function() {
-  bower('public/scripts').pipe(gulp.dest('public/scripts'))
+  bower('public/lib').pipe(gulp.dest('public/lib'))
 });
 
 
@@ -87,7 +87,7 @@ gulp.task('bower', function() {
 
 gulp.task('minify-html', function() {
   gulp.src('./app/**/*.html')
-    .pipe(wiredep())
+    .pipe(wiredep({ directory : 'public/lib'}))
     .pipe(minifyHTML())
     .pipe(gulp.dest('./public/'));
 });

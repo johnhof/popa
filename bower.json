@@ -2,7 +2,8 @@
   "name": "popa",
   "version": "0.0.1",
   "dependencies": {
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "materialize": "~0.97.0"
   },
   "private": true
 }
