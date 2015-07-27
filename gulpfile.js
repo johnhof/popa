@@ -87,7 +87,17 @@ gulp.task('bower', function() {
 
 gulp.task('minify-html', function() {
   gulp.src('./app/**/*.html')
-    .pipe(wiredep({ directory : 'public/lib'}))
+    .pipe(wiredep({
+      directory : 'public/lib',
+      fileTypes : {
+        html : {
+          replace : {
+            js  : function(filePath) { console.log(filePath.replace('../public', '')); return '<script src="' + filePath.replace('../public', '') + '"></script>'; },
+            css : function(filePath) { return '<link rel="stylesheet" href="' + filePath.replace('../public', '') + '"/>'; }
+          }
+        }
+      }
+    }))
     .pipe(minifyHTML())
     .pipe(gulp.dest('./public/'));
 });
