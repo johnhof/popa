@@ -11,6 +11,7 @@ var _del       = require('del')
 var config     = require('./config');
 var bower      = require('gulp-bower');
 var wiredep    = require('wiredep').stream;
+var exec       = require('gulp-exec')
 
 var del = function () {
   try {
@@ -136,9 +137,11 @@ gulp.task('default', ['sass', 'bower', 'minify-html', 'copy', 'watch', 'nodemon'
 gulp.task('build', ['sass', 'bower', 'minify-html', 'copy']);
 
 gulp.task('serve', function () {
-  exec('babel-node --harmony --use-strict server', function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-    cb(err);
-  });
+  gulp.src('./**/**')
+    .pipe(exec('npm start', {}))
+    .pipe(exec.reporter({
+      err    : true,
+      stderr : true,
+      stdout : true
+    }));
 })

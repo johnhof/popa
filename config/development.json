@@ -1,4 +1,19 @@
 {
   "port": 9000,
-  "environment": "development"
+  "environment": "development",
+  "api_prefix": "v1",
+  "github": {
+    "username": "johnhof",
+    "auth": {
+      "type": "oauth",
+      "token": "nice try, buddy"
+    },
+    "settings": {
+      "version": "3.0.0",
+      "timeout": 5000,
+      "headers": {
+          "user-agent": "John-Hofrichter-Personal-One-Page-Application"
+      }
+    }
+  }
 }

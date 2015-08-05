@@ -15,3 +15,6 @@ dist
 bower_components
 .DS_*
 /public
+*.local
+local.*
+*.local.*
