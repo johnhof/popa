@@ -3,14 +3,12 @@
 import koa from 'koa'
 import bodyParser from 'koa-bodyparser'
 import logger from 'koa-logger'
-import route from 'koa-router'
-import send from 'koa-send'
 import serve from 'koa-static'
-import colors from 'colors'
 import fs from 'fs'
-import Router from 'koa-router'
+import colors from 'colors'
 import _ from 'lodash'
 import config from '../config'
+import middleware from './lib/middleware'
 import injections from './lib/injections'
 import mixins from './lib/mixins'
 import router from './router'
@@ -26,6 +24,9 @@ server.use(logger());
 
 // Serve static files
 server.use(serve(config.cwd + '/public'));
+
+// Error handling
+server.use(middleware.error_handler());
 
 // Injections
 server.use(injections.github());

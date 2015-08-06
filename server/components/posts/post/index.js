@@ -1,15 +1,18 @@
 'use strict'
 
-import config from '../../../config'
+import config from '../../../../config'
 
-export function read *() {
-  ctx.success();
+export function* read () {
+  let ctx = this;
+  ctx.success('Read Post');
 }
 
-export function update *() {
-  ctx.success();
+export function* update () {
+  let ctx = this;
+  ctx.success('Update Post');
 }
 
-export function destroy *() {
-  ctx.success();
+export function* destroy () {
+  let ctx = this;
+  ctx.success('Destroy Post');
 }

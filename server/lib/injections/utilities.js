@@ -3,8 +3,8 @@
 import config from '../../../config'
 import _ from 'lodash'
 
-export function () {
-  return function *() {
+export default function () {
+  return function *(next) {
     let ctx = this;
 
     ctx.respond = function (success, status, data) {
@@ -27,5 +27,7 @@ export function () {
         ctx.respond(false, rguments[0], arguments[1]);
       }
     }
+
+    yield next;
   }
 }
