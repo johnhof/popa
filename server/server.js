@@ -8,39 +8,31 @@ import send from 'koa-send'
 import serve from 'koa-static'
 import colors from 'colors'
 import fs from 'fs'
+import Router from 'koa-router'
+import _ from 'lodash'
 import config from '../config'
 import injections from './lib/injections'
 import mixins from './lib/mixins'
-import Router from 'koa-router'
-import _ from 'lodash'
-
-let helpers = require('./lib/helpers')
+import router from './router'
 
 let server = koa();
 
 // Mixins
 mixins.apply();
 
+// Third party middleware
 server.use(bodyParser());
 server.use(logger());
+
+// Serve static files
 server.use(serve(config.cwd + '/public'));
 
 // Injections
 server.use(injections.github());
+server.use(injections.utilities());
 
-// routes
-const methods = ['get', 'post', 'put', 'delete'];
-let router    = new Router();
-
-let controllers = helpers.loadDirModules(__dirname + '/components/');
-let prefix      = config.api_prefix ? '/' + config.api_prefix : '';
-_.each(controllers, function (controller, name) {
-  _.each(methods, function (method) {
-    if (_.isFunction(controller[method])) { router[method](prefix + '/' + name, controller[method]); }
-  });
-})
-
-server.use(router.middleware());
+// Router
+server.use(router());
 
 // Exec server
 server.listen(config.port);
