@@ -57,17 +57,17 @@ gulp.task('copy', ['copy:images', 'copy:fonts', 'copy:favicons']);
 
 gulp.task('copy:images', function() {
   del('./public/images');
-  gulp.src(['app/assets/images/**/*']).pipe(gulp.dest('./public/images'));
+  gulp.src(['client/assets/images/**/*']).pipe(gulp.dest('./public/images'));
 });
 
 gulp.task('copy:fonts', function() {
   del('./public/fonts');
-  gulp.src(['app/assets/fonts/**/*']).pipe(gulp.dest('./public/fonts'));
+  gulp.src(['client/assets/fonts/**/*']).pipe(gulp.dest('./public/fonts'));
 });
 
 gulp.task('copy:favicons', function() {
   del('./public/*.ico');
-  gulp.src(['app/assets/images/favicons/*']).pipe(gulp.dest('./public/'));
+  gulp.src(['client/assets/images/favicons/*']).pipe(gulp.dest('./public/'));
 });
 
 
@@ -87,7 +87,7 @@ gulp.task('bower', function() {
 
 
 gulp.task('minify-html', function() {
-  gulp.src('./app/**/*.html')
+  gulp.src('./client/**/*.html')
     .pipe(wiredep({
       directory : 'public/lib',
       fileTypes : {
@@ -109,7 +109,7 @@ gulp.task('minify-html', function() {
 
 
 gulp.task('sass', function () {
-  gulp.src('./app/**/*.scss')
+  gulp.src('./client/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./public/css'));
 });
@@ -121,9 +121,9 @@ gulp.task('sass', function () {
 
 
 gulp.task('watch', function () {
-  gulp.watch('./app/**/*.scss', ['sass']);
-  gulp.watch('./app/assets/images/**/*.*', ['copy:images']);
-  gulp.watch('./app/assets/fonts/**/*.*', ['copy:fonts']);
+  gulp.watch('./client/**/*.scss', ['sass']);
+  gulp.watch('./client/assets/images/**/*.*', ['copy:images']);
+  gulp.watch('./client/assets/fonts/**/*.*', ['copy:fonts']);
 });
 
 
