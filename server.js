@@ -1,101 +1,19 @@
-var config       = require('config.json')();
-var express      = require('express');
-var routes       = require(process.cwd() + '/api/routes');
-var errorHandler = require(process.cwd() + '/api/lib/errorHandler');
-var json         = require('express-json');
-var bodyParser   = require('body-parser');
-var colors       = require('colors');
-var fs           = require('fs');
-var mon          = require('mongoman');
-var server       = express();
+'use strict';
 
-
-//////////////////////////////////////////////////////////////////////////////////
-//
-// Initial setup
-//
-//////////////////////////////////////////////////////////////////////////////////
-
-server.config = config;
-server.use(json());
-server.use(bodyParser.urlencoded({ extended: true }));
-server.use(bodyParser.json());
+let koa = require('koa');
+let serve = require('koa-static');
+let logger = require('koa-logger');
+let colors = require('colors');
+let fs = require('fs');
+let app = koa();
 
 console.log('\n' + fs.readFileSync('./popa.txt').toString().blue + '\n');
 
-//////////////////////////////////////////////////////////////////////////////////
-//
-// connect to mongo
-//
-//////////////////////////////////////////////////////////////////////////////////
+app.use(logger());
 
+app.use(serve('./public', {
+  index: './html/index.html',
+}));
 
-mon.goose.connection.on("open", function (ref) {
-  console.log("\n  Connected to mongo server!\n".blue);
-  setupServer();
-});
-
-mon.goose.connection.on("error", function (err) {
-  console.log("\n!! Could not connect to mongo server !! \n    Try running `[sudo] mongod` in another terminal\n".red);
-  process.kill();
-});
-
-var dbInstance = process.env.NODE_ENV === 'production' ? config.db.prod : config.db.dev;
-mon.connect(dbInstance);
-
-
-//////////////////////////////////////////////////////////////////////////////////
-//
-// Set up express server
-//
-//////////////////////////////////////////////////////////////////////////////////
-
-
-function setupServer () {
-  // static deliverly
-  for (staticDir in config.staticMap) {
-    server.use(staticDir, express.static(__dirname + config.staticMap[staticDir]));
-  }
-
-  // prime routes to set headers and log out route details
-  server.use(function init (req, res, next) {
-    console.log('  ' + (req.method).cyan.dim + ' ' + (req.url).grey.dim)
-
-    res.set({ 'Content-Type': 'application/json' });
-
-    res.success = function () {
-      res.status(200).json({
-        success : true
-      })
-    }
-
-    res.sendJson = function (json) {
-      res.status(200).json(json || {})
-    }
-
-    return next();
-  });
-
-  // register API routes
-  routes.register(server);
-
-  // any route not used by the API should return the standart page
-  server.get('*', function (req, res) {
-    res.set({ 'Content-Type': 'text/html; charset=utf-8' });
-    res.sendFile(__dirname + '/dist/index.html');
-  });
-
-  // add route error handler
-  server.use(errorHandler);
-
-  // mixims
-
-  require(__dirname + '/api/lib/mixins');
-
-
-  //
-  //start server
-  //
-  server.listen(config.port);
-  console.log('\n  Listening on port '.green + (config.port + '').blue + '\n');
-}
+app.listen(process.env.PORT);
+console.log('  Listening at: ' + process.env.PORT);
