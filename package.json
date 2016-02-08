@@ -10,7 +10,8 @@
     "start": "PORT=2013 node server"
   },
   "dependencies": {
-    "colors": "^1.1.2"
+    "colors": "^1.1.2",
+    "forever": "^0.15.1"
   },
   "engines": {
     "node": ">=0.10.0"

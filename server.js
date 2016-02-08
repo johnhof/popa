@@ -7,6 +7,8 @@ let colors = require('colors');
 let fs = require('fs');
 let app = koa();
 
+const PORT = process.env.PORT || 80;
+
 console.log('\n' + fs.readFileSync('./popa.txt').toString().blue + '\n');
 
 app.use(logger());
@@ -15,5 +17,5 @@ app.use(serve('./public', {
   index: './html/index.html',
 }));
 
-app.listen(process.env.PORT);
-console.log('  Listening at: ' + process.env.PORT);
+app.listen(PORT);
+console.log('  Listening at: ' + PORT);
