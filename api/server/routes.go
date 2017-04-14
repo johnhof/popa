@@ -23,8 +23,8 @@ func GetRouter() *httprouter.Router {
 	router.RedirectTrailingSlash = false
 
 	// App service
-	publicPre := os.Getenv("CONSTELLATION_PUBLIC_PREFIX")
-	publicDir := os.Getenv("CONSTELLATION_PUBLIC_DIR")
+	publicPre := os.Getenv("POPA_PUBLIC_PREFIX")
+	publicDir := os.Getenv("POPA_PUBLIC_DIR")
 	router.GET("/", controllers.App)
 	router.ServeFiles("/"+publicPre+"/*filepath", http.Dir(publicDir))
 

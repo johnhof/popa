@@ -30,10 +30,10 @@ func trimTrailingSlash(h http.Handler) http.Handler {
 }
 
 func reqLogger(h http.Handler) http.Handler {
-	publicPre := os.Getenv("CONSTELLATION_PUBLIC_PREFIX")
+	publicPre := os.Getenv("POPA_PUBLIC_PREFIX")
 	assetRegex, _ := regexp.Compile("^/(" + publicPre + "|favicon)")
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		logAssets, _ := strconv.ParseBool(os.Getenv("CONSTELLATION_LOG_ASSETS"))
+		logAssets, _ := strconv.ParseBool(os.Getenv("POPA_LOG_ASSETS"))
 		if logAssets {
 			fmt.Println(r.Method + " : " + r.URL.Path)
 		} else if !assetRegex.Match([]byte(r.URL.Path)) {
@@ -44,7 +44,7 @@ func reqLogger(h http.Handler) http.Handler {
 }
 
 func stripVersion(h http.Handler) http.Handler {
-	version := os.Getenv("CONSTELLATION_VERSION")
+	version := os.Getenv("POPA_VERSION")
 	versioning := strings.Split(version, ".")
 	vMajor := versioning[0]
 	vMinor := vMajor + "." + versioning[1]

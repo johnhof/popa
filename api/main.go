@@ -35,7 +35,6 @@ func main() {
 	}
 	router := server.GetRouter()
 	app := server.WrapMiddleware(router)
-	fmt.Println(server.Banner)
 	fmt.Println("Listening on port: " + port + "\n")
 	http.ListenAndServe(":"+port, app)
 }

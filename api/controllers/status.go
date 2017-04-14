@@ -15,6 +15,6 @@ type stats struct {
 
 // Status calls out to dependencies to compile server status
 func Status(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	version := os.Getenv("CONSTELLATION_VERSION")
+	version := os.Getenv("POPA_VERSION")
 	response.Ok("", stats{"OK", version}).Write(w)
 }
