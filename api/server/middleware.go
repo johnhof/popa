@@ -35,9 +35,9 @@ func reqLogger(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		logAssets, _ := strconv.ParseBool(os.Getenv("POPA_LOG_ASSETS"))
 		if logAssets {
-			fmt.Println(r.Method + " : " + r.URL.Path)
+			fmt.Println(r.Method + " " + r.URL.Path)
 		} else if !assetRegex.Match([]byte(r.URL.Path)) {
-			fmt.Println(r.Method + " : " + r.URL.Path)
+			fmt.Println(r.Method + " " + r.URL.Path)
 		}
 		h.ServeHTTP(w, r)
 	})

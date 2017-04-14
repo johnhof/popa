@@ -29,9 +29,9 @@ func init() {
 
 func main() {
 	fmt.Println(server.Banner)
-	port := os.Getenv("CONTELLATION_PORT")
+	port := os.Getenv("POPA_PORT")
 	if port == "" {
-		port = "8080"
+		port = "1991"
 	}
 	router := server.GetRouter()
 	app := server.WrapMiddleware(router)
