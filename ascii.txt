@@ -2,7 +2,7 @@
          .Md`dMy/s      \-.+.-/   /:` /. - ."
        ./`dMmyMMMm.     .ooooo. /- ---- --. /
        :MmodMNdmMMN/  __-/ +  \ | :os `.. `.`
-       -omMMMm++NMMN` \--:s/  | \.--o:h-..../
+       -omMMMm++NMMN`/_--:s/  | \.--o:h-..../
        yNdNMMMhNhdo-    ../ ./  / -s.d/y.`.`/
        /shNMMMMMMNy``../``   \./``   `.`+``.
        oNNMMMMMMMMy.      :            .-.``
