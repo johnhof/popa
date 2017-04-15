@@ -9,15 +9,8 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
-type notFoundHandler struct{}
-
-func (h notFoundHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	response.NotFound("").Write(w)
-}
-
 // GetRouter returns the compiled handlers and routes
 func GetRouter() *httprouter.Router {
-
 	router := httprouter.New()
 	router.HandleMethodNotAllowed = false
 	router.RedirectTrailingSlash = false
@@ -31,7 +24,9 @@ func GetRouter() *httprouter.Router {
 	// API service
 	router.GET("/status", controllers.Status)
 
-	router.NotFound = http.Handler(notFoundHandler{})
+	router.NotFound = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		response.NotFound("").Write(w)
+	})
 
 	return router
 }
