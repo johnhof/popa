@@ -3,6 +3,7 @@
 const PATH = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const ENV = process.env;
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './src/index.html',

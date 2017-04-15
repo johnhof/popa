@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"github.com/hart/constellation/api/db"
-	"github.com/johnhof/popa/api/server"
+	"github.com/johnhof/popa/server/server"
 )
 
 func verifyEnvVar(s string) {
@@ -17,7 +17,7 @@ func verifyEnvVar(s string) {
 
 func init() {
 	verifyEnvVar("POPA_VERSION")
-	verifyEnvVar("POPA_PORT")
+	verifyEnvVar("POPA_SERVER_PORT")
 
 	verifyEnvVar("POPA_PUBLIC_PREFIX")
 	verifyEnvVar("POPA_PUBLIC_DIR")
@@ -28,13 +28,12 @@ func init() {
 }
 
 func main() {
-	fmt.Println(server.Banner)
-	port := os.Getenv("POPA_PORT")
+	port := os.Getenv("POPA_SERVER_PORT")
 	if port == "" {
 		port = "1991"
 	}
 	router := server.GetRouter()
 	app := server.WrapMiddleware(router)
-	fmt.Println("Listening on port: " + port + "\n")
+	fmt.Println("Server listening on port: " + port + "\n")
 	http.ListenAndServe(":"+port, app)
 }

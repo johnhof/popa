@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/johnhof/popa/api/response"
+	"github.com/johnhof/popa/server/response"
 	"github.com/julienschmidt/httprouter"
 )
 
