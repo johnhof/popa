@@ -21,8 +21,8 @@
        \ `/\y-o -:MMMMMMMMMMMMMMMMMMMMMMMMo\N:/
          hoo:`o   -MMMMMMMMMMMMMMMMMMMMMMMo \:|
          `    o     -MMMMMMMMMMMMMMMMMMMMMo
-              o``-::+d`MMMMMMMMMMMMMMMMMMMo
-              o--. `h-   -MMMMMMMMMMMMMMMMo
+              o  .,=:+d`MMMMMMMMMMMMMMMMMMMo
+              o""  `h-   -MMMMMMMMMMMMMMMMo
               o    o+   ``-MMMMMMMMMMMMMMMo
               o   :y`.:/::oh `MMMMMMMMMMMMo
               o  `y/:-`  -m.   -MMMMMMMMMMo
