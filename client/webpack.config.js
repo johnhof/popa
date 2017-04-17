@@ -28,19 +28,16 @@ module.exports = {
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
       {
-          test: /\.scss$/,
-          use: [{
-              loader: "style-loader"
-          }, {
-              loader: "css-loader"
-          }, {
-              loader: "sass-loader"
-          }]
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 50000,
+          name: './fonts/[name].[ext]',
+        },
       }
     ]
   },
   plugins: [
     HtmlWebpackPluginConfig,
-    extractSass
   ]
 }

@@ -5,7 +5,7 @@ import Hero from './Hero/';
 export default class Landing extends React.Component {
   render() {
     return (
-      <div className="landing">
+      <div style={{height: '100%'}}>
         <Hero />
       </div>
     )
