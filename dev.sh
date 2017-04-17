@@ -11,6 +11,6 @@ cd $LAUNCH_DIR
 
 echo "Launching client..."
 cd client
-yarn start --prefix client &
+yarn start &
 cd $LAUNCH_DIR
 fg
