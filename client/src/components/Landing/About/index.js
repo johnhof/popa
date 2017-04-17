@@ -11,7 +11,9 @@ export default class About extends React.Component {
       minHeight: '100%',
       width: '100%',
       color: Colors.darkGray,
-      background: `url(${BackgroundImg}) top left`
+      background: `url(${BackgroundImg}) top left`,
+      display: 'flex',
+      justifyContent: 'center',
     };
 
     return (

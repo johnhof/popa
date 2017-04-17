@@ -3,13 +3,12 @@ import React from 'react';
 import Landing from './Landing/'
 
 import Colors from '../assets/styles/colors';
+import Fonts from '../assets/styles/fonts';
 
 import FontWoff from '../assets/fonts/main.woff';
 import FontWoff2 from '../assets/fonts/main.woff2';
 import FontTtf from '../assets/fonts/main.ttf';
 import FontEot from '../assets/fonts/main.eot';
-
-console.log('\n\n',FontWoff2,'\n\n')
 
 export default class App extends React.Component {
   render() {
@@ -20,6 +19,7 @@ export default class App extends React.Component {
       //      url('${FontWoff2}') format('woff2'),
       //      url('${FontWoff}') format('woff'),
       //      url('${FontTtf}') format('truetype')`,
+      fontSize: Fonts.base,
       fontWeight: 'normal',
       fontStyle: 'normal',
       width: '100%',
@@ -28,6 +28,7 @@ export default class App extends React.Component {
       margin: 0,
       padding: 0,
     }
+    console.log(style)
     return (
       <div style={style}>
         <Landing / >
