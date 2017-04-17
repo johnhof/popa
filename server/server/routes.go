@@ -2,6 +2,7 @@ package server
 
 import (
 	"net/http"
+	"os"
 
 	"github.com/johnhof/popa/server/controllers"
 	"github.com/johnhof/popa/server/response"
@@ -16,10 +17,10 @@ func GetRouter() *httprouter.Router {
 
 	// TODO: replace with webpack
 	// // App service
-	// publicPre := os.Getenv("POPA_PUBLIC_PREFIX")
-	// publicDir := os.Getenv("POPA_PUBLIC_DIR")
-	// router.GET("/", controllers.App)
-	// router.ServeFiles("/"+publicPre+"/*filepath", http.Dir(publicDir))
+	publicPre := os.Getenv("POPA_PUBLIC_PREFIX")
+	publicDir := os.Getenv("POPA_PUBLIC_DIR")
+	router.GET("/", controllers.App)
+	router.ServeFiles("/"+publicPre+"/*filepath", http.Dir(publicDir))
 
 	// API service
 	router.GET("/status", controllers.Status)

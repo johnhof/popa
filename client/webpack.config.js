@@ -6,10 +6,6 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const ENV = process.env;
 
-const extractSass = new ExtractTextPlugin({
-    filename: "[name].[contenthash].css",
-    disable: ENV.NODE_ENV === "development"
-});
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './src/index.html',
@@ -27,6 +23,16 @@ module.exports = {
     loaders: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.(jpe?g|gif|png|svg)$/, loader: "file-loader" },
+      // {
+      //   test: /\.css$/,
+      //   loader:'style-loader!css-loader!'
+      // }
+      //
+      // {
+      //   test: /\.css$/,
+      //   loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
+      // },
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
         loader: 'url-loader',
@@ -34,10 +40,18 @@ module.exports = {
           limit: 50000,
           name: './fonts/[name].[ext]',
         },
-      }
+      },
+      // {
+      //   test: /\.(jpg|png|svg)$/,
+      //   loader: 'url-loader',
+      //   options: {
+      //     name: './images/[name].[ext]',
+      //   },
+      // },
     ]
   },
   plugins: [
     HtmlWebpackPluginConfig,
+    new ExtractTextPlugin("[name].css")
   ]
 }

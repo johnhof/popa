@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Colors from '../../../styles/colors.js'
-import Fonts from '../../../styles/fonts.js'
+import Colors from '../../../assets/styles/colors'
+import Fonts from '../../../assets/styles/fonts'
 
-export default class Landing extends React.Component {
+export default class Hero extends React.Component {
   render() {
     let hero = {
       backgroundColor: Colors.yellow,
-      height: '100%',
+      minHeight: '100%',
       width: '100%',
       color: Colors.white,
       fontSize: Fonts.large,
@@ -22,9 +22,9 @@ export default class Landing extends React.Component {
           <h1 style={{
             margin:'0',
             fontSize: Fonts.custom(30),
-            fontSpacing: '30px',
-            fontWeight: 400
-          }}>HOF.</h1>
+            letterSpacing: '30px',
+            fontWeight: 600
+          }}>HOF</h1>
         </div>
       </section>
     )
