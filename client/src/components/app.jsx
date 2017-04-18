@@ -14,7 +14,7 @@ export default class App extends React.Component {
   render() {
     const style = {
       fontFamily: "'nowayregular', helvetica",
-      // src: url('~assets/fonts/main.ttf');
+      src: `url("${FontWoff}")`,
       // src: `url('${FontEot}?#iefix') format('embedded-opentype'),
       //      url('${FontWoff2}') format('woff2'),
       //      url('${FontWoff}') format('woff'),
