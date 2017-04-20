@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Navigation from './Navigation/'
 import Landing from './Landing/'
 
 import Colors from '../assets/styles/colors';
@@ -31,6 +32,7 @@ export default class App extends React.Component {
     console.log(style)
     return (
       <div style={style}>
+        <Navigation / >
         <Landing / >
       </div>
     );

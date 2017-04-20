@@ -9,8 +9,9 @@ export default class About extends React.Component {
     let about = {
       backgroundColor: Colors.lightGray,
       minHeight: '100%',
+      width: '100%',
       color: Colors.darkGray,
-      // background: `url(${BackgroundImg}) top left`,
+      background: `url(${BackgroundImg}) top left`,
       display: 'flex',
       justifyContent: 'center',
     };

@@ -7,9 +7,9 @@ export default class Hero extends React.Component {
   render() {
     const hero = {
       backgroundColor: Colors.yellow,
-      minHeight: '100%',
-      width: '100%',
-      color: Colors.white,
+      minHeight: '75%',
+      width: '60%',
+      margin: 'auto',
       fontSize: Fonts.large,
       display: 'flex',
       alignItems: 'center',
@@ -18,8 +18,9 @@ export default class Hero extends React.Component {
 
     const text = {
       margin:'0',
-      borderBottom: '10px solid ' + Colors.mediumGray,
-      fontSize: Fonts.custom(25),
+      borderBottom: '10px solid ' + Colors.lightBlue,
+      color: Colors.lightGray,
+      fontSize: Fonts.custom(20),
       letterSpacing: '30px',
       fontWeight: 600
     };
@@ -27,7 +28,7 @@ export default class Hero extends React.Component {
     return (
       <section id="hero" style={hero}>
         <div>
-          <h1 style={text}>HOF</h1>
+          <h1 style={text}>HOF.</h1>
         </div>
       </section>
     )
