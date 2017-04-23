@@ -10,7 +10,7 @@ export const DEFUALT_BOUNDS = {
   large: Infinity
 }
 
-export default class MediaQuery {
+export default class SizeEmitter {
   constructor (config={}) {
     this.width;
     this.size      = {};

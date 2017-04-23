@@ -5,23 +5,23 @@ import Landing from './Landing/'
 
 import Colors from '../assets/styles/colors';
 import Fonts from '../assets/styles/fonts';
+import Margins from '../assets/styles/margins';
 
 import FontWoff from '../assets/fonts/main.woff';
 import FontWoff2 from '../assets/fonts/main.woff2';
 import FontTtf from '../assets/fonts/main.ttf';
 import FontEot from '../assets/fonts/main.eot';
 
-import MediaQuery from '../lib/MediaQuery';
-
-require('./app.css');
+import SizeEmitter from '../lib/SizeEmitter';
 
 export default class App extends React.Component {
   constructor (props) {
     super(props);
     this.state={size:false};
-    this.mediaQuery = new MediaQuery();
+    this.sizeEmitter = new SizeEmitter();
     this.styles = {
       main: {
+        minHeight: '100%',
         src: `url("${FontWoff}")`,
         // src: `url('${FontEot}?#iefix') format('embedded-opentype'),
         //      url('${FontWoff2}') format('woff2'),
@@ -29,43 +29,41 @@ export default class App extends React.Component {
         //      url('${FontTtf}') format('truetype')`,
       },
       container: {
-        height: 'auto',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0
+        height: '100%',
       }
     };
 
-    this.mediaQuery.on('small', () => {
-      this.styles.container.margin = '0px';
+    this.sizeEmitter.on('small', () => {
+      this.styles.container.marginRight = Margins.small
+      this.styles.container.marginLeft = Margins.small;
       this.setState({ size: 'small' });
     });
-    this.mediaQuery.on('medium', () => {
-      this.styles.container.margin = '24px';
+    this.sizeEmitter.on('medium', () => {
+      this.styles.container.marginRight = Margins.medium;
+      this.styles.container.marginLeft = Margins.medium;
       this.setState({ size: 'medium' });
     });
-    this.mediaQuery.on('large', () => {
-      this.styles.container.margin = '48px';
+    this.sizeEmitter.on('large', () => {
+      this.styles.container.marginRight = Margins.large;
+      this.styles.container.marginLeft = Margins.large;
       this.setState({ size: 'large' });
     });
-    this.mediaQuery.refresh();
+    this.sizeEmitter.refresh();
   }
 
   componentDidMount () {
-    window && window.addEventListener('resize', () => this.mediaQuery.refresh(), false);
+    window && window.addEventListener('resize', () => this.sizeEmitter.refresh(), false);
   }
 
   componentWillUnmount () {
-    window && window.removeEventListener('resize', () => this.mediaQuery.refresh());
+    window && window.removeEventListener('resize', () => this.sizeEmitter.refresh());
   }
 
   render() {
     return (
       <main style={this.styles.main}>
         <Navigation / >
-        <div id='container' key={this.mediaQuery} style={this.styles.container}>
+        <div id='container' key={this.sizeEmitter} style={this.styles.container}>
           <Landing / >
         </div>
       </main>
