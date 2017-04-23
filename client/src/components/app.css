@@ -10,13 +10,13 @@ html, body {
 }
 
 * {
-  -webkit-transition: all 0.2s ease;
-  -moz-transition:    all 0.2s ease;
-  -ms-transition:     all 0.2s ease;
-  -o-transition:      all 0.2s ease;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition:    all 0.5s ease;
+  -ms-transition:     all 0.5s ease;
+  -o-transition:      all 0.5s ease;
 }
 
-@media (min-width: 1500px) {
+/*@media (min-width: 1500px) {
   #container {
     margin: 96px;
   }
@@ -50,4 +50,4 @@ html, body {
   #container section {
     margin-bottom: 96px;
   }
-}
+}*/
