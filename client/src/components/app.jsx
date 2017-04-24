@@ -34,8 +34,8 @@ export default class App extends React.Component {
     };
 
     this.sizeEmitter.on('small', () => {
-      this.styles.container.marginRight = Margins.small
-      this.styles.container.marginLeft = Margins.small;
+      this.styles.container.marginRight = Margins.none
+      this.styles.container.marginLeft = Margins.none;
       this.setState({ size: 'small' });
     });
     this.sizeEmitter.on('medium', () => {

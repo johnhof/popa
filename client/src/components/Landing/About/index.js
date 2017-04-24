@@ -1,6 +1,8 @@
 import React from 'react';
 
+import Margins from '../../../assets/styles/margins';
 import Colors from '../../../assets/styles/colors';
+import Fonts from '../../../assets/styles/fonts';
 
 import SizeEmitter from '../../../lib/SizeEmitter';
 
@@ -13,27 +15,54 @@ export default class About extends React.Component {
     this.styles = {
       container: {
         maxHeight: '100vh',
-        overflowY: 'hidden'
+        overflowY: 'hidden',
+        marginBottom: Margins.medium
       },
-      split: {
+      header: {
+        width: '60%',
+        color: Colors.lightGray,
+        padding: '24px',
+        fontSize: Fonts.xLarge,
+        backgroundColor: Colors.blue,
+      },
+      body: {
+        display: 'flex',
+       flexDirection: 'row'
+      },
+      textCell: {
+        flex: 2,
+        padding: '24px',
+        fontSize: Fonts.normalLarge
+      },
+      imageCell: {
+        backgroundColor: Colors.darkGray,
         height: '100%',
-        width: '50%',
-        display: 'inline-block'
+        maxHeight: '600px',
+        minHeight: '400px',
+        flex: 2,
+        top: 0,
+        display: 'flex',
+        alignItems: 'flex-end',
+        justifyContent: 'center'
       },
       image: {
-        float: 'right',
-        margin: 'auto',
-        width: '75%'
+        width: '50%',
+        maxHeight: '600px',
+        filter: 'invert(100%)',
       }
     };
 
     this.sizeEmitter.on('small', () => {
+      this.styles.container.marginBottom = Margins.none;
       this.styles.image.width = '100%';
-      this.styles.split.width = '100%';
+      this.styles.header.width = '100%';
+      this.styles.body.display = 'block';
     });
     this.sizeEmitter.on('medium', () => {
-      this.styles.image.width = '75%';
-      this.styles.split.width = '50%';
+      this.styles.container.marginBottom = Margins.medium;
+      this.styles.image.width = '50%';
+      this.styles.header.width = '60%';
+      this.styles.body.display = 'flex';
     });
     this.sizeEmitter.refresh();
   }
@@ -49,11 +78,23 @@ export default class About extends React.Component {
   render() {
     return (
       <section id="about" style={this.styles.container}>
-        <div style={this.styles.split}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <div style={{display: 'flex'}}>
+          <div style={this.styles.header}>
+            About me
+          </div>
+
+          <div>
+          </div>
         </div>
-        <div style={this.styles.split}>
-          <img src={MyImg} style={this.styles.image}></img>
+        <div style={this.styles.body}>
+          <div style={this.styles.textCell}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+          <div style={this.styles.imageCell}>
+            <div style={this.styles.image}>
+              <img src={MyImg} style={{width: '100%'}}></img>
+            </div>
+          </div>
         </div>
       </section>
     )

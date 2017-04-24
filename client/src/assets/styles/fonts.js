@@ -10,6 +10,7 @@ export default {
   base: BASE(1),
   small: BASE(0.5),
   normal: BASE(1),
+  normalLarge: BASE(1.5),
   large: BASE(2),
   xLarge: BASE(4),
   xxLarge: BASE(8),

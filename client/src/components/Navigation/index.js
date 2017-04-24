@@ -35,8 +35,8 @@ export default class Navigation extends React.Component {
 
   hideBar(){
     let { isHidden } = this.state;
-    if (window.scrollY <= 20 && !isHidden) this.setState({ isHidden: true });
-    else if (window.scrollY > 20 && isHidden) this.setState({ isHidden: false });
+    if (window.scrollY <= 10 && !isHidden) this.setState({ isHidden: true });
+    else if (window.scrollY > 10 && isHidden) this.setState({ isHidden: false });
     this.prev = window.scrollY;
   }
 
