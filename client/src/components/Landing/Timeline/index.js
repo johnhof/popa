@@ -55,12 +55,12 @@ export default class Timeline extends React.Component {
       sectionLeft: {
         flex: 1,
         padding: '24px',
-        borderRight: '3px solid ' + Colors.blue,
+        borderRight: '2px solid ' + Colors.blue,
       },
       sectionRight: {
         flex: 1,
         padding: '24px',
-        borderLeft: '3px solid ' + Colors.blue,
+        borderLeft: '2px solid ' + Colors.blue,
       }
     };
 
