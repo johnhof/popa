@@ -16,26 +16,20 @@ export default class About extends React.Component {
       container: {
         maxHeight: '100vh',
         overflowY: 'hidden',
-        marginBottom: Margins.medium
-      },
-      header: {
-        width: '60%',
-        color: Colors.lightGray,
-        padding: '24px',
-        fontSize: Fonts.xLarge,
-        backgroundColor: Colors.blue,
-      },
-      body: {
+        marginBottom: Margins.medium,
         display: 'flex',
-       flexDirection: 'row'
+        flexDirection: 'row'
       },
       textCell: {
         flex: 2,
         padding: '24px',
-        fontSize: Fonts.normalLarge
+        fontSize: Fonts.normalLarge,
+        lineHeight: '1.5',
+        paddingTop: '10%',
+        textAlign: 'center'
       },
       imageCell: {
-        backgroundColor: Colors.darkGray,
+        // backgroundColor: Colors.darkGray,
         height: '100%',
         maxHeight: '600px',
         minHeight: '400px',
@@ -48,21 +42,21 @@ export default class About extends React.Component {
       image: {
         width: '50%',
         maxHeight: '600px',
-        filter: 'invert(100%)',
+        // filter: 'invert(100%)',
       }
     };
 
     this.sizeEmitter.on('small', () => {
       this.styles.container.marginBottom = Margins.none;
+      this.styles.container.display = 'block';
       this.styles.image.width = '100%';
-      this.styles.header.width = '100%';
-      this.styles.body.display = 'block';
     });
     this.sizeEmitter.on('medium', () => {
       this.styles.container.marginBottom = Margins.medium;
+      this.styles.container.display = 'flex';
       this.styles.image.width = '50%';
-      this.styles.header.width = '60%';
-      this.styles.body.display = 'flex';
+    });
+    this.sizeEmitter.on('large', () => {
     });
     this.sizeEmitter.refresh();
   }
@@ -78,22 +72,21 @@ export default class About extends React.Component {
   render() {
     return (
       <section id="about" style={this.styles.container}>
-        <div style={{display: 'flex'}}>
-          <div style={this.styles.header}>
-            About me
-          </div>
-
-          <div>
-          </div>
+        <div style={this.styles.textCell}>
+          <p style={{fontSize: Fonts.large, fontWeight: '600'}}>
+            Hi, I'm <span style={this.styles.name}>John Hofrichter</span>.
+          </p>
+          <p style={{maxWidth: '700px', margin: 'auto'}}>
+            I'm a Software Engineer who loves working on
+            platforms and services which make a positive impact on peoples lives.
+            I find all facets of software development fascinating, whether it be
+            implementing long lasting scaleable code bases, hardening existing projects,
+            or hacking together a solution for a deadline.
+          </p>
         </div>
-        <div style={this.styles.body}>
-          <div style={this.styles.textCell}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </div>
-          <div style={this.styles.imageCell}>
-            <div style={this.styles.image}>
-              <img src={MyImg} style={{width: '100%'}}></img>
-            </div>
+        <div style={this.styles.imageCell}>
+          <div style={this.styles.image}>
+            <img src={MyImg} style={{width: '100%'}}></img>
           </div>
         </div>
       </section>
