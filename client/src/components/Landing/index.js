@@ -2,6 +2,7 @@ import React from 'react';
 
 import Hero from './Hero/';
 import About from './About/';
+import Timeline from './Timeline/';
 
 export default class Landing extends React.Component {
   render() {
@@ -9,6 +10,7 @@ export default class Landing extends React.Component {
       <div id="landing" style={{ height: '100%' }}>
         <Hero />
         <About />
+        <Timeline />
       </div>
     )
   }
