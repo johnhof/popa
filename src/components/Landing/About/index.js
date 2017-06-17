@@ -78,10 +78,10 @@ export default class About extends React.Component {
           </p>
           <p style={{maxWidth: '700px', margin: 'auto'}}>
             I'm a Software Engineer who loves working on
-            platforms and services which make a positive impact on peoples lives.
+            projects which make a positive impact on peoples lives.
             I find all facets of software development fascinating, whether it be
             implementing long lasting scaleable code bases, hardening existing projects,
-            or hacking together a solution for a deadline.
+            or hacking together a solution for a demo.
           </p>
         </div>
         <div style={this.styles.imageCell}>
