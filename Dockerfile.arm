@@ -1,13 +1,20 @@
 FROM hypriot/rpi-node
 
 # Build phantomjs for arm
-RUN apt-get update && apt-get install fontconfig curl \
-  && mkdir -p /usr/share \
-  && cd /usr/share \
-  && curl -L https://github.com/yangxuan8282/docker-image/releases/download/2.1.1/phantomjs-2.1.1-alpine-arm.tar.xz | tar xJ \
-  && ln -s /usr/share/phantomjs/phantomjs /usr/bin/phantomjs \
-  && ls /usr/bin \
-  && phantomjs --version
+ENV DEBIAN_FRONTEND noninteractive
+ENV PHANTOM_JS_VERSION 2.0.0
+
+RUN apt-get update && \
+  apt-get install -y build-essential g++ flex bison gperf ruby perl git-core \
+  libsqlite3-dev libfontconfig1-dev libicu-dev libfreetype6 libssl-dev \
+  libpng-dev libjpeg-dev ttf-mscorefonts-installer fontconfig chrpath openssl \
+  python-software-properties python-pip && \
+  rm -rf /var/lib/apt/lists/*
+
+RUN pip install awscli
+
+COPY build /build
+RUN chmod +x build
 
 # Create app directory
 RUN mkdir -p /usr/src/app
