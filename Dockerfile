@@ -1,15 +1,13 @@
 FROM node:8
 
-# Create app directory
+# Copy over project
 RUN mkdir -p /usr/src/app
-
-# Install app dependencies
-COPY package.json /usr/src/app/
-COPY package-lock.json /usr/src/app/
-COPY . /usr/src/app/
-
 WORKDIR /usr/src/app
-RUN npm install
+COPY . .
+
+# Build app
+RUN npm install && \
+    npm run build
 
 EXPOSE 8080
-CMD ["npm", "start"]
+CMD ["npm", "run", "prod"]

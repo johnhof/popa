@@ -6,10 +6,10 @@
   "scripts": {
     "test": "mocha test",
     "build": "node ./node_modules/.bin/neutrino build --use neutrino-preset-react",
-    "dev": "node ./node_modules/.bin/neutrino start --use neutrino-preset-react",
-    "prod": "node server.js",
+    "dev": "bash config.env && cat ascii.tx && node ./node_modules/.bin/neutrino start --use neutrino-preset-react",
+    "prod": "bash config.env && node server.js",
     "prestart": "npm run build",
-    "start": "node server.js"
+    "start": "bash config.env && cat ascii.txt && node server.js"
   },
   "neutrino": {
     "options": {
