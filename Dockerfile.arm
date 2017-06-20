@@ -1,7 +1,7 @@
 # Use phantom JS rpi image which is on top of node rpi
 FROM ollihoo/phantomjs-docker-rpi
 
-RUN echo node -v
+RUN echo $(node -v)
 
 # Create app directory
 RUN mkdir -p /usr/src/app
