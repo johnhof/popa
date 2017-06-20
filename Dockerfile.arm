@@ -1,5 +1,5 @@
 # Use phantom JS rpi image which is on top of node rpi
-FROM master:5000/phantomjs-docker-rpi
+FROM registry:5000/phantomjs-docker-rpi
 
 RUN echo $(node -v)
 
