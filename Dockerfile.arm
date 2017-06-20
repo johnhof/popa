@@ -11,11 +11,6 @@ RUN apt-get update && \
   python-software-properties python-pip && \
   rm -rf /var/lib/apt/lists/*
 
-RUN pip install awscli
-
-COPY build /build
-RUN chmod +x build
-
 # Create app directory
 RUN mkdir -p /usr/src/app
 
