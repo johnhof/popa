@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha test",
     "build": "node ./node_modules/.bin/neutrino build --use neutrino-preset-react",
-    "dev": "bash config.env && cat ascii.tx && node ./node_modules/.bin/neutrino start --use neutrino-preset-react",
+    "dev": "bash config.env && cat ascii.txt && node ./node_modules/.bin/neutrino start --use neutrino-preset-react",
     "prod": "bash config.env && node server.js",
     "prestart": "npm run build",
     "start": "bash config.env && cat ascii.txt && node server.js"
@@ -35,10 +35,26 @@
         "clientLogLevel": "none",
         "noInfo": true,
         "headers": {
-          "X-Note": "SWYgeW91J3JlIHJlYWRpbmcgdGhpcywgYXBwbHkgd2l0aCB1cyBhdCBoYXJ0LmNvbS9jYXJlZXJz",
-          "X-Powered-By": "Hart"
+          "X-Powered-By": "Hof"
         }
       }
+    },
+    "entry": {
+      "vendor": [
+        "react",
+        "react-dom",
+        "react-router-dom",
+        "react-hot-loader",
+        "react-headroom",
+        "react-waypoint",
+        "react-number-format",
+        "prop-types",
+        "scroll-component",
+        "flexboxgrid",
+        "normalize.css",
+        "react-particles-js",
+        "axios"
+      ]
     }
   },
   "author": "John Hofrichter",
