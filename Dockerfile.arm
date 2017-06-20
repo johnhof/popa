@@ -13,7 +13,7 @@ COPY . /usr/src/app/
 
 WORKDIR /usr/src/app
 # RUN npm install -g yarn && yarn install
-RUN npm install -g yarn && yarn install
+RUN yarn install
 
 EXPOSE 8080
 CMD ["npm", "start"]
