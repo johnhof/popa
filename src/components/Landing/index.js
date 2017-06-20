@@ -9,8 +9,6 @@ export default class Landing extends React.Component {
     return (
       <div id="landing" style={{ height: '100%' }}>
         <Hero />
-        <About />
-        <Timeline />
       </div>
     )
   }

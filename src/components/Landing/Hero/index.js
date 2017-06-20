@@ -61,13 +61,13 @@ export default class Hero extends React.Component {
   render() {
     return (
       <section id="hero" style={this.styles.container}>
-        <div style={this.styles.hero}>
+        <a style={this.styles.hero} href="https://linkedin.com/in/johnhofrichter">
           <h1 style={this.styles.text}>
             <span style={{marginRight: '15px'}}>H</span>
             <span style={{marginLeft: '15px', marginRight: '15px'}}>O</span>
             <span style={{marginLeft: '15px'}}>F</span>
           </h1>
-        </div>
+        </a>
       </section>
     )
   }

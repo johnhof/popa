@@ -21,12 +21,7 @@ export default class App extends React.Component {
     this.sizeEmitter = new SizeEmitter();
     this.styles = {
       main: {
-        minHeight: '100%',
-        src: `url("${FontWoff}")`,
-        // src: `url('${FontEot}?#iefix') format('embedded-opentype'),
-        //      url('${FontWoff2}') format('woff2'),
-        //      url('${FontWoff}') format('woff'),
-        //      url('${FontTtf}') format('truetype')`,
+        height: '100%',
       },
       container: {
         height: '100%',
@@ -62,7 +57,6 @@ export default class App extends React.Component {
   render() {
     return (
       <main style={this.styles.main}>
-        <Navigation / >
         <div id='container' key={this.sizeEmitter} style={this.styles.container}>
           <Landing / >
         </div>
