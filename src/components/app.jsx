@@ -3,14 +3,14 @@ import React from 'react';
 import Navigation from './Navigation/'
 import Landing from './Landing/'
 
-import Colors from '../assets/styles/colors';
-import Fonts from '../assets/styles/fonts';
-import Margins from '../assets/styles/margins';
+import Colors from '../static/styles/colors';
+import Fonts from '../static/styles/fonts';
+import Margins from '../static/styles/margins';
 
-import FontWoff from '../assets/fonts/main.woff';
-import FontWoff2 from '../assets/fonts/main.woff2';
-import FontTtf from '../assets/fonts/main.ttf';
-import FontEot from '../assets/fonts/main.eot';
+import FontWoff from '../static/fonts/main.woff';
+import FontWoff2 from '../static/fonts/main.woff2';
+import FontTtf from '../static/fonts/main.ttf';
+import FontEot from '../static/fonts/main.eot';
 
 import SizeEmitter from '../lib/SizeEmitter';
 

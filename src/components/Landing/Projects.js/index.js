@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Colors from '../../../assets/styles/colors';
+import Colors from '../../../static/styles/colors';
 
-import BackgroundImg from '../../../assets/images/background.png';
+import BackgroundImg from '../../../static/images/background.png';
 
 export default class About extends React.Component {
   constructor (props) {

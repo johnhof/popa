@@ -1,9 +1,31 @@
-@import url('assets/fonts/main.eot');
-@import url('assets/fonts/main.ttf');
-@import url('assets/fonts/main.woff');
-@import url('assets/fonts/main.woff2');
 
-html, body {
+html, body, #root {
+  src: url('../fonts/main.eot'),
+       url('../fonts/main.ttf'),
+       url('../fonts/main.woff'),
+       url('../fonts/main.woff2');
   box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'nowayregular', helvetica;
+  font-size: '12px';
+  width: 100%;
+  height: 100%;
+  background-color: #F4F3EF;
+  color: #393A36;
+  margin: 0;
+  lineHeight: '1.5';
+  overflow-y: scroll;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+* {
+  vertical-align: middle;
+  position: relative;
+  background-repeat: no-repeat;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition:    all 0.3s ease;
+  -ms-transition:     all 0.3s ease;
+  -o-transition:      all 0.3s ease;
 }

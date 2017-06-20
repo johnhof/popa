@@ -1,9 +1,9 @@
 import React from 'react';
 import MediaQuery from 'react-responsive';
 
-import Colors from '../../../assets/styles/colors'
-import Fonts from '../../../assets/styles/fonts'
-import Margins from '../../../assets/styles/margins';
+import Colors from '../../../static/styles/colors'
+import Fonts from '../../../static/styles/fonts'
+import Margins from '../../../static/styles/margins';
 
 import SizeEmitter from '../../../lib/SizeEmitter';
 

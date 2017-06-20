@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Colors from '../../assets/styles/colors';
+import Colors from '../../static/styles/colors';
 
 export default class Navigation extends React.Component {
   constructor(props){

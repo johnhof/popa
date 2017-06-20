@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Margins from '../../../assets/styles/margins';
-import Colors from '../../../assets/styles/colors';
-import Fonts from '../../../assets/styles/fonts';
+import Margins from '../../../static/styles/margins';
+import Colors from '../../../static/styles/colors';
+import Fonts from '../../../static/styles/fonts';
 
 import SizeEmitter from '../../../lib/SizeEmitter';
 
-import MyImg from '../../../assets/images/me_outline.png';
+import MyImg from '../../../static/images/me_outline.png';
 
 export default class About extends React.Component {
   constructor (props) {
