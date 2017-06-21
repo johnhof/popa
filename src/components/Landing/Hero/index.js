@@ -30,9 +30,9 @@ export default class Hero extends React.Component {
 
     let applySize = (size) => {
       let margin = size === 'small' ? 'none' : size;
-      this.styles.container.marginTop = Margins[margin];
-      this.styles.container.marginBottom = Margins[margin];
-      this.styles.container.height = `calc(100vh - ${Margins.int(margin) * 2}px)`;
+      this.styles.container.paddingTop = Margins[margin];
+      this.styles.container.paddingBottom = Margins[margin];
+      this.styles.container.height = `100%`;
       this.setState({ size });
     };
     this.sizeEmitter.on('small', () => {
