@@ -7,7 +7,7 @@
     "test": "mocha test",
     "build": "node ./node_modules/.bin/neutrino build --use neutrino-preset-react",
     "dev": "bash config.env && cat ascii.txt && node ./node_modules/.bin/neutrino start --use neutrino-preset-react",
-    "prod": "bash config.env && node server.js",
+    "prod": "bash config.env && cat ascii.txt && node server.js",
     "prestart": "npm run build",
     "start": "bash config.env && cat ascii.txt && node server.js"
   },
@@ -15,28 +15,6 @@
     "options": {
       "html": {
         "title": "John Hofrichter"
-      }
-    },
-    "entry": {
-      "index": [
-        "babel-polyfill"
-      ]
-    },
-    "config": {
-      "output": {
-        "publicPath": "/"
-      },
-      "devServer": {
-        "compress": true,
-        "host": "0.0.0.0",
-        "port": "8080",
-        "filename": "app/index.js",
-        "historyApiFallback": true,
-        "clientLogLevel": "none",
-        "noInfo": true,
-        "headers": {
-          "X-Powered-By": "Hof"
-        }
       }
     },
     "entry": {
@@ -55,6 +33,23 @@
         "react-particles-js",
         "axios"
       ]
+    },
+    "config": {
+      "output": {
+        "publicPath": "/"
+      },
+      "devServer": {
+        "compress": true,
+        "host": "0.0.0.0",
+        "port": "8080",
+        "filename": "app/index.js",
+        "historyApiFallback": true,
+        "clientLogLevel": "none",
+        "noInfo": true,
+        "headers": {
+          "X-Powered-By": "Hof"
+        }
+      }
     }
   },
   "author": "John Hofrichter",
@@ -82,11 +77,11 @@
     "react-responsive": "^1.3.0",
     "react-router-dom": "^4.0.0",
     "react-waypoint": "^5.2.1",
-    "scroll-component": "^0.4.4"
+    "scroll-component": "^0.4.4",
+    "mz": "^2.6.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^3.2.0",
-    "mz": "^2.6.0"
+    "mocha": "^3.2.0"
   }
 }
